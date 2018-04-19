@@ -1,0 +1,39 @@
+% Requesting draft will show any overfull boxes when the document is compiled. Should be black lines on the document where the boxes are overfull.
+\documentclass{refrep}
+%\usepackage[textsize=tiny]{todonotes}
+\usepackage{listings}  % See https://www.sharelatex.com/learn/Code_listing#Importing_code_from_a_file to read about how to showcase python code in this manual.
+\usepackage{todonotes}
+\usepackage[utf8]{inputenc}
+%Commented these out b/c they don't seem to be necessary to put a caption beneath tables. if the spacing gets messed up, try un-commenting them.
+%\usepackage{caption}
+%\captionsetup[table]{position=bottom}
+\usepackage{url}
+\usepackage{graphicx}  % This package lets you import images into the document.
+\graphicspath{ {BioPype_images/} }  % Specify the path to the folder where the images will be imported from.
+\usepackage[toc,page]{appendix}
+
+% This is to stop the individual appendix entries from appearing in the ToC.
+\usepackage{etoolbox}
+\appto\appendix{\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}}
+% reinstate the correct level for list of tables and figures
+\appto\listoffigures{\addtocontents{lof}{\protect\setcounter{tocdepth}{1}}}
+\appto\listoftables{\addtocontents{lot}{\protect\setcounter{tocdepth}{1}}}
+
+\usepackage{hyperref}  % Allows hyperlinks.
+
+\title{BioPype: A crash course in bioinformatics and custom pipelines}
+
+\author{Ethan Gniot}
+\date{March 2018}
+
+\begin{document}
+
+\include{sec1-7}
+% 1) Delete all aux files.
+% 2) Comment out all appendix sections and labels. Save file.
+% 3) Compile main tex file x2
+% 4) Un-comment all appendix sections and labels. Save file.
+% 5) Compile main tex file x2
+\include{sec8-end}
+
+\end{document}
