@@ -1,28 +1,31 @@
 # author: Ethan Gniot
-# This is a simple class for handling the data in RunInfo Tables
+# This is a simple class for handling the data2 in RunInfo Tables
 # from the SRA database. The intention is for users to be able to
 # obtain lists of SRA accession numbers by filtering the samples
 # based on the metadata in the RunInfo Table. This should be faster
-# than filtering the data using the GUI provided by the SRA database.
+# than filtering the data2 using the GUI provided by the SRA database.
 
 import pandas as pd
-
+import random
 
 class RunTable:
     def __init__(self, run_info_table):
-        # Read the tab-delimited run_info_table into a pandas Dataframe.
-        self.df = pd.read_csv(run_info_table, delimiter='\t')
-        # List of the names of the data columns.
-        self.column_names = list(self.df.columns.values)
+        if isinstance(run_info_table, pd.DataFrame):
+            self.df = run_info_table
+        else:
+            # Read the tab-delimited run_info_table into a pandas Dataframe.
+            self.df = pd.read_csv(run_info_table, delimiter='\t')
+            # List of the names of the data2 columns.
+            self.column_names = list(self.df.columns.values)
+
 
     def sort_data(self, column_name, operation, value):
         """
-        This is a function for getting a list of accession numbers for specific
-        samples from the RunInfo Table via sorting the table by metadata.
+        This method filters out samples in a RunInfo table based on their metadata values.
         :param column_name: string
         :param operation: string
         :param value: scalar
-        :return: A pandas series of accession numbers for samples that match
+        :return: A RunTable object containing only the samples that meet
         the sorting criteria.
         """
         # Create a dictionary where key=operator as a string, and
@@ -48,9 +51,15 @@ class RunTable:
             truth_array = ops[operation]
             # Use the boolean array to select only the samples that satisfied
             # the operation (marked "True" in the boolean array).
-            true_samples = self.df[truth_array]
-            # Return the accession numbers from those selected samples.
-            return true_samples['Run']
+            filtered_samples = self.df[truth_array]
+            # Return the filtered_samples as an instance of the RunTable class
+            # so that the user can continue applying filtering methods to the
+            # new dataset.
+            # Not returning the samples as a RunTable instance would mean the
+            # data wouldn't have access to the RunTable class' filtering
+            # methods, so the dataset wouldn't be able to be filtered again.
+            return RunTable(filtered_samples)
+
         if isinstance(value, str):
             try:
                 ops = {
@@ -58,11 +67,11 @@ class RunTable:
                     '!=': self.df[column_name].ne(value)
                 }
                 truth_array = ops[operation]
-                true_samples = self.df[truth_array]
-                return true_samples['Run']
+                filtered_samples = self.df[truth_array]
+                return RunTable(filtered_samples)
             except(TypeError):
-                raise TypeError("The data type of the metadata may not match "
-                                "the data type that you entered for the last "
+                raise TypeError("The data2 type of the metadata may not match "
+                                "the data2 type that you entered for the last "
                                 "argument ('value').")
             except(KeyError):
                 raise KeyError("The 'operation' argument must be either '==' "
@@ -71,16 +80,19 @@ class RunTable:
 
     def sort_data_range(self, column_name, in_or_out, value1, value2):
         """
-        This is a function for getting a list of accession numbers for specific
-        samples from the RunInfo Table based on a range of metadata values.
+        This method filters out samples in a RunInfo table based on
+        ranges of metadata values.
+
         :param in_or_out: One of two possible strings: "in" or "out". With "in",
-         the function will sort data and return accession numbers for values
+         the function will sort data2 and return accession numbers for values
          that fall within the range specified by value1 and value2. "Out" will
          return values that fall outside the range specified by value1
          and value2.
         :param column_name: string
         :param value1: Integer or decimal number.
         :param value2: Integer or decimal number.
+        :return A RunTable object containing only the samples that meet
+        the sorting criteria.
         """
         try:
             lower = min(value1, value2)
@@ -91,6 +103,7 @@ class RunTable:
             # giving details about the type mismatch.
             # raise AssertionError("Input for 3rd and 4th arguments should be numbers.")
             raise TypeError("Input for 3rd and 4th arguments should be numbers.")
+
         try:
             assert (in_or_out == 'in') or (in_or_out == 'out')
             if in_or_out == 'in':
@@ -98,9 +111,9 @@ class RunTable:
                 # bounds of the range.
                 truth_array = self.df[column_name].between(lower, upper, inclusive=True)
                 # Use boolean array to select the samples.
-                true_samples = self.df[truth_array]
+                filtered_samples = self.df[truth_array]
                 # Return accession numbers from the selected samples.
-                return true_samples['Run']
+                return RunTable(filtered_samples)
             if in_or_out == 'out':
                 col = self.df[column_name]
                 # Mask makes cells that evaluate to True NaN.
@@ -115,16 +128,60 @@ class RunTable:
                 # To solve this, we can mask the cells that satisfy the
                 # specified range and turn all of the values into NaN
                 # ("Not a Number")...
-                masked_table = col.mask(col.ge(lower) & col.le(upper))
+                masked_table = col.mask(col.ge(lower) & col.le(upper))  # Needed to use bitwise '&' instead of logical 'and'; still trying to understand why logical 'and' didn't work.
                 # ... then use the pandas method .isnull() to
                 # create a boolean array where we mark entries as True if they
                 # are Nan...
                 truth_array = masked_table.isnull()
                 # ... then use the opposite of the boolean array to select all
                 # samples where the entry is NOT an NaN.
-                true_samples = self.df[-truth_array]
-                return true_samples['Run']
+                filtered_samples = self.df[-truth_array]
+                return RunTable(filtered_samples)
         except(AssertionError):
             raise AssertionError("The 2nd argument (in_or_out) must be either "
                                  "of the strings 'in' or 'out'")
-        return "this function shouldn't finish"
+
+        return None
+
+    def get_accession_numbers(self):
+        """
+        This method returns an iterable pandas series of sra accession numbers
+        for each of the samples in the RunTable.
+        :return: A pandas series. Series contains the sra accession numbers for
+        each sample.
+        """
+        acc_nums = self.df['Run']
+        return acc_nums
+
+    def random_sample_subset(self, acc_num_list, n):
+        """
+        This method is for randomly selecting a number of samples n from a list
+        of accession numbers.
+        Function found at "https://stackoverflow.com/questions/2612648/reservoir-sampling".
+        :param acc_num_list: list or pandas series; List of Accession nums.
+        :param n: int; Number of samples to select from the list.
+        :return: list of length n. Each item in the list is a string
+        representing the sra accession number of a sequencing run.
+        """
+        subset = []
+        i = 0
+
+        for acc_num in acc_num_list:
+            i += 1
+            if len(subset) < n:
+                subset.append(acc_num)
+            else:
+                s = int(random.random() * i)
+                if s < n:
+                    subset[s] = acc_num
+        return subset
+
+
+my_table = RunTable('/Volumes/Gniot_Backup_Drive/repos/BioPype/data/sra/human_microbiome_IBD.txt')
+print(type(my_table), my_table.df.shape, len(my_table.df))
+
+x = my_table.sort_data('host_disease', '==', 'ulcerative colitis')
+print(type(x), x.df.shape, len(x.df))
+
+y = x.random_sample_subset(x.get_accession_numbers(), 5)
+print(y)
