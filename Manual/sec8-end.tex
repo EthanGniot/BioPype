@@ -16,8 +16,8 @@
         Anaconda & 5.1 \\  
         Biopython & 1.70 \\
         BLAT & 35 \\
-        matplotlib & 2.0.2 \\
-        pandas & 0.20.1 \\
+        matplotlib & 2.2.2 \\
+        pandas & 0.22.0 \\
         sra-tools & 2.8.2 \\
         trim-galore & 0.4.5 \\
     \end{tabular}
@@ -81,7 +81,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
         %
         \item Click the \textbf{Create} button on the bottom of the center panel. A new window titled ``Create new environment" will appear. (Figure \ref{anaconda-create-new-env-win})
         %
-        \begin{figure}[b]
+        \begin{figure}[h]
             \begin{center}
             \includegraphics[width=12cm]{anaconda-create_new_env_win}
             \caption{The ``Create new environment" window.}
@@ -101,19 +101,35 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
     \begin{enumerate}
         \item Change Anaconda's current environment from the \textbf{root} environment by selecting the \textbf{BioPype} tab in the middle panel of the Environments window.
         \item Click on the drop-down menu in the right-hand panel that says ``Installed" and change it to ``All".
-        \item In the ``Search Packages" box, enter ``biopython". The search should return a package named ``biopython". Select the checkbox to the left of the name. \todo{add reference to the anaconda-search-pack figure.} 
+        \item In the ``Search Packages" box, enter ``biopython". The search should return a package named ``biopython". Select the checkbox to the left of the name. (Figure \ref{anaconda-search-pack})
         \begin{itemize}
-            \item A pair of green and red boxes (reading ``Apply" and ``Clear", respectively) will appear in the bottom-right of the window once the package is selected. Do not click these just yet. \missingfigure{replace this with ``anaconda-search-pack".}
+            \item A pair of green and red boxes (reading ``Apply" and ``Clear", respectively) will appear in the bottom-right of the window once the package is selected. Do not click these just yet. 
+    %
+    \begin{figure}[hbtp]
+        \begin{center}
+        \includegraphics[width=12cm]{anaconda-search-pack}
+        \caption{Searching for a package. When a package is selected, the checkbox next to the package's name will be green.}
+        \label{anaconda-search-pack}
+        \end{center}
+    \end{figure}
+    %
+    \todo{Solve the issue with failing to center figures when they're on their own page}
         \end{itemize}
-        \item Use the search bar to find and select the other packages listed in \autoref{tab:software}. Once all packages have been selected, click the green ``Apply" button in the bottom right corner of the window, then select ``Apply" again within the ``Install Packages" window that appears. (\todo{reference the anaconda-install-pack figure.}) Anaconda will now install the selected packages.
-        \begin{itemize}
-            \item Note: packages in \autoref{tab:software} marked with * are dependencies of other packages. This means they will be automatically installed when the other packages are installed, though manually selecting them for installation shouldn't do any harm.
-        \end{itemize}
-        \missingfigure{Replace with anaconda-install-pack image.} 
+        \item Use the search bar to find and select the other packages listed in \autoref{tab:software}. Once all packages have been selected, click the green ``Apply" button in the bottom right corner of the window, then select ``Apply" again within the ``Install Packages" window that appears. (Figure \ref{anaconda-install-pack}) Anaconda will now install the selected packages.
+    %
+    \begin{figure}[hbtp]
+        \begin{center}
+        \includegraphics[width=12cm]{anaconda-install-pack}
+        \caption{The window displaying the packages and dependencies that will be installed.}
+        \label{anaconda-install-pack}
+        \end{center}
+    \end{figure}
+    %
+        \item \todo[inline]{Talk about setting up the sra-tools workspace (\url{https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}
         \item \todo[inline]{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}
         \begin{enumerate}
             \item Open a terminal window in the BioPype environment by clicking the ``play" button on the BioPype environment tab and then selecting ``Open Terminal".
-            \item Wait for the terminal window to finish opening. You'll know it's finished when you see \todo{show image of what the prompt looks like when it's done initializing.}
+            \item Wait for the terminal window to finish opening. You'll know it's finished when you see \todo[inline]{show image of what the prompt looks like when it's done initializing.}
             \item Install \textbf{pypiper} by typing the following at the command prompt, followed by pressing return/enter:
             %
             \begin{lstlisting} [language=Python]

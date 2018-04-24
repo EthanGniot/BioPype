@@ -7,15 +7,13 @@
 \contentsline {todo}{Link to resource for further reading on virtual environments}{13}{section*.11}
 \contentsline {todo}{Write blurb about what packages are.}{14}{section*.12}
 \contentsline {todo}{Link to resource for further reading about packages.}{14}{section*.13}
-\contentsline {todo}{add reference to the anaconda-search-pack figure.}{15}{section*.14}
-\contentsline {todo}{Figure: replace this with ``anaconda-search-pack".}{15}{section*.14}
-\contentsline {todo}{reference the anaconda-install-pack figure.}{15}{section*.15}
-\contentsline {todo}{Figure: Replace with anaconda-install-pack image.}{15}{section*.15}
+\contentsline {todo}{Solve the issue with failing to center figures when they're on their own page}{15}{section*.14}
+\contentsline {todo}{Talk about setting up the sra-tools workspace (\url {https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}{15}{section*.15}
 \contentsline {todo}{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}{15}{section*.16}
-\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{16}{section*.17}
-\contentsline {todo}{Reference the figure pypiper-already-installed}{16}{section*.18}
-\contentsline {todo}{Figure: pypiper-already-installed}{16}{section*.18}
-\contentsline {todo}{reference figure pypiper-wrong-location}{16}{section*.19}
+\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{15}{section*.17}
+\contentsline {todo}{Reference the figure pypiper-already-installed}{17}{section*.18}
+\contentsline {todo}{Figure: pypiper-already-installed}{17}{section*.18}
+\contentsline {todo}{reference figure pypiper-wrong-location}{17}{section*.19}
 \contentsline {todo}{Figure: pypiper-wrong-location}{17}{section*.19}
-\contentsline {todo}{Talk about choosing between PyCharm and other options}{17}{section*.20}
-\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{17}{section*.21}
+\contentsline {todo}{Talk about choosing between PyCharm and other options}{18}{section*.20}
+\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{18}{section*.21}

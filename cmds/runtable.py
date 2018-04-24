@@ -8,6 +8,7 @@
 import pandas as pd
 import random
 
+
 class RunTable:
     def __init__(self, run_info_table):
         if isinstance(run_info_table, pd.DataFrame):
@@ -18,8 +19,7 @@ class RunTable:
             # List of the names of the data2 columns.
             self.column_names = list(self.df.columns.values)
 
-
-    def sort_data(self, column_name, operation, value):
+    def filter_data(self, column_name, operation, value):
         """
         This method filters out samples in a RunInfo table based on their metadata values.
         :param column_name: string
@@ -78,7 +78,7 @@ class RunTable:
                                "or '!=' when the metadata values are not "
                                "numerical.")
 
-    def sort_data_range(self, column_name, in_or_out, value1, value2):
+    def filter_data_range(self, column_name, in_or_out, value1, value2):
         """
         This method filters out samples in a RunInfo table based on
         ranges of metadata values.
@@ -120,7 +120,7 @@ class RunTable:
                 # If the function just looks for samples that don't fall inside
                 # the specified range, it will also include samples that just
                 # have blank entries for that metadata (b/c an entry of "" would
-                # not a number within the specified range, therefore that entry
+                # not be a number within the specified range, therefore that entry
                 # would be marked as 'True"). We only want samples that have
                 # metadata entries for the column.
                 #
@@ -128,7 +128,7 @@ class RunTable:
                 # To solve this, we can mask the cells that satisfy the
                 # specified range and turn all of the values into NaN
                 # ("Not a Number")...
-                masked_table = col.mask(col.ge(lower) & col.le(upper))  # Needed to use bitwise '&' instead of logical 'and'; still trying to understand why logical 'and' didn't work.
+                masked_table = col.mask(col.ge(lower) & col.le(upper))  # Needed to use bitwise '&' instead of logical 'and'; still trying to figure out why logical 'and' doesn't work.
                 # ... then use the pandas method .isnull() to
                 # create a boolean array where we mark entries as True if they
                 # are Nan...
@@ -155,7 +155,7 @@ class RunTable:
 
     def random_sample_subset(self, acc_num_list, n):
         """
-        This method is for randomly selecting a number of samples n from a list
+        This method is for randomly selecting n number of samples from a list
         of accession numbers.
         Function found at "https://stackoverflow.com/questions/2612648/reservoir-sampling".
         :param acc_num_list: list or pandas series; List of Accession nums.
@@ -175,13 +175,3 @@ class RunTable:
                 if s < n:
                     subset[s] = acc_num
         return subset
-
-
-my_table = RunTable('/Volumes/Gniot_Backup_Drive/repos/BioPype/data/sra/human_microbiome_IBD.txt')
-print(type(my_table), my_table.df.shape, len(my_table.df))
-
-x = my_table.sort_data('host_disease', '==', 'ulcerative colitis')
-print(type(x), x.df.shape, len(x.df))
-
-y = x.random_sample_subset(x.get_accession_numbers(), 5)
-print(y)
