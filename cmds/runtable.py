@@ -101,7 +101,6 @@ class RunTable:
             # TypeError = Raised when an operation or function is applied to an
             # object of inappropriate type. The associated value is a string
             # giving details about the type mismatch.
-            # raise AssertionError("Input for 3rd and 4th arguments should be numbers.")
             raise TypeError("Input for 3rd and 4th arguments should be numbers.")
 
         try:
@@ -131,9 +130,10 @@ class RunTable:
                 masked_table = col.mask(col.ge(lower) & col.le(upper))  # Needed to use bitwise '&' instead of logical 'and'; still trying to figure out why logical 'and' doesn't work.
                 # ... then use the pandas method .isnull() to
                 # create a boolean array where we mark entries as True if they
-                # are Nan...
+                # are NaN...
                 truth_array = masked_table.isnull()
                 # ... then use the opposite of the boolean array to select all
+<<<<<<< HEAD:cmds/runtable.py
                 # samples where the entry is NOT an NaN.
                 filtered_samples = self.df[-truth_array]
                 return RunTable(filtered_samples)
@@ -175,3 +175,12 @@ class RunTable:
                 if s < n:
                     subset[s] = acc_num
         return subset
+=======
+                # samples where the entry is NOT a NaN.
+                true_samples = self.df[-truth_array]
+                return true_samples['Run']
+        except(AssertionError):
+            raise AssertionError("The 2nd argument (in_or_out) must be either "
+                                 "of the strings 'in' or 'out'")
+        return None
+>>>>>>> c37b7b3301ba24fc9ab020b05a0babbdab799dd0:cmds/RunTable.py
