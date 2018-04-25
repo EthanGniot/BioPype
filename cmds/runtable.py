@@ -133,7 +133,6 @@ class RunTable:
                 # are NaN...
                 truth_array = masked_table.isnull()
                 # ... then use the opposite of the boolean array to select all
-<<<<<<< HEAD:cmds/runtable.py
                 # samples where the entry is NOT an NaN.
                 filtered_samples = self.df[-truth_array]
                 return RunTable(filtered_samples)
@@ -175,12 +174,3 @@ class RunTable:
                 if s < n:
                     subset[s] = acc_num
         return subset
-=======
-                # samples where the entry is NOT a NaN.
-                true_samples = self.df[-truth_array]
-                return true_samples['Run']
-        except(AssertionError):
-            raise AssertionError("The 2nd argument (in_or_out) must be either "
-                                 "of the strings 'in' or 'out'")
-        return None
->>>>>>> c37b7b3301ba24fc9ab020b05a0babbdab799dd0:cmds/RunTable.py
