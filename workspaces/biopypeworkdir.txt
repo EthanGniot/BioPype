@@ -1,0 +1,2 @@
+/Volumes/Gniot_Backup_Drive/repos/BioPype
+ The first line of this file (the above line^) is the path to the working directory of the BioPype module.

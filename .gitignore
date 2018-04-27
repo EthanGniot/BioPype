@@ -157,3 +157,4 @@ fabric.properties
 
 #Other
 .DS_Store
+.idea/
