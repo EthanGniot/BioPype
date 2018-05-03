@@ -2,7 +2,6 @@ import os
 import subprocess
 import pathlib
 from workspaces.dirpaths import BIODIR, SRADIR
-import time
 
 
 def download_sra(acc_nums):
@@ -16,6 +15,7 @@ def download_sra(acc_nums):
 
 
 def check_dir_exists(directory):
+    """Check if directory exists. If not, create it."""
     if not os.path.isdir(directory):
         print(str(directory) + "does not exist... Creating " + str(directory))
         os.mkdir(str(directory))
@@ -27,7 +27,6 @@ def convert_sra_to_fastq(
         threads=1,
         delete=False):
     """Convert target .sra files to .fastq and store in fastq_dir.
-
     :param fastq_dir: string; path to directory where created .fastq files will
     be stored.
     :param select_files:
@@ -56,22 +55,18 @@ def convert_sra_to_fastq(
     else:
         for f in sra_dir.iterdir():
             if f.suffix == '.sra':
-                t1 = time.time()
                 subprocess.run(['parallel-fastq-dump', '--sra-id', f,
                                 '--threads', str(threads), '--outdir', fastq_dir])
-                t2 = time.time()
-                difference = t2-t1
-                print("\n\n\t***** THIS FASTQ-DUMP TOOK " + str(difference) + "WITH " + str(threads) + "THREADS******\n\n")
+
     return None
+
 
 def clean_sra_downloads(delete=False, storage_dir=os.path.join(BIODIR, 'data', 'sra.storage')):
     """Remove the .sra files from the default .sra download directory.
-
     :param delete: When False, moves all of the files from the .sra download location to the .sra storage folder. When
     True, simply deletes the files.
     :return: None
     """
     # check_dir_exists(storage_dir)
-    #TODO: Figure out what direction to go with this function.
+    # TODO: Figure out what direction to go with this function.
     pass
-
