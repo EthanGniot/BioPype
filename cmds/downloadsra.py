@@ -1,7 +1,10 @@
 import os
 import subprocess
 import pathlib
-from workspaces.dirpaths import BIODIR, SRADIR
+from workspaces.dirpaths import DirPathsHelper
+path_helper = DirPathsHelper()
+_BIODIR = path_helper._BIODIR
+_SRADIR = path_helper._SRADIR
 
 
 def download_sra(acc_nums):
@@ -22,7 +25,7 @@ def check_dir_exists(directory):
 
 
 def convert_sra_to_fastq(
-        fastq_dir=(pathlib.Path(BIODIR).joinpath('data', 'fastq')),
+        fastq_dir=(pathlib.Path(_BIODIR).joinpath('data', 'fastq')),
         select_files='',
         threads=1,
         delete=False):
@@ -40,7 +43,7 @@ def convert_sra_to_fastq(
     :return: None
     """
     # sra_dir = path to directory where target .sra files exist.
-    sra_dir = pathlib.Path(SRADIR).joinpath('sra')
+    sra_dir = pathlib.Path(_SRADIR).joinpath('sra')
 
     check_dir_exists(fastq_dir)
 
@@ -61,7 +64,7 @@ def convert_sra_to_fastq(
     return None
 
 
-def clean_sra_downloads(delete=False, storage_dir=os.path.join(BIODIR, 'data', 'sra.storage')):
+def clean_sra_downloads(delete=False, storage_dir=os.path.join(_BIODIR, 'data', 'sra.storage')):
     """Remove the .sra files from the default .sra download directory.
     :param delete: When False, moves all of the files from the .sra download location to the .sra storage folder. When
     True, simply deletes the files.
