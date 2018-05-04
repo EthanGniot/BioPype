@@ -1,19 +1,21 @@
-\contentsline {todo}{Still need to add information about the inflammatory bowel disease dataset}{7}{section*.5}
-\contentsline {todo}{Make URLs footnotes instead of appendix entries}{7}{section*.6}
-\contentsline {todo}{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}{7}{section*.7}
-\contentsline {todo}{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}{12}{section*.8}
-\contentsline {todo}{add 3rd column to table with link to documentation/download source}{12}{section*.9}
-\contentsline {todo}{Write a blurb explaining the benefits of using a virtual environment.}{13}{section*.10}
-\contentsline {todo}{Link to resource for further reading on virtual environments}{13}{section*.11}
-\contentsline {todo}{Write blurb about what packages are.}{14}{section*.12}
-\contentsline {todo}{Link to resource for further reading about packages.}{14}{section*.13}
-\contentsline {todo}{Solve the issue with failing to center figures when they're on their own page}{15}{section*.14}
-\contentsline {todo}{Talk about setting up the sra-tools workspace (\url {https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}{15}{section*.15}
-\contentsline {todo}{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}{15}{section*.16}
-\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{15}{section*.17}
-\contentsline {todo}{Reference the figure pypiper-already-installed}{17}{section*.18}
-\contentsline {todo}{Figure: pypiper-already-installed}{17}{section*.18}
-\contentsline {todo}{reference figure pypiper-wrong-location}{17}{section*.19}
-\contentsline {todo}{Figure: pypiper-wrong-location}{17}{section*.19}
-\contentsline {todo}{Talk about choosing between PyCharm and other options}{18}{section*.20}
-\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{18}{section*.21}
+\contentsline {todo}{Talk about the biology concepts they should be familiar with before starting.}{5}{section*.4}
+\contentsline {todo}{Still need to add information about the inflammatory bowel disease dataset}{7}{section*.6}
+\contentsline {todo}{Make URLs footnotes instead of appendix entries}{7}{section*.7}
+\contentsline {todo}{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}{7}{section*.8}
+\contentsline {todo}{(Include information about the untested inflammatory bowel disease dataset that we will analyze using the completed pipeline)}{7}{section*.9}
+\contentsline {todo}{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}{12}{section*.10}
+\contentsline {todo}{add 3rd column to table with link to documentation/download source}{12}{section*.11}
+\contentsline {todo}{Write a blurb explaining the benefits of using a virtual environment.}{13}{section*.12}
+\contentsline {todo}{Link to resource for further reading on virtual environments}{13}{section*.13}
+\contentsline {todo}{Write blurb about what packages are.}{14}{section*.14}
+\contentsline {todo}{Link to resource for further reading about packages.}{14}{section*.15}
+\contentsline {todo}{Solve the issue with failing to center figures when they're on their own page}{15}{section*.16}
+\contentsline {todo}{Talk about setting up the sra-tools workspace (\url {https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}{15}{section*.17}
+\contentsline {todo}{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}{15}{section*.18}
+\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{15}{section*.19}
+\contentsline {todo}{Reference the figure pypiper-already-installed}{17}{section*.20}
+\contentsline {todo}{Figure: pypiper-already-installed}{17}{section*.20}
+\contentsline {todo}{reference figure pypiper-wrong-location}{17}{section*.21}
+\contentsline {todo}{Figure: pypiper-wrong-location}{17}{section*.21}
+\contentsline {todo}{Talk about choosing between PyCharm and other options}{18}{section*.22}
+\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{18}{section*.23}

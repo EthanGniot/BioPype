@@ -17,19 +17,32 @@ This tutorial aims to improve your general understanding of bioinformatics throu
     \item Demonstrate how Python can be used to answer your research questions by combining existing bioinformatics tools and automating repetitive or time-consuming tasks.
 \end{itemize}
 
-\section{How to use this book}
-Most reference materials are consolidated in the appendices at the end of the book. The main text of this book is written in the right-hand margin. The left-hand margin contains special markers and important notes to the reader. The book can be used as a self-paced tutorial with the help of the markers described below.
+\section{How to Use this Manual}
+The main text of this book is written in the right-hand margin, while the left-hand margin contains special markers and important notes to the reader. All of the resources referenced in the following chapters can be found in the left-hand margin, the appendices, or both. The book can be used as a self-paced tutorial with the help of the markers described below.
 
 ------------------------------- 
 
-\textit{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu felis sodales, interdum purus nec, interdum ex. Integer at nunc \marginlabel{This is a margin label. I will write things here to further explain the main text, define jargon, etc.} ultricies, tempus nibh eget, egestas risus. Suspendisse aliquam, lorem at dictum accumsan, dolor elit euismod velit, a gravida risus libero non felis. Donec a tortor tempor, scelerisque sapien posuere, volutpat erat. Morbi in imperdiet velit. Vivamus sagittis, massa sit amet venenatis euismod, elit eros aliquam diam, molestie faucibus lectus nisi euismod erat. Nulla id dictum mi.}
+\marginlabel{This is a margin label. I will write things here to further explain the main text, define jargon, etc.} \textit{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu felis sodales, interdum purus nec, interdum ex. Integer at nunc ultricies, tempus nibh eget, egestas risus.}
 
-\attention \textbf{The arrow that points to this line is an "Attention" marker. It will indicate key pieces of information that you should pay special attention to.} \textit{Curabitur egestas aliquam nisl, pharetra finibus mauris placerat nec. Nam in diam risus. Nulla mollis purus quis feugiat tristique. Vestibulum et sollicitudin ante, at sagittis ipsum. Nunc hendrerit ante sed massa semper eleifend.}
+\vspace{8mm}
 
-\seealso{This kind of annotation will reference appendix entries that you can consult for more-detailed information about the main text.} Ut ultrices eros velit, at faucibus ante rutrum eget. Pellentesque a molestie diam. Curabitur mattis dui a risus lacinia fringilla. Phasellus porttitor elit nec neque euismod, id ultrices elit lobortis. Aliquam molestie sem. Curabitur sit amet urna faucibus, vulputate arcu sit amet, fermentum ipsum. Nulla facilisi. Nam ullamcorper eget leo id malesuada.
+\attention{This is an ``Attenion" marker. It will indicate key pieces of information that you should pay special attention to.}\textit{Curabitur egestas aliquam nisl, pharetra finibus mauris placerat nec.}
+
+\seealso{This kind of annotation will reference appendix entries that you can consult for more-detailed information about the main text.} Ut ultrices eros velit, at faucibus ante rutrum eget. Pellentesque a molestie diam. Curabitur mattis dui a risus lacinia fringilla. Phasellus porttitor elit nec neque euismod, id ultrices elit lobortis. 
+
+------------------------------- 
+
+Chapters 2 - 4 cover supplementary information about this project. Chapter 5 and Chapter 6 are educational in nature. Chapter 5 gives background information about microbiome analyses and references helpful resources for learning why these analyses are useful. Chapter 6 talks about various databases for finding public data, along with places where people can look for existing software programs that could help them answer their research questions. Chapter 7 breaks down the steps required to complete the microbiome analyses in this tutorial. 
+
+Finally, Chapters 8 - 16 are about creating and using the BioPype pipeline. These chapters are hyper-specific to the BioPype commands, rather than bioinformatics in general, though they still provide resources for reading more about the topics that are discussed. Each chapter covers a different step of the microbiome analysis process, and each chapter is divided into two sections: a "How to Build" section and a "How to Use" section. 
+
+The \textbf{How to Build} section teaches you how to build your own pipeline to answer your research questions. This is accomplished by explaining \textit{how} and \textit{why} the BioPype commands were created the way they were. By seeing the thought process behind BioPype's development process, you can adapt the process to suit your own development needs.
+
+The \textbf{How to Use} section explains how to use BioPype's functionality to answer questions about the gut microbiome. The section provides a workflow that explains which commands should be used in which order to complete the step that the chapter focuses on. 
 
 \section{Pre-requisites}
 \subsection*{Things to know}
+\todo[inline]{Talk about the biology concepts they should be familiar with before starting.}
 \subsection*{Computer requirements}
 \begin{itemize}
     \item At least 4GB RAM bare minimum, 16GB RAM if possible (basically, the more RAM, the better)
@@ -38,18 +51,19 @@ Most reference materials are consolidated in the appendices at the end of the bo
 \end{itemize}
 
 \chapter{Source Code}
-(Source code can be found at github.com/EthanGniot/LU-microbiome)
+(Source code can be found at github.com/EthanGniot/BioPype)
 
 \chapter{Sample Information}
 \todo{Still need to add information about the inflammatory bowel disease dataset}
 
-While we are building the LU-microbiome pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match the results of the original analysis, then we will know that our tool is working correctly.
+While we are building the BioPype pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match those of the original analysis, then we will know that our tool is working correctly.
 
-There are several test datasets available to us for testing the feature that analyzes the relative abundance of bacteria in the microbiota.
+\section{Test Dataset: Relative Abundance Analysis}
+There are several public datasets that can be used to test our code while we develop the microbial relative abundance analysis.
 
-The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) \todo{Make URLs footnotes instead of appendix entries} and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \seealso{Caporaso et al, 2011 \cite{Caporaso2011}} \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper). These data were sequenced using the barcoded amplicon sequencing protocol described in \seealso{ THIS CITATION NEEDS TO BE FIXED \cite{Caporaso2011a}} \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample}. A more recent version of this protocol that can be used with the Illumina HiSeq 2000 and MiSeq can be found here. \todo{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}
+The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) \todo{Make URLs footnotes instead of appendix entries} and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \seealso{Caporaso et al, 2011 \cite{Caporaso2011}} \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper). These data were sequenced using the barcoded amplicon sequencing protocol described in \seealso{ THIS CITATION NEEDS TO BE FIXED \cite{Caporaso2011a}} \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample}.  \todo{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}
 
-(Here is information about the untested inflammatory bowel disease dataset that we will analyze using the completed pipeline)
+\todo[inline]{(Include information about the untested inflammatory bowel disease dataset that we will analyze using the completed pipeline)}
 
 \chapter{Setting the scene}
 ("Here" is a hypothetical situation/research question that a student may have. This is the research question that will be answered by the pipeline we are creating.)

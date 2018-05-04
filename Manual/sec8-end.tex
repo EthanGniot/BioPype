@@ -1,8 +1,18 @@
 
 \chapter{Plan: 8 Main Sections}
 (Break down the sub-tasks required to accomplish the two main tasks: Relative abundance analysis and metagenomic analysis)
+%
+\begin{enumerate}
+    \item What is my research question?
+    \item Is there an existing tool that I can use to directly answer my research question? If not, proceed to Step 3.
+    \item What is the step-by-step process required to answer my research question?
+    \item What existing tools are available that can help me accomplish each of these steps?
+    \item How do I write code that uses these tools to accomplish the steps?
+\end{enumerate}
+%
 
-\chapter{Section 1: Software and Set-up}
+\chapter{Software and Set-up}
+\label{chap:software}
 \section{Software}
 (Table of software name, name in PATH, version number, function of the software for each one we're gonna use)
 \todo{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}
@@ -27,7 +37,7 @@
     \label{software}
 \end{table}
 %
-\section{Set-up and Installing Dependencies}
+\section{Set-up and Install Dependencies}
 Before we write any code, there are several steps that must be completed to prep your machine for the tasks we will be performing in this tutorial. Without these prerequisites, the code you write during this tutorial will not work correctly:
 \begin{enumerate}
 \item Install and open Anaconda
@@ -35,7 +45,7 @@ Before we write any code, there are several steps that must be completed to prep
 \item Install packages
 \end{enumerate}
 
-\subsection{Installing Anaconda}
+\subsection{Install Anaconda}
 The Anaconda program will play a key role in this tutorial. Anaconda is essentially Python and a lot of scientific computing tools bundled together, along with many popular add-ons to Python called packages. \seealso{RESOURCE FOR LEARNING ABOUT PYTHON PACKAGES} Downloading all of these tools individually can be difficult, as the quirks of one package may conflict with another when they're installed manually; using Anaconda to install packages greatly simplifies the process because Anaconda can smoothly handle all of the minute details that cause manual installations to fail.
 
 \textbf{\underline{Install and Open:}}
@@ -66,7 +76,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
     %
 \end{enumerate}
 
-\subsection{Creating a New Virtual Environment}
+\subsection{Create a New Virtual Environment}
     \todo[inline]{Write a blurb explaining the benefits of using a virtual environment.}
     \todo[inline]{Link to resource for further reading on virtual environments}
     \marginlabel{Make sure the computer has an internet connection while completing this section, otherwise Anaconda will not let you create a virtual environment.}
@@ -95,7 +105,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
         \item Click the \textbf{Create} button within the ``Create new environment window".
     \end{enumerate}
 
-\subsection{Installing packages}
+\subsection{Install packages}
     \todo[inline]{Write blurb about what packages are.}
     \todo[inline]{Link to resource for further reading about packages.}
     \begin{enumerate}
@@ -148,7 +158,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
             \item Open a Terminal window, and navigate to the location indicated by the message from the previous step. For my example, I need to start at my home directory and walk through the following folders: .local | lib | python3.6 | site-packages. 
             \begin{itemize}
                 \item The folders along the path to the pypiper installation may be hidden. On a Mac, these hidden folders are preceded by a ``." If the path to the pypiper installation includes hidden locations, reveal them by pressing ``Cmd + Shift + ." in the Finder window.
-            \item Once you find the site-packages folder containing two pypipder folders \todo[inline]{reference figure pypiper-wrong-location}, copy those folders and their contents and paste them into the ~/anaconda/envs/BioPype/lib/python3.6/site-packages directory. The package should now be installed correctly. \missingfigure{pypiper-wrong-location} 
+            \item Once you find the site-packages folder containing two pypiper folders \todo[inline]{reference figure pypiper-wrong-location}, copy those folders and their contents and paste them into the ~/anaconda/envs/BioPype/lib/python3.6/site-packages directory. The package should now be installed correctly. \missingfigure{pypiper-wrong-location} 
             \marginlabel{}
             \end{itemize}
         \end{enumerate}    
@@ -162,10 +172,57 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
 \section{Analysis Pipeline}
 (Use figures to illustrate the stages of the pipeline)
 
-\chapter{Section 2: Dataset}
+\chapter{The Dataset}
+
+In the previous chapter, we set up our machine so that it has all of the software BioPype needs in order to function.
+
+In this chapter, we will use BioPype to download experimental data, and then prepare them for analysis via a process called 
+``quality control".
+
+    %
+    \section{The Data}
+        What experiment are the data from? 
+        What was the study investigating? 
+        Where did we find the data?
+
+
+
 (Find dataset)
+
 (Create script to automate download of data)
+
 (Quality control protocols and how to make script for automated QC)
+
+    %
+    \section{Find Dataset}
+        %
+        \begin{enumerate}
+            \item NCBI
+            \item SRA database
+            \item Look for WGS data
+        \end{enumerate}
+        %
+    %
+    \section{Download Dataset}
+        %
+        \begin{enumerate}
+            \item Download RunInfo Table
+            \item Create RunTable object from RunInfo Table file
+            \item Use filtering methods of RunTable object to select data
+        \end{enumerate}
+    
+        %
+        \subsection{BioPype Workflow}
+        
+        %
+        \subsection{Creating the code}
+        
+        %
+    
+    
+    \section{Perform Quality Control on Dataset}
+
+
 
 \chapter{Section 3: Relative Abundance Analysis}
 (How to compare relative abundance of bacterial taxa between experimental conditions using QWRAP.)
