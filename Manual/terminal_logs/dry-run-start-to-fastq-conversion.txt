@@ -1,0 +1,220 @@
+/Users/ethangniot/anaconda/envs/BioPype/bin/python "/Applications/PyCharm CE.app/Contents/helpers/pydev/pydevconsole.py" 59711 59712
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/Volumes/Gniot_Backup_Drive/repos/BioPype'])
+PyDev console: starting.
+Python 3.6.5 | packaged by conda-forge | (default, Apr  6 2018, 13:44:09) 
+[GCC 4.2.1 Compatible Apple LLVM 6.1.0 (clang-602.0.53)] on darwin
+import os
+os.getcwd()
+'/Volumes/Gniot_Backup_Drive/repos/BioPype'
+os.chdir('/Users/ethangniot/my_test')
+os.getcwd()
+'/Users/ethangniot/my_test'
+import BioPype
+ The current working directory for BioPype is: /Volumes/Gniot_Backup_Drive/repos/BioPype
+	>To change BioPype's working directory, please run: BioPype.path_helper.setup('biopype')
+	>The current working directory is where BioPype's functions will look for target files and directories.
+->biopype directory/workspace set to: /Volumes/Gniot_Backup_Drive/repos/BioPype
+The current Workspace Location for the SRA Toolkit is: /Volumes/Gniot_Backup_Drive/repos/BioPype/data
+	>For information on how to configure the SRA Toolkit Workspace Location, please refer to either the BioPype manual (Chapter 8: Software and Set-up), or the SRA Toolkit website (https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4).
+BioPype.path_helper.setup('biopype')
+Please input a path to an existing folder to define BioPype's working directory: >? /Users/ethangniot/my_test
+->biopype directory/workspace set to: /Users/ethangniot/my_test
+import BioPype.cmds.runtable as rt
+Matplotlib support failed
+my_table = rt.RunTable('runinfotable-human-micro.txt')
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "/Volumes/Gniot_Backup_Drive/repos/BioPype/cmds/runtable.py", line 18, in __init__
+    self.df = pd.read_csv(run_info_table, delimiter='\t')
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/site-packages/pandas/io/parsers.py", line 709, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/site-packages/pandas/io/parsers.py", line 449, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/site-packages/pandas/io/parsers.py", line 818, in __init__
+    self._make_engine(self.engine)
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/site-packages/pandas/io/parsers.py", line 1049, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/site-packages/pandas/io/parsers.py", line 1695, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 402, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 718, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: File b'runinfotable-human-micro.txt' does not exist
+my_table = rt.RunTable('runinfotable-human-micro-IBD.txt')
+uc_samples = my_table.filter_data('host_disease', '==', 'ulcerative colitis')
+cd_samples = my_table.filter_data('host_disease', '==', "Crohn''s disease")
+uc_young, uc_old = uc_samples.filter_data('host_age', '<=', 21), uc_samples.filter_data('host_age', '>=', 60)
+cd_young, cd_old = cd_samples.filter_data('host_age', '<=', 21), cd_samples.filter_data('host_age', '>=', 60)
+list1 = [uc_young, uc_old, cd_young, cd_old]
+for sample_set in list1:
+    print(len(sample_set.df))
+    
+313
+42
+775
+46
+nums_uc_young = uc_young.get_accession_numbers()
+nums_uc_old = uc_old.get_accession_numbers()
+nums_cd_old = cd_old.get_accession_numbers()
+nums_cd_young = cd_young.get_accession_numbers()
+random_samples_uc_young = rt.RunTable.random_sample_subset
+random_samples_uc_young = rt.RunTable.random_sample_subset(nums_uc_young, n=3)
+random_samples_uc_old = rt.RunTable.random_sample_subset(nums_uc_old, n=3)
+random_samples_cd_old = rt.RunTable.random_sample_subset(nums_cd_old, n=3)
+random_samples_cd_young = rt.RunTable.random_sample_subset(nums_cd_young, n=3)
+import BioPype.cmds.downloadsra
+BioPype.cmds.downloadsra.download_sra(random_samples_cd_old)
+2018-05-04T16:24:35 prefetch.2.8.2: 1) Downloading 'SRR5946908'...
+2018-05-04T16:24:35 prefetch.2.8.2:  Downloading via https...
+2018-05-04T16:27:28 prefetch.2.8.2: 1) 'SRR5946908' was downloaded successfully
+2018-05-04T16:27:28 prefetch.2.8.2: 'SRR5946908' has 0 unresolved dependencies
+2018-05-04T16:27:29 prefetch.2.8.2: 1) Downloading 'SRR5950688'...
+2018-05-04T16:27:29 prefetch.2.8.2:  Downloading via https...
+2018-05-04T16:29:33 prefetch.2.8.2: 1) 'SRR5950688' was downloaded successfully
+2018-05-04T16:29:33 prefetch.2.8.2: 'SRR5950688' has 0 unresolved dependencies
+2018-05-04T16:29:34 prefetch.2.8.2: 1) Downloading 'SRR5950760'...
+2018-05-04T16:29:34 prefetch.2.8.2:  Downloading via https...
+2018-05-04T16:32:33 prefetch.2.8.2: 1) 'SRR5950760' was downloaded successfully
+2018-05-04T16:32:33 prefetch.2.8.2: 'SRR5950760' has 0 unresolved dependencies
+BioPype.path_helper('sra')
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: 'DirPathsHelper' object is not callable
+BioPype.path_helper.setup('sra')
+Please input the path for the SRA Toolkit's configured Workspace Location: >? /Users/ethangniot/my_test/data
+->sra directory/workspace set to: /Users/ethangniot/my_test/data
+BioPype.cmds.downloadsra.convert_sra_to_fastq(threads=4)
+/Users/ethangniot/my_test/data/fastqdoes not exist... Creating /Users/ethangniot/my_test/data/fastq
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "/Volumes/Gniot_Backup_Drive/repos/BioPype/cmds/downloadsra.py", line 58, in convert_sra_to_fastq
+    for f in sra_dir.iterdir():
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/pathlib.py", line 1079, in iterdir
+    for name in self._accessor.listdir(self):
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/pathlib.py", line 387, in wrapped
+    return strfunc(str(pathobj), *args)
+FileNotFoundError: [Errno 2] No such file or directory: '/Volumes/Gniot_Backup_Drive/repos/BioPype/data/sra'
+_SRADIR = path_helper._SRADIR
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'path_helper' is not defined
+_SRADIR = BioPype.path_helper._SRADIR
+BioPype.cmds.downloadsra.convert_sra_to_fastq(threads=4)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "/Volumes/Gniot_Backup_Drive/repos/BioPype/cmds/downloadsra.py", line 58, in convert_sra_to_fastq
+    for f in sra_dir.iterdir():
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/pathlib.py", line 1079, in iterdir
+    for name in self._accessor.listdir(self):
+  File "/Users/ethangniot/anaconda/envs/BioPype/lib/python3.6/pathlib.py", line 387, in wrapped
+    return strfunc(str(pathobj), *args)
+FileNotFoundError: [Errno 2] No such file or directory: '/Volumes/Gniot_Backup_Drive/repos/BioPype/data/sra'
+BioPype.cmds.downloadsra._SRADIR = _SRADIR
+BioPype.cmds.downloadsra.convert_sra_to_fastq(threads=4)
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5950760.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_b7u6u_cl
+/Users/ethangniot/my_test/data/sra/SRR5950760.sra spots: 9519427
+blocks: [[1, 2379856], [2379857, 4759712], [4759713, 7139568], [7139569, 9519427]]
+Read 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Read 2379859 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 2379859 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Read 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Read 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 2379856 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5946908.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_tpb3zqzf
+/Users/ethangniot/my_test/data/sra/SRR5946908.sra spots: 9353991
+blocks: [[1, 2338497], [2338498, 4676994], [4676995, 7015491], [7015492, 9353991]]
+Read 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Read 2338500 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 2338500 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Read 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Read 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 2338497 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5950688.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_juspm178
+/Users/ethangniot/my_test/data/sra/SRR5950688.sra spots: 6456345
+blocks: [[1, 1614086], [1614087, 3228172], [3228173, 4842258], [4842259, 6456345]]
+Read 1614087 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 1614087 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Read 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Read 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Read 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 1614086 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+BioPype.cmds.downloadsra.download_sra(random_samples_cd_young)
+2018-05-04T17:12:59 prefetch.2.8.2: 1) Downloading 'SRR5950578'...
+2018-05-04T17:12:59 prefetch.2.8.2:  Downloading via https...
+2018-05-04T17:16:52 prefetch.2.8.2: 1) 'SRR5950578' was downloaded successfully
+2018-05-04T17:16:52 prefetch.2.8.2: 'SRR5950578' has 0 unresolved dependencies
+2018-05-04T17:16:53 prefetch.2.8.2: 1) Downloading 'SRR6180575'...
+2018-05-04T17:16:53 prefetch.2.8.2:  Downloading via https...
+2018-05-04T17:17:02 prefetch.2.8.2: 1) 'SRR6180575' was downloaded successfully
+2018-05-04T17:17:02 prefetch.2.8.2: 'SRR6180575' has 0 unresolved dependencies
+2018-05-04T17:17:03 prefetch.2.8.2: 1) Downloading 'SRR5949196'...
+2018-05-04T17:17:03 prefetch.2.8.2:  Downloading via https...
+2018-05-04T17:20:55 prefetch.2.8.2: 1) 'SRR5949196' was downloaded successfully
+2018-05-04T17:20:55 prefetch.2.8.2: 'SRR5949196' has 0 unresolved dependencies
+BioPype.cmds.downloadsra.convert_sra_to_fastq(threads=2)
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5950760.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_htxci4dv
+/Users/ethangniot/my_test/data/sra/SRR5950760.sra spots: 9519427
+blocks: [[1, 4759713], [4759714, 9519427]]
+Read 4759714 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 4759714 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Read 4759713 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+Written 4759713 spots for /Users/ethangniot/my_test/data/sra/SRR5950760.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5946908.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_8opyutqb
+/Users/ethangniot/my_test/data/sra/SRR5946908.sra spots: 9353991
+blocks: [[1, 4676995], [4676996, 9353991]]
+Read 4676996 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 4676996 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Read 4676995 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+Written 4676995 spots for /Users/ethangniot/my_test/data/sra/SRR5946908.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5949196.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_doitr516
+/Users/ethangniot/my_test/data/sra/SRR5949196.sra spots: 15009035
+blocks: [[1, 7504517], [7504518, 15009035]]
+Read 7504517 spots for /Users/ethangniot/my_test/data/sra/SRR5949196.sra
+Written 7504517 spots for /Users/ethangniot/my_test/data/sra/SRR5949196.sra
+Read 7504518 spots for /Users/ethangniot/my_test/data/sra/SRR5949196.sra
+Written 7504518 spots for /Users/ethangniot/my_test/data/sra/SRR5949196.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5950688.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_juhxi2ht
+/Users/ethangniot/my_test/data/sra/SRR5950688.sra spots: 6456345
+blocks: [[1, 3228172], [3228173, 6456345]]
+Read 3228173 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 3228173 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Read 3228172 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+Written 3228172 spots for /Users/ethangniot/my_test/data/sra/SRR5950688.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR6180575.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_z_hw4di0
+/Users/ethangniot/my_test/data/sra/SRR6180575.sra spots: 150781
+blocks: [[1, 75390], [75391, 150781]]
+Read 75390 spots for /Users/ethangniot/my_test/data/sra/SRR6180575.sra
+Written 75390 spots for /Users/ethangniot/my_test/data/sra/SRR6180575.sra
+Read 75391 spots for /Users/ethangniot/my_test/data/sra/SRR6180575.sra
+Written 75391 spots for /Users/ethangniot/my_test/data/sra/SRR6180575.sra
+SRR ids: ['/Users/ethangniot/my_test/data/sra/SRR5950578.sra']
+extra args: []
+tempdir: /var/folders/lv/7kn9d6613zv4z83pb3n_562r0000gn/T/pfd_u_5cbq3o
+/Users/ethangniot/my_test/data/sra/SRR5950578.sra spots: 11450376
+blocks: [[1, 5725188], [5725189, 11450376]]
+Read 5725188 spots for /Users/ethangniot/my_test/data/sra/SRR5950578.sra
+Written 5725188 spots for /Users/ethangniot/my_test/data/sra/SRR5950578.sra
+Read 5725188 spots for /Users/ethangniot/my_test/data/sra/SRR5950578.sra
+Written 5725188 spots for /Users/ethangniot/my_test/data/sra/SRR5950578.sra

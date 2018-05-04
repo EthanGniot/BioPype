@@ -9,7 +9,7 @@ _SRADIR = path_helper._SRADIR
 
 def download_sra(acc_nums):
     """Download SRA runs to the configured sra-toolkit workspace for .sra files.
-    :param acc_nums: iterator containing SRA accession numbers (e.g., 'SRR6664514')
+    :param acc_nums: iterator containing SRA accession numbers (e.g., ['SRR6664514'])
     :return: None
     """
     for num in acc_nums:
@@ -42,9 +42,8 @@ def convert_sra_to_fastq(
     :param delete: #TODO: figure out the clean_sra_download function before implementing this.
     :return: None
     """
-    # sra_dir = path to directory where target .sra files exist.
+    # sra_dir = path to the directory where target .sra files exist.
     sra_dir = pathlib.Path(_SRADIR).joinpath('sra')
-
     check_dir_exists(fastq_dir)
 
     if select_files:

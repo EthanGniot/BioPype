@@ -11,8 +11,8 @@ class DirPathsHelper:
         # and SRA Toolkit workspaces.
         current_dir = os.path.dirname(os.path.realpath(__file__))
 
-        self.bio_dirname_file = os.path.join(current_dir, 'biopypeworkdir.txt')
-        self.sra_dirname_file = os.path.join(current_dir, 'sratoolworkspace.txt')
+        self.bio_dirname_file = os.path.join(current_dir, '__biopypeworkdir.txt')
+        self.sra_dirname_file = os.path.join(current_dir, '__sratoolworkspace.txt')
 
         # Read the file to find out what is currently defined as the working directory
         # for BioPype.
@@ -33,7 +33,10 @@ class DirPathsHelper:
         if self._BIODIR:
             self.work_dir_info('biopype', self._BIODIR)
         else:
-            self.work_dir_info('BioPype', os.getcwd())
+            biopype_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+            self._BIODIR = biopype_dir
+            self.work_dir_info('BioPype', biopype_dir)
+            self.rewrite_workspace_file('biopype', biopype_dir, self.bio_dirname_file)
 
         if self._SRADIR:
             self.work_dir_info('sra', self._SRADIR)
@@ -51,15 +54,13 @@ class DirPathsHelper:
     def work_dir_info(self, biopype_or_sra, work_dir):
         if biopype_or_sra.lower() == 'biopype':
             print("\n The current working directory for BioPype is: " + work_dir)
-            print("\t>To change BioPype's working directory, please run: path_helper.setup()")
+            print("\t>To change BioPype's working directory, please run: BioPype.path_helper.setup('biopype')")
             print("\t>The current working directory is where BioPype's "
-                  "functions will look for target files and directories. It is "
-                  "also where BioPype's functions will save data downloaded "
-                  "from the SRA database. ")
+                  "functions will look for target files and directories.")
 
         elif biopype_or_sra.lower() == 'sra':
             print("\nThe current Workspace Location for the SRA Toolkit is: " + work_dir)
-            print("\t>For information on how to configure the SRA Toolkit Workspace "
+            print( "\t>For information on how to configure the SRA Toolkit Workspace "
                   "Location, please refer to either the BioPype manual (Chapter 8: "
                   "Software and Set-up), or the SRA Toolkit website "
                   "(https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4).")
@@ -73,7 +74,7 @@ class DirPathsHelper:
         :param biopype_or_sra: str; either 'biopype' or 'sra'.
         :param new_dir: string; the new path that will overwrite the old path.
         :param workspace_file: string; path to a file containing a workspace
-        name. Will be a path to either sratoolworkspace.txt or biopypeworkdir.txt
+        name. Will be a path to either __sratoolworkspace.txt or __biopypeworkdir.txt
         :return: None
         """
         if os.path.isdir(new_dir):

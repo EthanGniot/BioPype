@@ -1,0 +1,1004 @@
+2785  SRX3641359  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2787  SRX3641362  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2788  SRX3641361  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2789  SRX3641363  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2790  SRX3641364  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2798  SRX3641372  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2801  SRX3641375  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2802  SRX3641303  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+
+      Library_Name    LoadDate      ...        BioProject  Consent  \
+502   HSM6XRTS_MGX  2017-08-19      ...       PRJNA398089   public   
+510   MSM79HF3_MGX  2017-08-19      ...       PRJNA398089   public   
+529   PSMA267R_MGX  2017-08-19      ...       PRJNA398089   public   
+531   PSMA267P_MGX  2017-08-19      ...       PRJNA398089   public   
+539   CSM67UFV_MGX  2017-08-19      ...       PRJNA398089   public   
+540   CSM67UAO_MGX  2017-08-19      ...       PRJNA398089   public   
+547   CSM79HIF_MGX  2017-08-19      ...       PRJNA398089   public   
+554   PSMA265X_MGX  2017-08-19      ...       PRJNA398089   public   
+555   HSMA33OV_MGX  2017-08-19      ...       PRJNA398089   public   
+557   HSMA33IA_MGX  2017-08-19      ...       PRJNA398089   public   
+559   HSMA33OD_MGX  2017-08-19      ...       PRJNA398089   public   
+561   MSM9VZOW_MGX  2017-08-19      ...       PRJNA398089   public   
+563   HSMA33P6_MGX  2017-08-19      ...       PRJNA398089   public   
+567   PSM6XBTD_MGX  2017-08-19      ...       PRJNA398089   public   
+569   HSMA33LH_MGX  2017-08-19      ...       PRJNA398089   public   
+572   PSMA269S_MGX  2017-08-19      ...       PRJNA398089   public   
+573   MSMA26AV_MGX  2017-08-19      ...       PRJNA398089   public   
+575   MSMA26EP_MGX  2017-08-19      ...       PRJNA398089   public   
+577   HSMA33MK_MGX  2017-08-19      ...       PRJNA398089   public   
+578   HSMA33LJ_MGX  2017-08-19      ...       PRJNA398089   public   
+579   CSM7KOJS_MGX  2017-08-19      ...       PRJNA398089   public   
+580   CSM79HLK_MGX  2017-08-19      ...       PRJNA398089   public   
+581   MSMB4LZR_MGX  2017-08-19      ...       PRJNA398089   public   
+585   PSMB4MC5_MGX  2017-08-19      ...       PRJNA398089   public   
+586   MSMB4LYH_MGX  2017-08-19      ...       PRJNA398089   public   
+590   HSMA33RX_MGX  2017-08-19      ...       PRJNA398089   public   
+593   CSM79HNE_MGX  2017-08-19      ...       PRJNA398089   public   
+598   PSM6XBVM_MGX  2017-08-19      ...       PRJNA398089   public   
+605   PSM7J1BV_MGX  2017-08-19      ...       PRJNA398089   public   
+607   CSM7KOP8_MGX  2017-08-19      ...       PRJNA398089   public   
+...            ...         ...      ...               ...      ...   
+2728   H4044C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2730   H4040C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2731  M2069C18_MVX  2018-02-02      ...       PRJNA398089   public   
+2734  H4044C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2735  P6038C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2738  H4040C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2741   M2103C8_MVX  2018-02-02      ...       PRJNA398089   public   
+2742  C3037C17_MVX  2018-02-02      ...       PRJNA398089   public   
+2746   C3037C6_MVX  2018-02-02      ...       PRJNA398089   public   
+2747  M2069C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2748  M2064C16_MVX  2018-02-02      ...       PRJNA398089   public   
+2753  H4035C14_MVX  2018-02-02      ...       PRJNA398089   public   
+2756  C3029C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2757   P6035C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2758   M2103C2_MVX  2018-02-02      ...       PRJNA398089   public   
+2759  H4042C18_MVX  2018-02-02      ...       PRJNA398089   public   
+2764  M2083C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2767  C3037C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2768  P6038C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2773   M2083C4_MVX  2018-02-02      ...       PRJNA398089   public   
+2782  C3032C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2783   M2071C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2785   P6038C8_MVX  2018-02-02      ...       PRJNA398089   public   
+2787  H4035C24_MVX  2018-02-02      ...       PRJNA398089   public   
+2788  H4044C12_MVX  2018-02-02      ...       PRJNA398089   public   
+2789  H4044C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2790  P6035C11_MVX  2018-02-02      ...       PRJNA398089   public   
+2798  M2069C14_MVX  2018-02-02      ...       PRJNA398089   public   
+2801   C3037C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2802   H4044C4_MVX  2018-02-02      ...       PRJNA398089   public   
+
+     DATASTORE_filetype DATASTORE_provider InsertSize LibraryLayout  Platform  \
+502                 sra               ncbi          0        PAIRED  ILLUMINA   
+510                 sra               ncbi          0        PAIRED  ILLUMINA   
+529                 sra               ncbi          0        PAIRED  ILLUMINA   
+531                 sra               ncbi          0        PAIRED  ILLUMINA   
+539                 sra               ncbi          0        PAIRED  ILLUMINA   
+540                 sra               ncbi          0        PAIRED  ILLUMINA   
+547                 sra               ncbi          0        PAIRED  ILLUMINA   
+554                 sra               ncbi          0        PAIRED  ILLUMINA   
+555                 sra               ncbi          0        PAIRED  ILLUMINA   
+557                 sra               ncbi          0        PAIRED  ILLUMINA   
+559                 sra               ncbi          0        PAIRED  ILLUMINA   
+561                 sra               ncbi          0        PAIRED  ILLUMINA   
+563                 sra               ncbi          0        PAIRED  ILLUMINA   
+567                 sra               ncbi          0        PAIRED  ILLUMINA   
+569                 sra               ncbi          0        PAIRED  ILLUMINA   
+572                 sra               ncbi          0        PAIRED  ILLUMINA   
+573                 sra               ncbi          0        PAIRED  ILLUMINA   
+575                 sra               ncbi          0        PAIRED  ILLUMINA   
+577                 sra               ncbi          0        PAIRED  ILLUMINA   
+578                 sra               ncbi          0        PAIRED  ILLUMINA   
+579                 sra               ncbi          0        PAIRED  ILLUMINA   
+580                 sra               ncbi          0        PAIRED  ILLUMINA   
+581                 sra               ncbi          0        PAIRED  ILLUMINA   
+585                 sra               ncbi          0        PAIRED  ILLUMINA   
+586                 sra               ncbi          0        PAIRED  ILLUMINA   
+590                 sra               ncbi          0        PAIRED  ILLUMINA   
+593                 sra               ncbi          0        PAIRED  ILLUMINA   
+598                 sra               ncbi          0        PAIRED  ILLUMINA   
+605                 sra               ncbi          0        PAIRED  ILLUMINA   
+607                 sra               ncbi          0        PAIRED  ILLUMINA   
+...                 ...                ...        ...           ...       ...   
+2728                sra               ncbi          0        PAIRED  ILLUMINA   
+2730                sra               ncbi          0        PAIRED  ILLUMINA   
+2731                sra               ncbi          0        PAIRED  ILLUMINA   
+2734                sra               ncbi          0        PAIRED  ILLUMINA   
+2735                sra               ncbi          0        PAIRED  ILLUMINA   
+2738                sra               ncbi          0        PAIRED  ILLUMINA   
+2741                sra               ncbi          0        PAIRED  ILLUMINA   
+2742                sra               ncbi          0        PAIRED  ILLUMINA   
+2746                sra               ncbi          0        PAIRED  ILLUMINA   
+2747                sra               ncbi          0        PAIRED  ILLUMINA   
+2748                sra               ncbi          0        PAIRED  ILLUMINA   
+2753                sra               ncbi          0        PAIRED  ILLUMINA   
+2756                sra               ncbi          0        PAIRED  ILLUMINA   
+2757                sra               ncbi          0        PAIRED  ILLUMINA   
+2758                sra               ncbi          0        PAIRED  ILLUMINA   
+2759                sra               ncbi          0        PAIRED  ILLUMINA   
+2764                sra               ncbi          0        PAIRED  ILLUMINA   
+2767                sra               ncbi          0        PAIRED  ILLUMINA   
+2768                sra               ncbi          0        PAIRED  ILLUMINA   
+2773                sra               ncbi          0        PAIRED  ILLUMINA   
+2782                sra               ncbi          0        PAIRED  ILLUMINA   
+2783                sra               ncbi          0        PAIRED  ILLUMINA   
+2785                sra               ncbi          0        PAIRED  ILLUMINA   
+2787                sra               ncbi          0        PAIRED  ILLUMINA   
+2788                sra               ncbi          0        PAIRED  ILLUMINA   
+2789                sra               ncbi          0        PAIRED  ILLUMINA   
+2790                sra               ncbi          0        PAIRED  ILLUMINA   
+2798                sra               ncbi          0        PAIRED  ILLUMINA   
+2801                sra               ncbi          0        PAIRED  ILLUMINA   
+2802                sra               ncbi          0        PAIRED  ILLUMINA   
+
+      SRA_Study geo_loc_name          host  
+502   SRP115494          USA  Homo sapiens  
+510   SRP115494          USA  Homo sapiens  
+529   SRP115494          USA  Homo sapiens  
+531   SRP115494          USA  Homo sapiens  
+539   SRP115494          USA  Homo sapiens  
+540   SRP115494          USA  Homo sapiens  
+547   SRP115494          USA  Homo sapiens  
+554   SRP115494          USA  Homo sapiens  
+555   SRP115494          USA  Homo sapiens  
+557   SRP115494          USA  Homo sapiens  
+559   SRP115494          USA  Homo sapiens  
+561   SRP115494          USA  Homo sapiens  
+563   SRP115494          USA  Homo sapiens  
+567   SRP115494          USA  Homo sapiens  
+569   SRP115494          USA  Homo sapiens  
+572   SRP115494          USA  Homo sapiens  
+573   SRP115494          USA  Homo sapiens  
+575   SRP115494          USA  Homo sapiens  
+577   SRP115494          USA  Homo sapiens  
+578   SRP115494          USA  Homo sapiens  
+579   SRP115494          USA  Homo sapiens  
+580   SRP115494          USA  Homo sapiens  
+581   SRP115494          USA  Homo sapiens  
+585   SRP115494          USA  Homo sapiens  
+586   SRP115494          USA  Homo sapiens  
+590   SRP115494          USA  Homo sapiens  
+593   SRP115494          USA  Homo sapiens  
+598   SRP115494          USA  Homo sapiens  
+605   SRP115494          USA  Homo sapiens  
+607   SRP115494          USA  Homo sapiens  
+...         ...          ...           ...  
+2728  SRP115494          USA  Homo sapiens  
+2730  SRP115494          USA  Homo sapiens  
+2731  SRP115494          USA  Homo sapiens  
+2734  SRP115494          USA  Homo sapiens  
+2735  SRP115494          USA  Homo sapiens  
+2738  SRP115494          USA  Homo sapiens  
+2741  SRP115494          USA  Homo sapiens  
+2742  SRP115494          USA  Homo sapiens  
+2746  SRP115494          USA  Homo sapiens  
+2747  SRP115494          USA  Homo sapiens  
+2748  SRP115494          USA  Homo sapiens  
+2753  SRP115494          USA  Homo sapiens  
+2756  SRP115494          USA  Homo sapiens  
+2757  SRP115494          USA  Homo sapiens  
+2758  SRP115494          USA  Homo sapiens  
+2759  SRP115494          USA  Homo sapiens  
+2764  SRP115494          USA  Homo sapiens  
+2767  SRP115494          USA  Homo sapiens  
+2768  SRP115494          USA  Homo sapiens  
+2773  SRP115494          USA  Homo sapiens  
+2782  SRP115494          USA  Homo sapiens  
+2783  SRP115494          USA  Homo sapiens  
+2785  SRP115494          USA  Homo sapiens  
+2787  SRP115494          USA  Homo sapiens  
+2788  SRP115494          USA  Homo sapiens  
+2789  SRP115494          USA  Homo sapiens  
+2790  SRP115494          USA  Homo sapiens  
+2798  SRP115494          USA  Homo sapiens  
+2801  SRP115494          USA  Homo sapiens  
+2802  SRP115494          USA  Homo sapiens  
+
+[657 rows x 36 columns]
+>>> cd_samples = my_table.filter_data('host_disease', '==', 'crohn"s disease')
+>>> control_samples = my_table.filter_data('host_disease', '==', 'nonibd')
+>>> len(control_samples)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: object of type 'RunTable' has no len()
+>>> control_samples
+<BioPype.cmds.runtable.RunTable object at 0x10f216da0>
+>>> len(control_samples.df)
+0
+>>> control_samples.df
+Empty DataFrame
+Columns: [Assay_Type, AvgSpotLen, BioSample, BioSampleModel, Experiment, Instrument, LibrarySelection, LibrarySource, Library_Name, LoadDate, MBases, MBytes, Organism, ReleaseDate, Run, SRA_Sample, Sample_Name, collection_date, env_biome, env_feature, env_material, host_age, host_disease, host_sex, host_subject_id, lat_lon, BioProject, Consent, DATASTORE_filetype, DATASTORE_provider, InsertSize, LibraryLayout, Platform, SRA_Study, geo_loc_name, host]
+Index: []
+
+[0 rows x 36 columns]
+>>> del(cont
+continue         control_samples  
+>>> del(control_samples)
+>>> control_samples = my_table.filter_data('host_disease', '==', 'nonIBD')
+>>> len(control_samples.df)
+45
+>>> control_young = control_samples.filter_data('host_age', '<=', 21)
+>>> len(control_young.df)
+0
+>>> cd_young = control_samples.filter_data('host_age', '<=', 21)
+>>> uc_young = control_samples.filter_data('host_age', '<=', 21)
+>>> uc_old = control_samples.filter_data('host_age', '>=', 60)
+>>> cd_old = control_samples.filter_data('host_age', '>=', 60)
+>>> list1 = [cd_young, cd_old, uc_young, uc_old]
+>>> for group in list1:
+... print(len(group.df))
+  File "<stdin>", line 2
+    print(len(group.df))
+        ^
+IndentationError: expected an indented block
+>>> for group in list1:
+...     print(len(group.df))
+... 
+0
+0
+0
+0
+>>> uc_young
+<BioPype.cmds.runtable.RunTable object at 0x10f216400>
+>>> uc_young.df
+Empty DataFrame
+Columns: [Assay_Type, AvgSpotLen, BioSample, BioSampleModel, Experiment, Instrument, LibrarySelection, LibrarySource, Library_Name, LoadDate, MBases, MBytes, Organism, ReleaseDate, Run, SRA_Sample, Sample_Name, collection_date, env_biome, env_feature, env_material, host_age, host_disease, host_sex, host_subject_id, lat_lon, BioProject, Consent, DATASTORE_filetype, DATASTORE_provider, InsertSize, LibraryLayout, Platform, SRA_Study, geo_loc_name, host]
+Index: []
+
+[0 rows x 36 columns]
+>>> uc_samples
+<BioPype.cmds.runtable.RunTable object at 0x10f2163c8>
+>>> uc_samples.df
+     Assay_Type  AvgSpotLen     BioSample               BioSampleModel  \
+502         WGS          98  SAMN07521834  MIGS/MIMS/MIMARKS.human-gut   
+510         WGS         100  SAMN07521842  MIGS/MIMS/MIMARKS.human-gut   
+529         WGS         100  SAMN07521566  MIGS/MIMS/MIMARKS.human-gut   
+531         WGS         100  SAMN07521563  MIGS/MIMS/MIMARKS.human-gut   
+539         WGS          99  SAMN07521703  MIGS/MIMS/MIMARKS.human-gut   
+540         WGS         100  SAMN07521705  MIGS/MIMS/MIMARKS.human-gut   
+547         WGS         100  SAMN07521748                      MIMS.me   
+554         WGS         100  SAMN07521481                      MIMS.me   
+555         WGS         100  SAMN07521482  MIGS/MIMS/MIMARKS.human-gut   
+557         WGS         100  SAMN07521479  MIGS/MIMS/MIMARKS.human-gut   
+559         WGS         100  SAMN07521477                      MIMS.me   
+561         WGS          99  SAMN07521475  MIGS/MIMS/MIMARKS.human-gut   
+563         WGS         100  SAMN07521476                      MIMS.me   
+567         WGS          99  SAMN07521880  MIGS/MIMS/MIMARKS.human-gut   
+569         WGS         100  SAMN07521560  MIGS/MIMS/MIMARKS.human-gut   
+572         WGS         100  SAMN07521558                      MIMS.me   
+573         WGS          99  SAMN07521556  MIGS/MIMS/MIMARKS.human-gut   
+575         WGS          99  SAMN07521554  MIGS/MIMS/MIMARKS.human-gut   
+577         WGS          99  SAMN07521561  MIGS/MIMS/MIMARKS.human-gut   
+578         WGS         100  SAMN07521562  MIGS/MIMS/MIMARKS.human-gut   
+579         WGS         100  SAMN07521876  MIGS/MIMS/MIMARKS.human-gut   
+580         WGS          99  SAMN07521875  MIGS/MIMS/MIMARKS.human-gut   
+581         WGS          99  SAMN07521606  MIGS/MIMS/MIMARKS.human-gut   
+585         WGS         100  SAMN07521610  MIGS/MIMS/MIMARKS.human-gut   
+586         WGS          99  SAMN07521609                      MIMS.me   
+590         WGS         100  SAMN07521611  MIGS/MIMS/MIMARKS.human-gut   
+593         WGS         100  SAMN07521791  MIGS/MIMS/MIMARKS.human-gut   
+598         WGS          99  SAMN07521785  MIGS/MIMS/MIMARKS.human-gut   
+605         WGS         100  SAMN07521904  MIGS/MIMS/MIMARKS.human-gut   
+607         WGS         100  SAMN07521631  MIGS/MIMS/MIMARKS.human-gut   
+...         ...         ...           ...                          ...   
+2728        WGS         158  SAMN07794162  Metagenome or environmental   
+2730        WGS         158  SAMN07794161  Metagenome or environmental   
+2731        WGS         158  SAMN07794188  Metagenome or environmental   
+2734        WGS         158  SAMN07794297  Metagenome or environmental   
+2735        WGS         158  SAMN07794296  Metagenome or environmental   
+2738        WGS         158  SAMN07794260  Metagenome or environmental   
+2741        WGS         158  SAMN07794256  Metagenome or environmental   
+2742        WGS         158  SAMN07794259  Metagenome or environmental   
+2746        WGS         158  SAMN07794153  Metagenome or environmental   
+2747        WGS         158  SAMN07794152  Metagenome or environmental   
+2748        WGS         158  SAMN07794151  Metagenome or environmental   
+2753        WGS         158  SAMN07794146  Metagenome or environmental   
+2756        WGS         158  SAMN07794154  Metagenome or environmental   
+2757        WGS         158  SAMN07794182  Metagenome or environmental   
+2758        WGS         158  SAMN07794193  Metagenome or environmental   
+2759        WGS         158  SAMN07794271  Metagenome or environmental   
+2764        WGS         158  SAMN07794266  Metagenome or environmental   
+2767        WGS         158  SAMN07794275  Metagenome or environmental   
+2768        WGS         158  SAMN07794274  Metagenome or environmental   
+2773        WGS         158  SAMN07794140  Metagenome or environmental   
+2782        WGS         158  SAMN07794236  Metagenome or environmental   
+2783        WGS         158  SAMN07794237  Metagenome or environmental   
+2785        WGS         158  SAMN07794239  Metagenome or environmental   
+2787        WGS         158  SAMN07794242  Metagenome or environmental   
+2788        WGS         158  SAMN07794241  Metagenome or environmental   
+2789        WGS         158  SAMN07794243  Metagenome or environmental   
+2790        WGS         158  SAMN07794244  Metagenome or environmental   
+2798        WGS         158  SAMN07794129  Metagenome or environmental   
+2801        WGS         158  SAMN07794134  Metagenome or environmental   
+2802        WGS         158  SAMN07794160  Metagenome or environmental   
+
+      Experiment           Instrument LibrarySelection LibrarySource  \
+502   SRX3104997  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+510   SRX3105005  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+529   SRX3105024  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+531   SRX3105027  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+539   SRX3105034  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+540   SRX3105036  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+547   SRX3105040  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+554   SRX3105050  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+555   SRX3105051  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+557   SRX3105052  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+559   SRX3105054  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+561   SRX3105056  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+563   SRX3105057  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+567   SRX3105062  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+569   SRX3105064  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+572   SRX3105066  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+573   SRX3105068  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+575   SRX3105070  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+577   SRX3105072  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+578   SRX3105073  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+579   SRX3105074  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+580   SRX3105075  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+581   SRX3105076  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+585   SRX3105080  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+586   SRX3105081  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+590   SRX3105085  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+593   SRX3105088  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+598   SRX3105093  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+605   SRX3105100  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+607   SRX3105102  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+...          ...                  ...              ...           ...   
+2728  SRX3641301  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2730  SRX3641304  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2731  SRX3641305  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2734  SRX3641308  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2735  SRX3641309  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2738  SRX3641312  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2741  SRX3641316  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2742  SRX3641315  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2746  SRX3641320  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2747  SRX3641321  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2748  SRX3641322  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2753  SRX3641327  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2756  SRX3641329  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2757  SRX3641331  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2758  SRX3641332  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2759  SRX3641333  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2764  SRX3641338  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2767  SRX3641341  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2768  SRX3641342  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2773  SRX3641347  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2782  SRX3641356  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2783  SRX3641357  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2785  SRX3641359  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2787  SRX3641362  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2788  SRX3641361  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2789  SRX3641363  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2790  SRX3641364  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2798  SRX3641372  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2801  SRX3641375  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2802  SRX3641303  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+
+      Library_Name    LoadDate      ...        BioProject  Consent  \
+502   HSM6XRTS_MGX  2017-08-19      ...       PRJNA398089   public   
+510   MSM79HF3_MGX  2017-08-19      ...       PRJNA398089   public   
+529   PSMA267R_MGX  2017-08-19      ...       PRJNA398089   public   
+531   PSMA267P_MGX  2017-08-19      ...       PRJNA398089   public   
+539   CSM67UFV_MGX  2017-08-19      ...       PRJNA398089   public   
+540   CSM67UAO_MGX  2017-08-19      ...       PRJNA398089   public   
+547   CSM79HIF_MGX  2017-08-19      ...       PRJNA398089   public   
+554   PSMA265X_MGX  2017-08-19      ...       PRJNA398089   public   
+555   HSMA33OV_MGX  2017-08-19      ...       PRJNA398089   public   
+557   HSMA33IA_MGX  2017-08-19      ...       PRJNA398089   public   
+559   HSMA33OD_MGX  2017-08-19      ...       PRJNA398089   public   
+561   MSM9VZOW_MGX  2017-08-19      ...       PRJNA398089   public   
+563   HSMA33P6_MGX  2017-08-19      ...       PRJNA398089   public   
+567   PSM6XBTD_MGX  2017-08-19      ...       PRJNA398089   public   
+569   HSMA33LH_MGX  2017-08-19      ...       PRJNA398089   public   
+572   PSMA269S_MGX  2017-08-19      ...       PRJNA398089   public   
+573   MSMA26AV_MGX  2017-08-19      ...       PRJNA398089   public   
+575   MSMA26EP_MGX  2017-08-19      ...       PRJNA398089   public   
+577   HSMA33MK_MGX  2017-08-19      ...       PRJNA398089   public   
+578   HSMA33LJ_MGX  2017-08-19      ...       PRJNA398089   public   
+579   CSM7KOJS_MGX  2017-08-19      ...       PRJNA398089   public   
+580   CSM79HLK_MGX  2017-08-19      ...       PRJNA398089   public   
+581   MSMB4LZR_MGX  2017-08-19      ...       PRJNA398089   public   
+585   PSMB4MC5_MGX  2017-08-19      ...       PRJNA398089   public   
+586   MSMB4LYH_MGX  2017-08-19      ...       PRJNA398089   public   
+590   HSMA33RX_MGX  2017-08-19      ...       PRJNA398089   public   
+593   CSM79HNE_MGX  2017-08-19      ...       PRJNA398089   public   
+598   PSM6XBVM_MGX  2017-08-19      ...       PRJNA398089   public   
+605   PSM7J1BV_MGX  2017-08-19      ...       PRJNA398089   public   
+607   CSM7KOP8_MGX  2017-08-19      ...       PRJNA398089   public   
+...            ...         ...      ...               ...      ...   
+2728   H4044C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2730   H4040C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2731  M2069C18_MVX  2018-02-02      ...       PRJNA398089   public   
+2734  H4044C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2735  P6038C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2738  H4040C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2741   M2103C8_MVX  2018-02-02      ...       PRJNA398089   public   
+2742  C3037C17_MVX  2018-02-02      ...       PRJNA398089   public   
+2746   C3037C6_MVX  2018-02-02      ...       PRJNA398089   public   
+2747  M2069C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2748  M2064C16_MVX  2018-02-02      ...       PRJNA398089   public   
+2753  H4035C14_MVX  2018-02-02      ...       PRJNA398089   public   
+2756  C3029C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2757   P6035C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2758   M2103C2_MVX  2018-02-02      ...       PRJNA398089   public   
+2759  H4042C18_MVX  2018-02-02      ...       PRJNA398089   public   
+2764  M2083C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2767  C3037C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2768  P6038C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2773   M2083C4_MVX  2018-02-02      ...       PRJNA398089   public   
+2782  C3032C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2783   M2071C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2785   P6038C8_MVX  2018-02-02      ...       PRJNA398089   public   
+2787  H4035C24_MVX  2018-02-02      ...       PRJNA398089   public   
+2788  H4044C12_MVX  2018-02-02      ...       PRJNA398089   public   
+2789  H4044C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2790  P6035C11_MVX  2018-02-02      ...       PRJNA398089   public   
+2798  M2069C14_MVX  2018-02-02      ...       PRJNA398089   public   
+2801   C3037C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2802   H4044C4_MVX  2018-02-02      ...       PRJNA398089   public   
+
+     DATASTORE_filetype DATASTORE_provider InsertSize LibraryLayout  Platform  \
+502                 sra               ncbi          0        PAIRED  ILLUMINA   
+510                 sra               ncbi          0        PAIRED  ILLUMINA   
+529                 sra               ncbi          0        PAIRED  ILLUMINA   
+531                 sra               ncbi          0        PAIRED  ILLUMINA   
+539                 sra               ncbi          0        PAIRED  ILLUMINA   
+540                 sra               ncbi          0        PAIRED  ILLUMINA   
+547                 sra               ncbi          0        PAIRED  ILLUMINA   
+554                 sra               ncbi          0        PAIRED  ILLUMINA   
+555                 sra               ncbi          0        PAIRED  ILLUMINA   
+557                 sra               ncbi          0        PAIRED  ILLUMINA   
+559                 sra               ncbi          0        PAIRED  ILLUMINA   
+561                 sra               ncbi          0        PAIRED  ILLUMINA   
+563                 sra               ncbi          0        PAIRED  ILLUMINA   
+567                 sra               ncbi          0        PAIRED  ILLUMINA   
+569                 sra               ncbi          0        PAIRED  ILLUMINA   
+572                 sra               ncbi          0        PAIRED  ILLUMINA   
+573                 sra               ncbi          0        PAIRED  ILLUMINA   
+575                 sra               ncbi          0        PAIRED  ILLUMINA   
+577                 sra               ncbi          0        PAIRED  ILLUMINA   
+578                 sra               ncbi          0        PAIRED  ILLUMINA   
+579                 sra               ncbi          0        PAIRED  ILLUMINA   
+580                 sra               ncbi          0        PAIRED  ILLUMINA   
+581                 sra               ncbi          0        PAIRED  ILLUMINA   
+585                 sra               ncbi          0        PAIRED  ILLUMINA   
+586                 sra               ncbi          0        PAIRED  ILLUMINA   
+590                 sra               ncbi          0        PAIRED  ILLUMINA   
+593                 sra               ncbi          0        PAIRED  ILLUMINA   
+598                 sra               ncbi          0        PAIRED  ILLUMINA   
+605                 sra               ncbi          0        PAIRED  ILLUMINA   
+607                 sra               ncbi          0        PAIRED  ILLUMINA   
+...                 ...                ...        ...           ...       ...   
+2728                sra               ncbi          0        PAIRED  ILLUMINA   
+2730                sra               ncbi          0        PAIRED  ILLUMINA   
+2731                sra               ncbi          0        PAIRED  ILLUMINA   
+2734                sra               ncbi          0        PAIRED  ILLUMINA   
+2735                sra               ncbi          0        PAIRED  ILLUMINA   
+2738                sra               ncbi          0        PAIRED  ILLUMINA   
+2741                sra               ncbi          0        PAIRED  ILLUMINA   
+2742                sra               ncbi          0        PAIRED  ILLUMINA   
+2746                sra               ncbi          0        PAIRED  ILLUMINA   
+2747                sra               ncbi          0        PAIRED  ILLUMINA   
+2748                sra               ncbi          0        PAIRED  ILLUMINA   
+2753                sra               ncbi          0        PAIRED  ILLUMINA   
+2756                sra               ncbi          0        PAIRED  ILLUMINA   
+2757                sra               ncbi          0        PAIRED  ILLUMINA   
+2758                sra               ncbi          0        PAIRED  ILLUMINA   
+2759                sra               ncbi          0        PAIRED  ILLUMINA   
+2764                sra               ncbi          0        PAIRED  ILLUMINA   
+2767                sra               ncbi          0        PAIRED  ILLUMINA   
+2768                sra               ncbi          0        PAIRED  ILLUMINA   
+2773                sra               ncbi          0        PAIRED  ILLUMINA   
+2782                sra               ncbi          0        PAIRED  ILLUMINA   
+2783                sra               ncbi          0        PAIRED  ILLUMINA   
+2785                sra               ncbi          0        PAIRED  ILLUMINA   
+2787                sra               ncbi          0        PAIRED  ILLUMINA   
+2788                sra               ncbi          0        PAIRED  ILLUMINA   
+2789                sra               ncbi          0        PAIRED  ILLUMINA   
+2790                sra               ncbi          0        PAIRED  ILLUMINA   
+2798                sra               ncbi          0        PAIRED  ILLUMINA   
+2801                sra               ncbi          0        PAIRED  ILLUMINA   
+2802                sra               ncbi          0        PAIRED  ILLUMINA   
+
+      SRA_Study geo_loc_name          host  
+502   SRP115494          USA  Homo sapiens  
+510   SRP115494          USA  Homo sapiens  
+529   SRP115494          USA  Homo sapiens  
+531   SRP115494          USA  Homo sapiens  
+539   SRP115494          USA  Homo sapiens  
+540   SRP115494          USA  Homo sapiens  
+547   SRP115494          USA  Homo sapiens  
+554   SRP115494          USA  Homo sapiens  
+555   SRP115494          USA  Homo sapiens  
+557   SRP115494          USA  Homo sapiens  
+559   SRP115494          USA  Homo sapiens  
+561   SRP115494          USA  Homo sapiens  
+563   SRP115494          USA  Homo sapiens  
+567   SRP115494          USA  Homo sapiens  
+569   SRP115494          USA  Homo sapiens  
+572   SRP115494          USA  Homo sapiens  
+573   SRP115494          USA  Homo sapiens  
+575   SRP115494          USA  Homo sapiens  
+577   SRP115494          USA  Homo sapiens  
+578   SRP115494          USA  Homo sapiens  
+579   SRP115494          USA  Homo sapiens  
+580   SRP115494          USA  Homo sapiens  
+581   SRP115494          USA  Homo sapiens  
+585   SRP115494          USA  Homo sapiens  
+586   SRP115494          USA  Homo sapiens  
+590   SRP115494          USA  Homo sapiens  
+593   SRP115494          USA  Homo sapiens  
+598   SRP115494          USA  Homo sapiens  
+605   SRP115494          USA  Homo sapiens  
+607   SRP115494          USA  Homo sapiens  
+...         ...          ...           ...  
+2728  SRP115494          USA  Homo sapiens  
+2730  SRP115494          USA  Homo sapiens  
+2731  SRP115494          USA  Homo sapiens  
+2734  SRP115494          USA  Homo sapiens  
+2735  SRP115494          USA  Homo sapiens  
+2738  SRP115494          USA  Homo sapiens  
+2741  SRP115494          USA  Homo sapiens  
+2742  SRP115494          USA  Homo sapiens  
+2746  SRP115494          USA  Homo sapiens  
+2747  SRP115494          USA  Homo sapiens  
+2748  SRP115494          USA  Homo sapiens  
+2753  SRP115494          USA  Homo sapiens  
+2756  SRP115494          USA  Homo sapiens  
+2757  SRP115494          USA  Homo sapiens  
+2758  SRP115494          USA  Homo sapiens  
+2759  SRP115494          USA  Homo sapiens  
+2764  SRP115494          USA  Homo sapiens  
+2767  SRP115494          USA  Homo sapiens  
+2768  SRP115494          USA  Homo sapiens  
+2773  SRP115494          USA  Homo sapiens  
+2782  SRP115494          USA  Homo sapiens  
+2783  SRP115494          USA  Homo sapiens  
+2785  SRP115494          USA  Homo sapiens  
+2787  SRP115494          USA  Homo sapiens  
+2788  SRP115494          USA  Homo sapiens  
+2789  SRP115494          USA  Homo sapiens  
+2790  SRP115494          USA  Homo sapiens  
+2798  SRP115494          USA  Homo sapiens  
+2801  SRP115494          USA  Homo sapiens  
+2802  SRP115494          USA  Homo sapiens  
+
+[657 rows x 36 columns]
+>>> test_var = uc_samples.filter_data('host_age', '<=', 21)
+>>> test_var.df
+     Assay_Type  AvgSpotLen     BioSample               BioSampleModel  \
+502         WGS          98  SAMN07521834  MIGS/MIMS/MIMARKS.human-gut   
+529         WGS         100  SAMN07521566  MIGS/MIMS/MIMARKS.human-gut   
+531         WGS         100  SAMN07521563  MIGS/MIMS/MIMARKS.human-gut   
+554         WGS         100  SAMN07521481                      MIMS.me   
+555         WGS         100  SAMN07521482  MIGS/MIMS/MIMARKS.human-gut   
+557         WGS         100  SAMN07521479  MIGS/MIMS/MIMARKS.human-gut   
+559         WGS         100  SAMN07521477                      MIMS.me   
+563         WGS         100  SAMN07521476                      MIMS.me   
+567         WGS          99  SAMN07521880  MIGS/MIMS/MIMARKS.human-gut   
+569         WGS         100  SAMN07521560  MIGS/MIMS/MIMARKS.human-gut   
+572         WGS         100  SAMN07521558                      MIMS.me   
+577         WGS          99  SAMN07521561  MIGS/MIMS/MIMARKS.human-gut   
+578         WGS         100  SAMN07521562  MIGS/MIMS/MIMARKS.human-gut   
+585         WGS         100  SAMN07521610  MIGS/MIMS/MIMARKS.human-gut   
+590         WGS         100  SAMN07521611  MIGS/MIMS/MIMARKS.human-gut   
+598         WGS          99  SAMN07521785  MIGS/MIMS/MIMARKS.human-gut   
+605         WGS         100  SAMN07521904  MIGS/MIMS/MIMARKS.human-gut   
+613         WGS         100  SAMN07521629  MIGS/MIMS/MIMARKS.human-gut   
+620         WGS         100  SAMN07521519  MIGS/MIMS/MIMARKS.human-gut   
+633         WGS         100  SAMN07521781  MIGS/MIMS/MIMARKS.human-gut   
+640         WGS          99  SAMN07521775  MIGS/MIMS/MIMARKS.human-gut   
+644         WGS          98  SAMN07521913  MIGS/MIMS/MIMARKS.human-gut   
+649         WGS         100  SAMN07521919  MIGS/MIMS/MIMARKS.human-gut   
+655         WGS         100  SAMN07521596  MIGS/MIMS/MIMARKS.human-gut   
+660         WGS         100  SAMN07521594  MIGS/MIMS/MIMARKS.human-gut   
+662         WGS         100  SAMN07521600  MIGS/MIMS/MIMARKS.human-gut   
+682         WGS          98  SAMN07521817                      MIMS.me   
+693         WGS          99  SAMN07521826  MIGS/MIMS/MIMARKS.human-gut   
+698         WGS         100  SAMN07521652                      MIMS.me   
+699         WGS          99  SAMN07521651  MIGS/MIMS/MIMARKS.human-gut   
+...         ...         ...           ...                          ...   
+2684        WGS         158  SAMN07794281  Metagenome or environmental   
+2686        WGS         158  SAMN07794283  Metagenome or environmental   
+2687        WGS         158  SAMN07794276  Metagenome or environmental   
+2688        WGS         158  SAMN07794277  Metagenome or environmental   
+2694        WGS         158  SAMN07794166  Metagenome or environmental   
+2698        WGS         158  SAMN07794170  Metagenome or environmental   
+2701        WGS         158  SAMN07794209  Metagenome or environmental   
+2703        WGS         158  SAMN07794208  Metagenome or environmental   
+2719        WGS         158  SAMN07794292  Metagenome or environmental   
+2723        WGS         158  SAMN07794165  Metagenome or environmental   
+2726        WGS         158  SAMN07794156  Metagenome or environmental   
+2728        WGS         158  SAMN07794162  Metagenome or environmental   
+2730        WGS         158  SAMN07794161  Metagenome or environmental   
+2734        WGS         158  SAMN07794297  Metagenome or environmental   
+2735        WGS         158  SAMN07794296  Metagenome or environmental   
+2738        WGS         158  SAMN07794260  Metagenome or environmental   
+2753        WGS         158  SAMN07794146  Metagenome or environmental   
+2756        WGS         158  SAMN07794154  Metagenome or environmental   
+2757        WGS         158  SAMN07794182  Metagenome or environmental   
+2759        WGS         158  SAMN07794271  Metagenome or environmental   
+2764        WGS         158  SAMN07794266  Metagenome or environmental   
+2768        WGS         158  SAMN07794274  Metagenome or environmental   
+2773        WGS         158  SAMN07794140  Metagenome or environmental   
+2782        WGS         158  SAMN07794236  Metagenome or environmental   
+2785        WGS         158  SAMN07794239  Metagenome or environmental   
+2787        WGS         158  SAMN07794242  Metagenome or environmental   
+2788        WGS         158  SAMN07794241  Metagenome or environmental   
+2789        WGS         158  SAMN07794243  Metagenome or environmental   
+2790        WGS         158  SAMN07794244  Metagenome or environmental   
+2802        WGS         158  SAMN07794160  Metagenome or environmental   
+
+      Experiment           Instrument LibrarySelection LibrarySource  \
+502   SRX3104997  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+529   SRX3105024  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+531   SRX3105027  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+554   SRX3105050  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+555   SRX3105051  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+557   SRX3105052  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+559   SRX3105054  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+563   SRX3105057  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+567   SRX3105062  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+569   SRX3105064  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+572   SRX3105066  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+577   SRX3105072  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+578   SRX3105073  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+585   SRX3105080  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+590   SRX3105085  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+598   SRX3105093  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+605   SRX3105100  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+613   SRX3105106  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+620   SRX3105115  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+633   SRX3105128  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+640   SRX3105134  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+644   SRX3105141  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+649   SRX3105147  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+655   SRX3105153  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+660   SRX3105155  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+662   SRX3105157  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+682   SRX3105176  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+693   SRX3105187  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+698   SRX3105194  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+699   SRX3105193  Illumina HiSeq 2000           RANDOM   METAGENOMIC   
+...          ...                  ...              ...           ...   
+2684  SRX3641257  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2686  SRX3641259  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2687  SRX3641260  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2688  SRX3641261  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2694  SRX3641267  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2698  SRX3641271  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2701  SRX3641274  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2703  SRX3641275  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2719  SRX3641292  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2723  SRX3641296  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2726  SRX3641299  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2728  SRX3641301  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2730  SRX3641304  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2734  SRX3641308  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2735  SRX3641309  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2738  SRX3641312  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2753  SRX3641327  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2756  SRX3641329  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2757  SRX3641331  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2759  SRX3641333  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2764  SRX3641338  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2768  SRX3641342  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2773  SRX3641347  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2782  SRX3641356  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2785  SRX3641359  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2787  SRX3641362  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2788  SRX3641361  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2789  SRX3641363  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2790  SRX3641364  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+2802  SRX3641303  Illumina HiSeq 2000           RT-PCR   METAGENOMIC   
+
+      Library_Name    LoadDate      ...        BioProject  Consent  \
+502   HSM6XRTS_MGX  2017-08-19      ...       PRJNA398089   public   
+529   PSMA267R_MGX  2017-08-19      ...       PRJNA398089   public   
+531   PSMA267P_MGX  2017-08-19      ...       PRJNA398089   public   
+554   PSMA265X_MGX  2017-08-19      ...       PRJNA398089   public   
+555   HSMA33OV_MGX  2017-08-19      ...       PRJNA398089   public   
+557   HSMA33IA_MGX  2017-08-19      ...       PRJNA398089   public   
+559   HSMA33OD_MGX  2017-08-19      ...       PRJNA398089   public   
+563   HSMA33P6_MGX  2017-08-19      ...       PRJNA398089   public   
+567   PSM6XBTD_MGX  2017-08-19      ...       PRJNA398089   public   
+569   HSMA33LH_MGX  2017-08-19      ...       PRJNA398089   public   
+572   PSMA269S_MGX  2017-08-19      ...       PRJNA398089   public   
+577   HSMA33MK_MGX  2017-08-19      ...       PRJNA398089   public   
+578   HSMA33LJ_MGX  2017-08-19      ...       PRJNA398089   public   
+585   PSMB4MC5_MGX  2017-08-19      ...       PRJNA398089   public   
+590   HSMA33RX_MGX  2017-08-19      ...       PRJNA398089   public   
+598   PSM6XBVM_MGX  2017-08-19      ...       PRJNA398089   public   
+605   PSM7J1BV_MGX  2017-08-19      ...       PRJNA398089   public   
+613   PSM7J1C4_MGX  2017-08-19      ...       PRJNA398089   public   
+620   HSMA33OJ_MGX  2017-08-19      ...       PRJNA398089   public   
+633   PSM6XBT5_MGX  2017-08-19      ...       PRJNA398089   public   
+640   ESM718SY_MGX  2017-08-19      ...       PRJNA398089   public   
+644   HSM7J4PG_MGX  2017-08-19      ...       PRJNA398089   public   
+649   PSM7J1B9_MGX  2017-08-19      ...       PRJNA398089   public   
+655   HSMA33RT_MGX  2017-08-19      ...       PRJNA398089   public   
+660   PSMB4MBK_MGX  2017-08-19      ...       PRJNA398089   public   
+662   PSMB4MC7_MGX  2017-08-19      ...       PRJNA398089   public   
+682   HSM6XRTO_MGX  2017-08-19      ...       PRJNA398089   public   
+693   PSM6XBVQ_MGX  2017-08-19      ...       PRJNA398089   public   
+698   PSMA264W_MGX  2017-08-19      ...       PRJNA398089   public   
+699   HSMA33IO_MGX  2017-08-19      ...       PRJNA398089   public   
+...            ...         ...      ...               ...      ...   
+2684  H4044C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2686  M2083C17_MVX  2018-02-02      ...       PRJNA398089   public   
+2687  H4040C23_MVX  2018-02-02      ...       PRJNA398089   public   
+2688  H4042C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2694  H4035C16_MVX  2018-02-02      ...       PRJNA398089   public   
+2698   P6035C4_MVX  2018-02-02      ...       PRJNA398089   public   
+2701   M2083C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2703  H4035C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2719  M2083C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2723   P6038C1_MVX  2018-02-02      ...       PRJNA398089   public   
+2726  H4035C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2728   H4044C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2730   H4040C9_MVX  2018-02-02      ...       PRJNA398089   public   
+2734  H4044C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2735  P6038C19_MVX  2018-02-02      ...       PRJNA398089   public   
+2738  H4040C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2753  H4035C14_MVX  2018-02-02      ...       PRJNA398089   public   
+2756  C3029C20_MVX  2018-02-02      ...       PRJNA398089   public   
+2757   P6035C5_MVX  2018-02-02      ...       PRJNA398089   public   
+2759  H4042C18_MVX  2018-02-02      ...       PRJNA398089   public   
+2764  M2083C15_MVX  2018-02-02      ...       PRJNA398089   public   
+2768  P6038C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2773   M2083C4_MVX  2018-02-02      ...       PRJNA398089   public   
+2782  C3032C21_MVX  2018-02-02      ...       PRJNA398089   public   
+2785   P6038C8_MVX  2018-02-02      ...       PRJNA398089   public   
+2787  H4035C24_MVX  2018-02-02      ...       PRJNA398089   public   
+2788  H4044C12_MVX  2018-02-02      ...       PRJNA398089   public   
+2789  H4044C13_MVX  2018-02-02      ...       PRJNA398089   public   
+2790  P6035C11_MVX  2018-02-02      ...       PRJNA398089   public   
+2802   H4044C4_MVX  2018-02-02      ...       PRJNA398089   public   
+
+     DATASTORE_filetype DATASTORE_provider InsertSize LibraryLayout  Platform  \
+502                 sra               ncbi          0        PAIRED  ILLUMINA   
+529                 sra               ncbi          0        PAIRED  ILLUMINA   
+531                 sra               ncbi          0        PAIRED  ILLUMINA   
+554                 sra               ncbi          0        PAIRED  ILLUMINA   
+555                 sra               ncbi          0        PAIRED  ILLUMINA   
+557                 sra               ncbi          0        PAIRED  ILLUMINA   
+559                 sra               ncbi          0        PAIRED  ILLUMINA   
+563                 sra               ncbi          0        PAIRED  ILLUMINA   
+567                 sra               ncbi          0        PAIRED  ILLUMINA   
+569                 sra               ncbi          0        PAIRED  ILLUMINA   
+572                 sra               ncbi          0        PAIRED  ILLUMINA   
+577                 sra               ncbi          0        PAIRED  ILLUMINA   
+578                 sra               ncbi          0        PAIRED  ILLUMINA   
+585                 sra               ncbi          0        PAIRED  ILLUMINA   
+590                 sra               ncbi          0        PAIRED  ILLUMINA   
+598                 sra               ncbi          0        PAIRED  ILLUMINA   
+605                 sra               ncbi          0        PAIRED  ILLUMINA   
+613                 sra               ncbi          0        PAIRED  ILLUMINA   
+620                 sra               ncbi          0        PAIRED  ILLUMINA   
+633                 sra               ncbi          0        PAIRED  ILLUMINA   
+640                 sra               ncbi          0        PAIRED  ILLUMINA   
+644                 sra               ncbi          0        PAIRED  ILLUMINA   
+649                 sra               ncbi          0        PAIRED  ILLUMINA   
+655                 sra               ncbi          0        PAIRED  ILLUMINA   
+660                 sra               ncbi          0        PAIRED  ILLUMINA   
+662                 sra               ncbi          0        PAIRED  ILLUMINA   
+682                 sra               ncbi          0        PAIRED  ILLUMINA   
+693                 sra               ncbi          0        PAIRED  ILLUMINA   
+698                 sra               ncbi          0        PAIRED  ILLUMINA   
+699                 sra               ncbi          0        PAIRED  ILLUMINA   
+...                 ...                ...        ...           ...       ...   
+2684                sra               ncbi          0        PAIRED  ILLUMINA   
+2686                sra               ncbi          0        PAIRED  ILLUMINA   
+2687                sra               ncbi          0        PAIRED  ILLUMINA   
+2688                sra               ncbi          0        PAIRED  ILLUMINA   
+2694                sra               ncbi          0        PAIRED  ILLUMINA   
+2698                sra               ncbi          0        PAIRED  ILLUMINA   
+2701                sra               ncbi          0        PAIRED  ILLUMINA   
+2703                sra               ncbi          0        PAIRED  ILLUMINA   
+2719                sra               ncbi          0        PAIRED  ILLUMINA   
+2723                sra               ncbi          0        PAIRED  ILLUMINA   
+2726                sra               ncbi          0        PAIRED  ILLUMINA   
+2728                sra               ncbi          0        PAIRED  ILLUMINA   
+2730                sra               ncbi          0        PAIRED  ILLUMINA   
+2734                sra               ncbi          0        PAIRED  ILLUMINA   
+2735                sra               ncbi          0        PAIRED  ILLUMINA   
+2738                sra               ncbi          0        PAIRED  ILLUMINA   
+2753                sra               ncbi          0        PAIRED  ILLUMINA   
+2756                sra               ncbi          0        PAIRED  ILLUMINA   
+2757                sra               ncbi          0        PAIRED  ILLUMINA   
+2759                sra               ncbi          0        PAIRED  ILLUMINA   
+2764                sra               ncbi          0        PAIRED  ILLUMINA   
+2768                sra               ncbi          0        PAIRED  ILLUMINA   
+2773                sra               ncbi          0        PAIRED  ILLUMINA   
+2782                sra               ncbi          0        PAIRED  ILLUMINA   
+2785                sra               ncbi          0        PAIRED  ILLUMINA   
+2787                sra               ncbi          0        PAIRED  ILLUMINA   
+2788                sra               ncbi          0        PAIRED  ILLUMINA   
+2789                sra               ncbi          0        PAIRED  ILLUMINA   
+2790                sra               ncbi          0        PAIRED  ILLUMINA   
+2802                sra               ncbi          0        PAIRED  ILLUMINA   
+
+      SRA_Study geo_loc_name          host  
+502   SRP115494          USA  Homo sapiens  
+529   SRP115494          USA  Homo sapiens  
+531   SRP115494          USA  Homo sapiens  
+554   SRP115494          USA  Homo sapiens  
+555   SRP115494          USA  Homo sapiens  
+557   SRP115494          USA  Homo sapiens  
+559   SRP115494          USA  Homo sapiens  
+563   SRP115494          USA  Homo sapiens  
+567   SRP115494          USA  Homo sapiens  
+569   SRP115494          USA  Homo sapiens  
+572   SRP115494          USA  Homo sapiens  
+577   SRP115494          USA  Homo sapiens  
+578   SRP115494          USA  Homo sapiens  
+585   SRP115494          USA  Homo sapiens  
+590   SRP115494          USA  Homo sapiens  
+598   SRP115494          USA  Homo sapiens  
+605   SRP115494          USA  Homo sapiens  
+613   SRP115494          USA  Homo sapiens  
+620   SRP115494          USA  Homo sapiens  
+633   SRP115494          USA  Homo sapiens  
+640   SRP115494          USA  Homo sapiens  
+644   SRP115494          USA  Homo sapiens  
+649   SRP115494          USA  Homo sapiens  
+655   SRP115494          USA  Homo sapiens  
+660   SRP115494          USA  Homo sapiens  
+662   SRP115494          USA  Homo sapiens  
+682   SRP115494          USA  Homo sapiens  
+693   SRP115494          USA  Homo sapiens  
+698   SRP115494          USA  Homo sapiens  
+699   SRP115494          USA  Homo sapiens  
+...         ...          ...           ...  
+2684  SRP115494          USA  Homo sapiens  
+2686  SRP115494          USA  Homo sapiens  
+2687  SRP115494          USA  Homo sapiens  
+2688  SRP115494          USA  Homo sapiens  
+2694  SRP115494          USA  Homo sapiens  
+2698  SRP115494          USA  Homo sapiens  
+2701  SRP115494          USA  Homo sapiens  
+2703  SRP115494          USA  Homo sapiens  
+2719  SRP115494          USA  Homo sapiens  
+2723  SRP115494          USA  Homo sapiens  
+2726  SRP115494          USA  Homo sapiens  
+2728  SRP115494          USA  Homo sapiens  
+2730  SRP115494          USA  Homo sapiens  
+2734  SRP115494          USA  Homo sapiens  
+2735  SRP115494          USA  Homo sapiens  
+2738  SRP115494          USA  Homo sapiens  
+2753  SRP115494          USA  Homo sapiens  
+2756  SRP115494          USA  Homo sapiens  
+2757  SRP115494          USA  Homo sapiens  
+2759  SRP115494          USA  Homo sapiens  
+2764  SRP115494          USA  Homo sapiens  
+2768  SRP115494          USA  Homo sapiens  
+2773  SRP115494          USA  Homo sapiens  
+2782  SRP115494          USA  Homo sapiens  
+2785  SRP115494          USA  Homo sapiens  
+2787  SRP115494          USA  Homo sapiens  
+2788  SRP115494          USA  Homo sapiens  
+2789  SRP115494          USA  Homo sapiens  
+2790  SRP115494          USA  Homo sapiens  
+2802  SRP115494          USA  Homo sapiens  
+
+[313 rows x 36 columns]
+>>> del(uc_young, uc_old, cd_young, cd_old)
+>>> uc_young = uc_samples.filter_data('host_age', '<=', 21)
+>>> uc_old = uc_samples.filter_data('host_age', '>=', 60)
+>>> cd_old = cd_samples.filter_data('host_age', '>=', 60)
+>>> cd_young = cd_samples.filter_data('host_age', '<=', 21)
+>>> for group in list1:
+...     print(len(group.df))
+... 
+0
+0
+0
+0
+>>> list3 = [cd_young, cd_old, uc_young, uc_old]
+>>> for x in list3:
+...     print(len(x.df))
+... 
+0
+0
+313
+42
+>>> len(cd_samples.df)
+0
+>>> cd_samples = my_table.filter_data('host_disease', '==', 'ulcerative colitis')
+>>> len(cd_samples.df)
+657
+>>> cd_samples = my_table.filter_data('host_disease', '==', 'crohn"s disease')
+>>> len(cd_samples.df)
+0
+>>> cd_samples = my_table.filter_data('host_disease', '==', 'Crohn"s disease')
+>>> len(cd_samples.df)
+0
+>>> cd_samples = my_table.filter_data('host_disease', '==', 'Crohns disease')
+>>> len(cd_samples.df)
+0
+>>> cd_samples = my_table.filter_data('host_disease', '==', "Crohn's disease")
+>>> len(cd_samples.df)
+0
+>>> my_table['host_disease']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'RunTable' object is not subscriptable
+>>> my_table.df['host_disease']
+0                      NaN
+1         Crohn''s disease
+2         Crohn''s disease
+3         Crohn''s disease
+4       Ulcerative colitis
+5                      NaN
+6       Ulcerative colitis
+7       Ulcerative colitis
+8         Crohn''s disease
+9         Crohn''s disease
+10        Crohn''s disease
+11      Ulcerative colitis
+12        Crohn''s disease
+13                     NaN
+14                     NaN
+15        Crohn''s disease
+16                     NaN
+17                     NaN
+18        Crohn''s disease
+19        Crohn''s disease
+20      Ulcerative colitis
+21      Ulcerative colitis
+22        Crohn''s disease
+23        Crohn''s disease
+24        Crohn''s disease
+25        Crohn''s disease
+26      Ulcerative colitis
+27        Crohn''s disease
+28                     NaN
+29        Crohn''s disease
+               ...        
+2949                    UC
+2950                    CD
+2951                    CD
+2952                    CD
+2953                    UC
+2954                    UC
+2955                    CD
+2956                    UC
+2957                    UC
+2958                    CD
+2959                    CD
+2960                    CD
+2961                    CD
+2962                    UC
+2963                    CD
+2964                    CD
+2965                    CD
+2966                    CD
+2967                nonIBD
+2968                    CD
+2969                nonIBD
+2970                    CD
+2971                    CD
+2972                nonIBD
+2973                    CD
+2974                    CD
+2975                    CD
+2976                nonIBD
+2977                    CD
+2978                nonIBD
+Name: host_disease, Length: 2979, dtype: object
+>>> cd_samples = my_table.filter_data('host_disease', '==', "Crohn''s disease")
+>>> len(cd_samples.df)
+1278
+>>> cd_old = cd_samples.filter_data('host_age', '>=', 60)
+>>> cd_young = cd_samples.filter_data('host_age', '<=', 21)
+>>> len(cd_old.df)
+46
+>>> len(cd_young.df)
+775
+>>> final_list = [cd_young, cd_old, uc_young, uc_old]
+>>> print(final_list)
+[<BioPype.cmds.runtable.RunTable object at 0x10f216860>, <BioPype.cmds.runtable.RunTable object at 0x10f216b00>, <BioPype.cmds.runtable.RunTable object at 0x10f238358>, <BioPype.cmds.runtable.RunTable object at 0x10f238438>]
+>>> 

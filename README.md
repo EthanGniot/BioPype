@@ -12,11 +12,17 @@ This tutorial aims to improve a newcomer's general understanding of bioinformati
 +++++
 
 Functions and classes for a gut microbiome analysis pipeline can be found under 
-the `cmds` directory.
+the `cmds` directory. The `workspaces` directory contains classes and files 
+used for configuring the BioPype work environment.
 
 **Current operational files:**
-* `runtable.py`: Defines the `RunTable` class for handling RunInfo Tables 
+* `cmds.runtable.py`: Defines the `RunTable` class for handling RunInfo Tables 
 downloaded from the Sequence Read Archive database. 
+* `cmds.downloadsra.py`: Defines functions for handling the download and conversion 
+of .sra files to .fastq files.
+* `workspaces.dirpaths.py`: Defines the `DirPathsHelper` class, which handles
+initialization code for BioPype as well as methods for defining the working
+directories for BioPype and the SRA Toolkit.
 
 The current state of the accompanying manual/tutorial can be found in the 
 `manual` directory as `main_manual.pdf`.

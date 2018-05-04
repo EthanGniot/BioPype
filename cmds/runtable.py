@@ -18,6 +18,8 @@ class RunTable:
             self.df = pd.read_csv(run_info_table, delimiter='\t')
             # List of the names of the data2 columns.
             self.column_names = list(self.df.columns.values)
+            # List the first 5 rows of the table.
+            self.preview = self.df.head(n=5)
 
     def filter_data(self, column_name, operation, value):
         """
@@ -152,7 +154,8 @@ class RunTable:
         acc_nums = self.df['Run']
         return acc_nums
 
-    def random_sample_subset(self, acc_num_list, n):
+    @staticmethod
+    def random_sample_subset(acc_num_list, n):
         """
         This method is for randomly selecting n number of samples from a list
         of accession numbers.
