@@ -29,7 +29,11 @@ The current state of the accompanying manual/tutorial can be found in the
 
 **Current sections under development:**
 * Chapter 1: Foreword
+* Chapter 3: Sample Information
+* Chapter 7: The Plan
 * Chapter 8: Software and Set-up
+* Chapter 9: The Dataset
+* Appendix A: Web Links
 
 **Tutorial Pipeline Structure:**
 ![biopype_flowchart](https://user-images.githubusercontent.com/30661548/39219342-6ab16580-47ef-11e8-8c0d-5770d20b9b97.png)

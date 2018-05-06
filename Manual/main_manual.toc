@@ -1,47 +1,46 @@
-\contentsline {chapter}{\numberline {1}Foreword}{4}{chapter.1}
-\contentsline {section}{\numberline {1.1}Goal}{4}{section.1.1}
-\contentsline {section}{\numberline {1.2}How to Use this Manual}{4}{section.1.2}
-\contentsline {section}{\numberline {1.3}Pre-requisites}{5}{section.1.3}
-\contentsline {chapter}{\numberline {2}Source Code}{6}{chapter.2}
-\contentsline {chapter}{\numberline {3}Sample Information}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Test Dataset: Relative Abundance Analysis}{7}{section.3.1}
-\contentsline {chapter}{\numberline {4}Setting the scene}{8}{chapter.4}
-\contentsline {chapter}{\numberline {5}Microbiome Analysis}{9}{chapter.5}
-\contentsline {section}{\numberline {5.1}The Gut Microbiome}{9}{section.5.1}
-\contentsline {section}{\numberline {5.2}Relative Abundance Analysis}{9}{section.5.2}
-\contentsline {section}{\numberline {5.3}Metagenomics}{9}{section.5.3}
-\contentsline {section}{\numberline {5.4}Python}{9}{section.5.4}
-\contentsline {chapter}{\numberline {6}How to Find Tools}{10}{chapter.6}
-\contentsline {section}{\numberline {6.1}Finding Data}{10}{section.6.1}
-\contentsline {section}{\numberline {6.2}Finding Software}{10}{section.6.2}
-\contentsline {chapter}{\numberline {7}Plan: 8 Main Sections}{11}{chapter.7}
-\contentsline {chapter}{\numberline {8}Software and Set-up}{12}{chapter.8}
-\contentsline {section}{\numberline {8.1}Software}{12}{section.8.1}
-\contentsline {section}{\numberline {8.2}Set-up and Install Dependencies}{12}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Install Anaconda}{12}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Create a New Virtual Environment}{13}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Install packages}{14}{subsection.8.2.3}
-\contentsline {subsection}{\numberline {8.2.4}Integrated Development Environment (IDE)}{18}{subsection.8.2.4}
-\contentsline {subsection}{\numberline {8.2.5}PATH}{18}{subsection.8.2.5}
-\contentsline {section}{\numberline {8.3}Analysis Pipeline}{18}{section.8.3}
-\contentsline {chapter}{\numberline {9}The Dataset}{19}{chapter.9}
-\contentsline {section}{\numberline {9.1}The Data}{19}{section.9.1}
-\contentsline {section}{\numberline {9.2}Find Dataset}{19}{section.9.2}
-\contentsline {section}{\numberline {9.3}Download Dataset}{19}{section.9.3}
-\contentsline {subsection}{\numberline {9.3.1}BioPype Workflow}{19}{subsection.9.3.1}
-\contentsline {subsection}{\numberline {9.3.2}Creating the code}{19}{subsection.9.3.2}
-\contentsline {section}{\numberline {9.4}Perform Quality Control on Dataset}{19}{section.9.4}
-\contentsline {chapter}{\numberline {10}Section 3: Relative Abundance Analysis}{20}{chapter.10}
-\contentsline {chapter}{\numberline {11}Section 4: Predict ORFs}{21}{chapter.11}
-\contentsline {chapter}{\numberline {12}Section 5: Create Non-redundant Gene Sets}{22}{chapter.12}
-\contentsline {chapter}{\numberline {13}Section 6: Align Genes}{23}{chapter.13}
-\contentsline {chapter}{\numberline {14}Section 7: Get GenBank Accession Numbers}{24}{chapter.14}
-\contentsline {chapter}{\numberline {15}Section 8: Find COG Functional Classes}{25}{chapter.15}
-\contentsline {chapter}{\numberline {16}New Analysis}{26}{chapter.16}
-\contentsline {chapter}{\numberline {17}TODO}{27}{chapter.17}
+\contentsline {chapter}{\numberline {1}Foreword}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Goal}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}How to use this book}{5}{section.1.2}
+\contentsline {section}{\numberline {1.3}Pre-requisites}{6}{section.1.3}
+\contentsline {chapter}{\numberline {2}Source Code}{7}{chapter.2}
+\contentsline {chapter}{\numberline {3}Sample Information}{8}{chapter.3}
+\contentsline {chapter}{\numberline {4}Setting the scene}{9}{chapter.4}
+\contentsline {chapter}{\numberline {5}Microbiome Analysis}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}The Gut Microbiome}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}Relative Abundance Analysis}{10}{section.5.2}
+\contentsline {section}{\numberline {5.3}Metagenomics}{10}{section.5.3}
+\contentsline {section}{\numberline {5.4}Python}{10}{section.5.4}
+\contentsline {chapter}{\numberline {6}How to Find Tools}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Finding Data}{11}{section.6.1}
+\contentsline {section}{\numberline {6.2}Finding Software}{11}{section.6.2}
+\contentsline {chapter}{\numberline {7}The Plan}{12}{chapter.7}
+\contentsline {chapter}{\numberline {8}Software and Set-up}{13}{chapter.8}
+\contentsline {section}{\numberline {8.1}Software}{13}{section.8.1}
+\contentsline {section}{\numberline {8.2}Set-up and Install Dependencies}{13}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Install Anaconda}{13}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Create a New Virtual Environment}{14}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Install packages}{15}{subsection.8.2.3}
+\contentsline {subsection}{\numberline {8.2.4}Integrated Development Environment (IDE)}{19}{subsection.8.2.4}
+\contentsline {subsection}{\numberline {8.2.5}PATH}{19}{subsection.8.2.5}
+\contentsline {section}{\numberline {8.3}Analysis Pipeline}{19}{section.8.3}
+\contentsline {chapter}{\numberline {9}The Dataset}{20}{chapter.9}
+\contentsline {section}{\numberline {9.1}Download Dataset}{21}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Creating the code}{24}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Perform Quality Control on Dataset}{24}{section.9.2}
+\contentsline {chapter}{\numberline {10}Relative Abundance Analysis}{25}{chapter.10}
+\contentsline {chapter}{\numberline {11}Predict ORFs}{26}{chapter.11}
+\contentsline {chapter}{\numberline {12}Create Non-redundant Gene Sets}{27}{chapter.12}
+\contentsline {chapter}{\numberline {13}Align Genes}{28}{chapter.13}
+\contentsline {chapter}{\numberline {14}Get GenBank Accession Numbers}{29}{chapter.14}
+\contentsline {chapter}{\numberline {15}Find COG Functional Classes}{30}{chapter.15}
+\contentsline {chapter}{\numberline {16}New Analysis}{31}{chapter.16}
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{\numberline {A}Web Links}{28}{appendix.A}
-\contentsline {section}{\numberline {A.1}this is a test section}{28}{section.A.1}
-\contentsline {section}{\numberline {A.2}\url {http://nbviewer.jupyter.org/github/biocore/qiime/blob/1.9.1/examples/ipynb/illumina_overview_tutorial.ipynb}}{28}{section.A.2}
-\contentsline {section}{\numberline {A.3}\url {https://docs.qiime2.org/2018.2/tutorials/moving-pictures/}}{28}{section.A.3}
-\contentsline {chapter}{\numberline {B}Referenced Studies}{29}{appendix.B}
+\contentsline {chapter}{\numberline {A}Web Links}{32}{appendix.A}
+\contentsline {section}{\numberline {A.1}QIIME Illumina Overview Tutorial}{32}{section.A.1}
+\contentsline {section}{\numberline {A.2}QIIME 2 Moving Pictures Tutorial}{32}{section.A.2}
+\contentsline {section}{\numberline {A.3}Explanation of @staticmethod decorator vs @classmethod decorator in Python}{32}{section.A.3}
+\contentsline {section}{\numberline {A.4}FASTQ Format}{32}{section.A.4}
+\contentsline {section}{\numberline {A.5}How many threads to use?}{32}{section.A.5}
+\contentsline {section}{\numberline {A.6}How many threads can my computer run?}{33}{section.A.6}
+\contentsline {section}{\numberline {A.7}SRA/.sra file format}{33}{section.A.7}
+\contentsline {chapter}{\numberline {B}Referenced Studies}{34}{appendix.B}

@@ -1,0 +1,78 @@
+%
+\begin{fullpage}
+
+    \appendix
+    \chapter{Web Links}
+    
+    \section{QIIME Illumina Overview Tutorial}
+    \label{appendix:IlluminaOverTut}
+    \url{http://nbviewer.jupyter.org/github/biocore/qiime/blob/1.9.1/examples/ipynb/illumina_overview_tutorial.ipynb}
+    
+    \section{QIIME 2 Moving Pictures Tutorial}
+    \label{appendix:MovingPicTut}
+    \url{https://docs.qiime2.org/2018.2/tutorials/moving-pictures/}
+
+
+    \section{Explanation of @staticmethod decorator vs @classmethod decorator in Python}
+    \label{app:static-method}
+    \textit{The Basics}: Static methods make code easier to read and let you use a class' methods without needing to have an object of that class first. This is useful when it makes logical sense to place a function within a class (because the function is related to the other tasks that the class handles), but the function doesn't \textit{need} to operate on an object/the data of that class. Normal methods are called by typing: \verb|my_object.method|. Static methods are called by typing: \verb|MyClass().method| or \verb|MyClass.method|.
+    
+    Basic explanation with slight background on class methods: 
+    \newline
+    \url{https://julien.danjou.info/guide-python-static-class-abstract-methods/}
+
+    More technical explanations: 
+    \newline
+    \url{https://stackoverflow.com/questions/12179271/meaning-of-classmethod-and-staticmethod-for-beginner}
+    This Stack Overflow question has some basic, easy to understand explanations mixed in with more in-depth explanations. The top-voted answer isn't the only one that is useful; each of the answers presents their explanation with a different degree of simplicity. Make sure to check several answers if the top ones don't seem helpful. 
+    
+    
+    \section{FASTQ Format}
+    \label{app:fastq-format}
+    \url{https://galaxyproject.org/tutorials/ngs/}
+    
+    This link contains:
+    \begin{enumerate}
+    \item An explanation of the FASTQ file format
+    \item An explanation of PHRED quality scores with an accompanying figure (Fig 4)
+    \item The following quote: "Fastq format is not strictly defined and its variations will always cause headache for you. See \url{https://www.ncbi.nlm.nih.gov/books/NBK242622/} for more information."
+        \begin{itemize}
+        \item From the NCBI link: "Text formats, such as FASTQ, are supported, but are not the preferred submission medium. Poorly defined specifications and high variability within these formats tend to lead to a higher frequency of failed or problematic submissions."
+        \end{itemize}    
+    \end{enumerate}
+    
+    
+    \section{How many threads to use?}
+    \label{app:threads}
+    \url{https://www.jstorimer.com/blogs/workingwithcode/7970125-how-many-threads-is-too-many}
+    
+    
+    \section{How many threads can my computer run?}
+    \label{app:threads-resources}
+    \url{https://superuser.com/questions/1101311/how-many-cores-does-my-mac-have}
+
+
+    \section{SRA/.sra file format}
+    \label{app:sra-format}
+    \todo[inline]{Find resource for explaining the .sra file format that we download from the SRA Database}
+
+    
+\chapter{Referenced Studies}
+%https://www.ncbi.nlm.nih.gov/pubmed/21624126
+
+
+\end{fullpage}
+%
+
+\bibliographystyle{plain}
+%
+\bibliography{/Users/ethangniot/Documents/Bibtex/LU-microbiome_manual}
+
+%%%%%%%%%%%
+% When you define a \label outside a figure, a table, or other floating objects, the label points to the current section. In some cases, this behavior is not what you'd like and you'd prefer the generated link to point to the line where the \label is defined. This can be achieved with the command \phantomsection as in this example:
+
+%The link location will be placed on the line below.
+%\phantomsection
+%\label{the_label}
+%%%%%%%%%%
+

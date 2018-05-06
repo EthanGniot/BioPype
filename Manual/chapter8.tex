@@ -1,16 +1,3 @@
-
-\chapter{Plan: 8 Main Sections}
-(Break down the sub-tasks required to accomplish the two main tasks: Relative abundance analysis and metagenomic analysis)
-%
-\begin{enumerate}
-    \item What is my research question?
-    \item Is there an existing tool that I can use to directly answer my research question? If not, proceed to Step 3.
-    \item What is the step-by-step process required to answer my research question?
-    \item What existing tools are available that can help me accomplish each of these steps?
-    \item How do I write code that uses these tools to accomplish the steps?
-\end{enumerate}
-%
-
 \chapter{Software and Set-up}
 \label{chap:software}
 \section{Software}
@@ -64,7 +51,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
     %
 
 
-    \item After installation is complete, open the application named ``Anaconda-Navigator" (the icon looks like \includegraphics[width=0.5cm]{anaconda-navigator-thumbnail}). After a brief start-up period, you should see the following window (Figure \ref{anaconda-nav-win}):
+    \item After installation is complete, open the application named "Anaconda-Navigator" (the icon looks like \includegraphics[width=0.5cm]{anaconda-navigator-thumbnail}). After a brief start-up period, you should see the following window (Figure \ref{anaconda-nav-win}):
     %
     \begin{figure}[htbp]
         \begin{center}
@@ -89,20 +76,20 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
             \label{anaconda-env-win}
         \end{figure}
         %
-        \item Click the \textbf{Create} button on the bottom of the center panel. A new window titled ``Create new environment" will appear. (Figure \ref{anaconda-create-new-env-win})
+        \item Click the \textbf{Create} button on the bottom of the center panel. A new window titled "Create new environment" will appear. (Figure \ref{anaconda-create-new-env-win})
         %
         \begin{figure}[h]
             \begin{center}
             \includegraphics[width=12cm]{anaconda-create_new_env_win}
-            \caption{The ``Create new environment" window.}
+            \caption{The "Create new environment" window.}
             \label{anaconda-create-new-env-win}
             \end{center}
         \end{figure}
         %
-        \item Enter a \textbf{Name} for the environment. You may choose any name you want, but for the sake of this tutorial we will name the new environment ``BioPype".
+        \item Enter a \textbf{Name} for the environment. You may choose any name you want, but for the sake of this tutorial we will name the new environment "BioPype".
         \item Select the box labeled \textbf{Python} next to the \textbf{Packages} heading.
         \item Choose the latest version of Python from the adjacent drop-down menu (Python 3.6 is the most current version at the time of this writing, so we choose \textbf{3.6}).
-        \item Click the \textbf{Create} button within the ``Create new environment window".
+        \item Click the \textbf{Create} button within the "Create new environment window".
     \end{enumerate}
 
 \subsection{Install packages}
@@ -110,10 +97,10 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
     \todo[inline]{Link to resource for further reading about packages.}
     \begin{enumerate}
         \item Change Anaconda's current environment from the \textbf{root} environment by selecting the \textbf{BioPype} tab in the middle panel of the Environments window.
-        \item Click on the drop-down menu in the right-hand panel that says ``Installed" and change it to ``All".
-        \item In the ``Search Packages" box, enter ``biopython". The search should return a package named ``biopython". Select the checkbox to the left of the name. (Figure \ref{anaconda-search-pack})
+        \item Click on the drop-down menu in the right-hand panel that says "Installed" and change it to "All".
+        \item In the "Search Packages" box, enter "biopython". The search should return a package named "biopython". Select the checkbox to the left of the name. (Figure \ref{anaconda-search-pack})
         \begin{itemize}
-            \item A pair of green and red boxes (reading ``Apply" and ``Clear", respectively) will appear in the bottom-right of the window once the package is selected. Do not click these just yet. 
+            \item A pair of green and red boxes (reading "Apply" and "Clear", respectively) will appear in the bottom-right of the window once the package is selected. Do not click these just yet. 
     %
     \begin{figure}[hbtp]
         \begin{center}
@@ -125,7 +112,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
     %
     \todo{Solve the issue with failing to center figures when they're on their own page}
         \end{itemize}
-        \item Use the search bar to find and select the other packages listed in \autoref{tab:software}. Once all packages have been selected, click the green ``Apply" button in the bottom right corner of the window, then select ``Apply" again within the ``Install Packages" window that appears. (Figure \ref{anaconda-install-pack}) Anaconda will now install the selected packages.
+        \item Use the search bar to find and select the other packages listed in \autoref{tab:software}. Once all packages have been selected, click the green "Apply" button in the bottom right corner of the window, then select "Apply" again within the "Install Packages" window that appears. (Figure \ref{anaconda-install-pack}) Anaconda will now install the selected packages.
     %
     \begin{figure}[hbtp]
         \begin{center}
@@ -138,7 +125,7 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
         \item \todo[inline]{Talk about setting up the sra-tools workspace (\url{https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}
         \item \todo[inline]{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}
         \begin{enumerate}
-            \item Open a terminal window in the BioPype environment by clicking the ``play" button on the BioPype environment tab and then selecting ``Open Terminal".
+            \item Open a terminal window in the BioPype environment by clicking the "play" button on the BioPype environment tab and then selecting "Open Terminal".
             \item Wait for the terminal window to finish opening. You'll know it's finished when you see \todo[inline]{show image of what the prompt looks like when it's done initializing.}
             \item Install \textbf{pypiper} by typing the following at the command prompt, followed by pressing return/enter:
             %
@@ -153,11 +140,11 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
             \end{lstlisting}
             %
             This will generate a list of all the packages installed in the current environment. If you see the \textbf{pypiper} package listed, the installation was successful and you may skip the rest of this section. If not, proceed with the following steps.
-            \item Execute the install command from step (c) again. This time, the Terminal should return a message similar to the one displayed in \todo[inline]{Reference the figure pypiper-already-installed}. The line that reads ``Requirement already satisfied: pypiper in ...." tells us the location where the package was (incorrectly) installed. 
+            \item Execute the install command from step (c) again. This time, the Terminal should return a message similar to the one displayed in \todo[inline]{Reference the figure pypiper-already-installed}. The line that reads "Requirement already satisfied: pypiper in ...." tells us the location where the package was (incorrectly) installed. 
             \missingfigure{pypiper-already-installed}
             \item Open a Terminal window, and navigate to the location indicated by the message from the previous step. For my example, I need to start at my home directory and walk through the following folders: .local | lib | python3.6 | site-packages. 
             \begin{itemize}
-                \item The folders along the path to the pypiper installation may be hidden. On a Mac, these hidden folders are preceded by a ``." If the path to the pypiper installation includes hidden locations, reveal them by pressing ``Cmd + Shift + ." in the Finder window.
+                \item The folders along the path to the pypiper installation may be hidden. On a Mac, these hidden folders are preceded by a "." If the path to the pypiper installation includes hidden locations, reveal them by pressing "Cmd + Shift + ." in the Finder window.
             \item Once you find the site-packages folder containing two pypiper folders \todo[inline]{reference figure pypiper-wrong-location}, copy those folders and their contents and paste them into the ~/anaconda/envs/BioPype/lib/python3.6/site-packages directory. The package should now be installed correctly. \missingfigure{pypiper-wrong-location} 
             \marginlabel{}
             \end{itemize}
@@ -171,109 +158,3 @@ The Anaconda program will play a key role in this tutorial. Anaconda is essentia
 \todo[inline]{(Talk about putting all the tools in the same path/directory)}
 \section{Analysis Pipeline}
 (Use figures to illustrate the stages of the pipeline)
-
-\chapter{The Dataset}
-
-In the previous chapter, we set up our machine so that it has all of the software BioPype needs in order to function.
-
-In this chapter, we will use BioPype to download experimental data, and then prepare them for analysis via a process called 
-``quality control".
-
-    %
-    \section{The Data}
-        What experiment are the data from? 
-        What was the study investigating? 
-        Where did we find the data?
-
-
-
-(Find dataset)
-
-(Create script to automate download of data)
-
-(Quality control protocols and how to make script for automated QC)
-
-    %
-    \section{Find Dataset}
-        %
-        \begin{enumerate}
-            \item NCBI
-            \item SRA database
-            \item Look for WGS data
-        \end{enumerate}
-        %
-    %
-    \section{Download Dataset}
-        %
-        \begin{enumerate}
-            \item Download RunInfo Table
-            \item Create RunTable object from RunInfo Table file
-            \item Use filtering methods of RunTable object to select data
-        \end{enumerate}
-    
-        %
-        \subsection{BioPype Workflow}
-        
-        %
-        \subsection{Creating the code}
-        
-        %
-    
-    
-    \section{Perform Quality Control on Dataset}
-
-
-
-\chapter{Section 3: Relative Abundance Analysis}
-(How to compare relative abundance of bacterial taxa between experimental conditions using QWRAP.)
-
-\chapter{Section 4: Predict ORFs}
-(how to predict the ORFs of the sequencing reads)
-
-\chapter{Section 5: Create Non-redundant Gene Sets}
-(How to create non-redundant gene sets using the predicted ORFs and what kind of information they provide)
-(Align reads using BLAT)
-
-\chapter{Section 6: Align Genes}
-
-\chapter{Section 7: Get GenBank Accession Numbers}
-
-\chapter{Section 8: Find COG Functional Classes}
-
-\chapter{New Analysis}
-(Walk user through analysis of new, untested dataset looking for age-related differences in patients with Inflammatory Bowel Disease.)
-
-\chapter{TODO}
-\begin{itemize}
-    \item Talk about the IBD dataset in Chapter 3: Sample Information
-    \item Fix the bibliography citations. Some work, some don't, and I'm not sure why.
-    \item Put URLs in footnotes instead of appendix entries?
-\end{itemize}
-
-%
-\begin{appendix}
-\chapter{Web Links}
-    \section{this is a test section}
-    \label{test-label}
-    \section{\url{http://nbviewer.jupyter.org/github/biocore/qiime/blob/1.9.1/examples/ipynb/illumina_overview_tutorial.ipynb}}
-    \label{appendix:IlluminaOverTut}
-    \section{\url{https://docs.qiime2.org/2018.2/tutorials/moving-pictures/}}
-    \label{appendix:MovingPicTut}
-    \section*{Link 3}
-
-\chapter{Referenced Studies}
-%https://www.ncbi.nlm.nih.gov/pubmed/21624126
-\end{appendix}
-%
-\bibliographystyle{plain}
-%
-\bibliography{/Users/ethangniot/Documents/Bibtex/LU-microbiome_manual}
-
-%%%%%%%%%%%
-% When you define a \label outside a figure, a table, or other floating objects, the label points to the current section. In some cases, this behavior is not what you'd like and you'd prefer the generated link to point to the line where the \label is defined. This can be achieved with the command \phantomsection as in this example:
-
-%The link location will be placed on the line below.
-%\phantomsection
-%\label{the_label}
-%%%%%%%%%%
-
