@@ -1,7 +1,6 @@
 import os
 import subprocess
 import pathlib
-import tempfile
 import BioPype.cmds.downloadsra as downloadsra
 from BioPype.workspaces.dirpaths import DirPathsHelper
 path_helper = DirPathsHelper()
@@ -9,11 +8,10 @@ _BIODIR = path_helper._BIODIR
 _SRADIR = path_helper._SRADIR
 
 
-#TODO: TURN THIS INTO A CLASS! Clearly would benefit from having class objects pass attributes to methods for each qc operation rather than having a milllion functions with similarly-named variables (short on time otherwise it would be class already)
+# TODO: TURN THIS INTO A CLASS! Clearly would benefit from having class objects pass attributes to methods for each qc operation rather than having a milllion functions with similarly-named variables (short on time otherwise it would be class already)
 def get_fastqc_reports(fastq_file_dir='', outdir='', select='', threads=4):
     """Use FastQC to perform quality control checks on fastq files.
 
-    :param report_name: str; the file name for the report.
     :param fastq_file_dir: str; path to directory containing target fastq files.
         Default=''. Default path is _SRADIR > grouped_fastq
     :param outdir: str; path to the directory where the quality control report
@@ -64,24 +62,6 @@ def get_fastqc_reports(fastq_file_dir='', outdir='', select='', threads=4):
         fastq_folder_paths = [folder_path for folder_path in fastq_dir.iterdir()]
 
         _output_fastqc_files(fastq_folder_paths, qc_reports_dir, threads)
-
-        # # For each folder...
-        # for folder_path in fastq_folder_paths:
-        #     # Create the name of the subdir within the qc_reports_dir where
-        #     # the reports will be stored.
-        #     qc_reports_subdir = qc_reports_dir.joinpath(folder_path.name)
-        #
-        #     # Need to create the subdir because fastqc can't output to a
-        #     # non-existent directory.
-        #     downloadsra.check_dir_exists(str(qc_reports_subdir))
-        #
-        #     # Get a list of all the files in the folder
-        #     file_list = [str(file) for file in folder_path.iterdir()]
-        #
-        #     # Then run fastqc on the files, sending them to the outdir of
-        #     # qc_reports_dir.
-        #
-        #     _run_fastqc(file_list, str(qc_reports_subdir), str(threads), unpack=True)
 
 
 def _run_fastqc(target_file_paths, qc_reports_subdir, threads, unpack=False):
@@ -157,46 +137,46 @@ def _qc_report_selected_dirs(fastq_dir, selected_dirs, qc_reports_dir, threads):
 
     _output_fastqc_files(fastq_folder_paths, qc_reports_dir, threads)
 
-    # For each folder...
-    # for folder_path in fastq_folder_paths:
-    #     # Create the name of the subdir within the qc_reports_dir where
-    #     # the reports will be stored.
-    #     qc_reports_subdir = qc_reports_dir.joinpath(folder_path.name)
-    #     downloadsra.check_dir_exists(str(qc_reports_subdir))
-    #
-    #     # Get a list of all the files in the folder
-    #     file_list = [file for file in folder_path.iterdir()]
-    #
-    #     # Then run fastqc on the files, sending them to the outdir of
-    #     # qc_reports_dir.
-    #     _run_fastqc(file_list, qc_reports_subdir, str(threads), unpack=True)
 
+def summarize_reports(summary_filename):
+    """Summarizes the fastqc results contained in the target folders.
 
-def summarize_reports(outfile_name):
-    """Summarizes the
-
-    :param outfile_name:
+    :param summary_filename: str; the name of the multiqc file that will be
+        created.
     :return:
     """
-    report_summary_dir = os.path.join(_BIODIR, 'data', 'repsummaries')
-    downloadsra.check_dir_exists(report_summary_dir)
+    # Get the name of the summary file
+    # Get the files to summarize
+    # execute multiqc on the files and export it to the outdir
+    p = os.path.join(_SRADIR, 'qcreports')
+    downloadsra.check_dir_exists(p)
+    fastqc_dir = pathlib.Path(p)
 
-    subprocess.run(['multiqc', ])
-    pass
-    # subprocess.run('multiqc?????')
-    # fastq_folder_paths = [folder_path for folder_path in fastq_dir.iterdir()]
-    # for folder in fastq_folder_paths:
-    # # Make the qc reports feature the names of the folders they're
-    # # summarizing.
-    #     new_report_name = report_name + "_" + folder.name
-    #     subprocess.run(
-    #         ['fastqc', str(folder), '--outdir', qc_reports_dir,
-    #         '--extract', '-f', 'fastq', '--threads', str(threads),
-    #         '--filename', new_report_name])
+    multiqc_dir = os.path.join(_SRADIR, 'multiqc_summaries')
+    downloadsra.check_dir_exists(multiqc_dir)
 
-    # with tempfile.TemporaryFile(mode='r+') as tf:
-    #     tf.writelines(selected_files)
+    fastqc_folder_paths = [folder_path for folder_path in fastqc_dir.iterdir()]
+    for folder in fastqc_folder_paths:
+        print(folder)
+        # Make the multiqc reports feature the names of the folders they're
+        # summarizing.
+        new_report_name = str(summary_filename + "_" + folder.name)
+        _run_multiqc(str(folder), multiqc_dir, new_report_name)
 
-def trim_sequences():
-    pass
 
+def _run_multiqc(fastqc_files, outdir, multiqc_filename):
+    # NEEDED TO COPY THE MULTIQC EXECUTABLE FILE FROM home/anaconda/envs/biopype/bin/multiqc TO home/anaconda/bin BECAUSE FOR WHATEVER REASON THE VIRTUAL ENVIRONMENT BIN WASN'T BEING CHECKED, EVEN THOUGH I ADDED IT TO $PATH AND $PYTHONPATH, AND KEPT THROWING AND ERROR THAT SAID 'multiqc is not a command'
+    subprocess.run(['multiqc', fastqc_files, '--outdir', outdir, '-f', '--filename', multiqc_filename])
+
+
+def run_trim_galore(target_dir, out_dir):
+    # TODO: adapt this so that it searches for single-end vs paired-end files and handles them accordingly
+    home = pathlib.Path(target_dir)
+    outdir = pathlib.Path(out_dir)
+    for fpath in home.iterdir():
+        sfile = str(fpath)
+        fin_outdir = outdir.joinpath(home.name)
+        downloadsra.check_dir_exists(str(fin_outdir))
+        subprocess.run(
+            ['trim_galore', '--output_dir', str(fin_outdir), '--fastqc', '--fastqc_args', '"--threads 4"', sfile])
+    return None
