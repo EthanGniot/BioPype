@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {8.1}Software}{13}{section.8.1}
 \contentsline {section}{\numberline {8.2}Set-up and Install Dependencies}{13}{section.8.2}
 \contentsline {subsection}{\numberline {8.2.1}Install Anaconda}{13}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Create a New Virtual Environment}{14}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.2}Create a New Virtual Environment}{15}{subsection.8.2.2}
 \contentsline {subsection}{\numberline {8.2.3}Install packages}{15}{subsection.8.2.3}
 \contentsline {subsection}{\numberline {8.2.4}Integrated Development Environment (IDE)}{19}{subsection.8.2.4}
 \contentsline {subsection}{\numberline {8.2.5}PATH}{19}{subsection.8.2.5}

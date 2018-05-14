@@ -51,7 +51,7 @@ To learn more about how to use these pages to find information about the study a
             
             \item Now we want to select our samples based on these categories. 
             
-            Download the RunInfo Table file found on the study's sample page. The RunInfo table is the browser's sample table in a .txt file format.
+            Download the RunInfo Table file found on the study's sample page and put it in the project folder you set up in Chapter \ref{software}. The RunInfo table is the browser's sample table in a .txt file format.
             \missingfigure{highlight where to click to download the runinfo table}
             
             \item Open the command line interface for your machine's operating system. On a mac, this is the Terminal application. 
@@ -145,10 +145,13 @@ $ python3
             We can now use the lists of accession numbers to download .sra files from the SRA database. However, these are large files that can \textit{easily} take up hundreds of gigabytes of memory. They also take time to download (times will vary based on network speed). To account for hardware limitations that would severely bottleneck the analysis at file-handling steps like these, we will randomly select a subset of only 3 accession numbers from each list we created in the previous step. The analysis will go much faster if we analyze fewer samples, so these subsets are what we will analyze going forward.
             \seealso{The "random\_sample\_ subset()" method is preceded by "RunTable." in this case because it is a "@staticmethod". To learn more, see Appendix \ref{app:static-method}.}
             \begin{lstlisting} [basicstyle=\footnotesize, language=Python]
->>>rs_uc_young = RunTable.random_sample_subset(uc_young_nums, n=3)
->>>rs_uc_old = RunTable.random_sample_subset(uc_old_nums, n=3)
->>>rs_cd_young = RunTable.random_sample_subset(cd_young_nums, n=3)
->>>rs_cd_old = RunTable.random_sample_subset(cd_old_nums, n=3)
+# Shorten the name for the runtable module to save space in the manual:
+>>>import BioPype.cmds.runtable as rt
+
+>>>rs_uc_young = rt.RunTable.random_sample_subset(uc_young_nums, n=3)
+>>>rs_uc_old = rt.RunTable.random_sample_subset(uc_old_nums, n=3)
+>>>rs_cd_young = rt.RunTable.random_sample_subset(cd_young_nums, n=3)
+>>>rs_cd_old = rt.RunTable.random_sample_subset(cd_old_nums, n=3)
             \end{lstlisting}
             
             
@@ -159,12 +162,12 @@ $ python3
             \end{lstlisting}
             
             
-            \item Use the \verb|download_sra()| function to download the .sra files:
+            \item Use the \verb|download_sra()| function to download the .sra files into named folders:
             \begin{lstlisting} [language=Python]
->>>download_sra(rs_uc_young)
->>>download_sra(rs_uc_old)
->>>download_sra(rs_cd_young)
->>>download_sra(rs_cd_old)
+>>>download_sra(rs_uc_young, 'uc_young')
+>>>download_sra(rs_uc_old, 'uc_old')
+>>>download_sra(rs_cd_young, 'cd_young')
+>>>download_sra(rs_cd_old, 'cd_old')
             \end{lstlisting}
                 \begin{itemize}
                 \item \attention{The .sra files will not be downloaded to the correct location if the SRA Toolkit Workspace Location has not been properly configured (see Chapter \ref{chap:software} for details).}
