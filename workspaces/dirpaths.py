@@ -41,14 +41,15 @@ class DirPathsHelper:
         if self._SRADIR:
             self.work_dir_info('sra', self._SRADIR)
         else:
-            warnings.warn("***THERE IS CURRENTLY NO PATH DEFINED FOR THE SRA TOOLKIT WORKSPACE*** "
-                          "BioPype relies on functionality from NCBI's "
-                          "SRA Toolkit, which requires configuration of the "
-                          "toolkit's Workspace Location. For information on "
-                          "how to configure the SRA Toolkit Workspace"
-                          " Location, please refer to either the BioPype manual "
-                          "(Chapter 8: Software and Set-up), or the SRA Toolkit website "
-                          "(https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4).")
+            warnings.warn(
+                "***THERE IS CURRENTLY NO PATH DEFINED FOR THE SRA TOOLKIT "
+                "WORKSPACE*** BioPype relies on functionality from NCBI's SRA "
+                "Toolkit, which requires configuration of the toolkit's "
+                "Workspace Location. For information on how to configure the "
+                "SRA Toolkit Workspace Location, please refer to either the "
+                "BioPype manual (Chapter 8: Software and Set-up), or the SRA "
+                "Toolkit website "
+                "(https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4). \n")
         return None
 
     def work_dir_info(self, biopype_or_sra, work_dir):
@@ -56,14 +57,14 @@ class DirPathsHelper:
             print("\n The current working directory for BioPype is: " + work_dir)
             print("\t>To change BioPype's working directory, please run: BioPype.path_helper.setup('biopype')")
             print("\t>The current working directory is where BioPype's "
-                  "functions will look for target files and directories.")
+                  "functions will look for target files and directories.\n")
 
         elif biopype_or_sra.lower() == 'sra':
             print("\nThe current Workspace Location for the SRA Toolkit is: " + work_dir)
             print( "\t>For information on how to configure the SRA Toolkit Workspace "
                   "Location, please refer to either the BioPype manual (Chapter 8: "
                   "Software and Set-up), or the SRA Toolkit website "
-                  "(https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4).")
+                  "(https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std#s-4).\n")
         return None
 
     def rewrite_workspace_file(self, biopype_or_sra, new_dir, workspace_file):

@@ -1,2 +1,2 @@
-/Users/ethangniot/my_test
+/Volumes/Gniot_Backup_Drive/repos/my_test
  The first line of this file (the above line^) is the path to the working directory of the BioPype module.
