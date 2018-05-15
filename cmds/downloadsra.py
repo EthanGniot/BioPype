@@ -181,6 +181,7 @@ class DownloadHelper:
         # causes errors.
         metadata.insert(loc=idx, column='id', value=new_col)
         metadata.to_csv(metadata_filepath, sep='\t', index=False)
+        return metadata_filepath
 
     def download_sra(self, acc_nums, outdirectory_name):
         """Download SRA runs to the configured sra-toolkit workspace.
