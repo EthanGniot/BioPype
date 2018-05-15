@@ -192,9 +192,26 @@ class QiimeHelper:
         subprocess.run(['qiime', 'dada2', 'denoise-paired', args])
         return None
 
+    def run_taxonomic_classification(self, classifier_path, rep_seqs_filepath, output_filepath):
+        subprocess.run(
+            ['qiime', 'feature-classifier', 'classify-sklearn',
+             '--i-classifier', classifier_path,
+             '--i-reads', rep_seqs_filepath,
+             '--o-classification', output_filepath])
+        return output_filepath
 
+    def vis_tax_class(self, input_filepath, output_filepath):
+        subprocess.run(
+            ['qiime', 'metadata', 'tabulate',
+             '--m-input-file', input_filepath,
+             '--o-visualization', output_filepath])
+        return output_filepath
 
-# qhelper = QiimeHelper()
-# inp = '/Volumes/Gniot_Backup_Drive/repos/my_test/cd_young_manifest.csv'
-# outp = '/Volumes/Gniot_Backup_Drive/repos/my_test/CDY-paired-end-demux.qza'
-# qhelper.create_data_artifact('SampleData[SequencesWithQuality]', inp, outp, 'PairedEndFastqManifestPhred33')
+    def create_barplot(self, input_feat_table, input_tax_class, metadata_filepath, output_filepath):
+        subprocess.run(
+            ['qiime', 'taxa', 'barplot',
+             '--i-table', input_feat_table,
+             '--i-taxonomy', input_tax_class,
+             '--m-metadata-file', metadata_filepath,
+             '--o-visualization', output_filepath])
+        return output_filepath
