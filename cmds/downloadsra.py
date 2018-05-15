@@ -2,8 +2,12 @@ import os
 import shutil
 import subprocess
 import pathlib
+import csv
+
 from BioPype.workspaces.dirpaths import DirPathsHelper
+
 import BioPype.cmds.runtable as runtable
+
 path_helper = DirPathsHelper()
 _BIODIR = path_helper._BIODIR
 _SRADIR = path_helper._SRADIR
@@ -26,82 +30,136 @@ class DownloadHelper:
         # Tuple contains 2 more tuples. Each subtuple contains 1) the absolute
         # file path to one of the paired-end fastq files, and 2) whether the
         # fastq file contains forward or reverse reads.
-        self.fin_download_dict = {}
+        self.fin_download_dict = {}  # THESE ARE UNFILTERED
 
     def download_paired_end_data(self, downloaded_sra_folder, converted_fastq_subdir):
         cfs = pathlib.Path(_SRADIR).joinpath('grouped_fastq', converted_fastq_subdir)
         self.check_dir_exists(cfs)
         # Randomly select SRA ID(s) from the pool.
-        sample = runtable.RunTable.random_sample_subset(self.acc_nums, 1)[0]
+        # sample = runtable.RunTable.random_sample_subset(self.acc_nums, 1)[0]
+        random_samples = runtable.RunTable.random_sample_subset(self.acc_nums, 2)
+        print(random_samples)
+        for sample in random_samples:
+            print(sample)
+            # Check which files are single-end data.
+            with open(os.path.join(_SRADIR, 'files', 'single_end_sra_files.txt'), 'r') as f:
+                lines = [line.strip() for line in f]
 
-        # Check if the sample has already been downloaded
-        if sample in self.download_tracker:
-            # TODO: determine whether or not I should be using "return" here.
-            return self.download_paired_end_data(downloaded_sra_folder, cfs)
+            # Check if the sample has already been downloaded
+            if (sample in self.download_tracker) or (sample in lines):
+                # TODO: determine whether or not I should be using "return" here.
+                # return self.download_paired_end_data(downloaded_sra_folder, cfs)
+                continue
 
-        else:
-            # Add the SRA ID(s) to self.download_tracker.
-            self.download_tracker.append(sample)
-            # Download the sample.
-            self.download_sra(sample, downloaded_sra_folder)
-            # Convert the sample to FASTQ format. (Should be placed in a subfolder within _SRADIR/grouped_fastq/ )
-            destination_fastq_dirpath = pathlib.Path(_SRADIR).joinpath(
-                'grouped_fastq',
-                cfs)
-            self.convert_sra_to_fastq(
-                select_files=sample,
-                threads=self.threads,
-                _final_grouped_fastq_subdir=str(destination_fastq_dirpath))
+            # Check if the SRA file contains paired-end data.
+            elif not self.isPairedSRA(sample):
+                print('{} does not contain paired-end data. Restarting search.'.format(str(sample)))
+                self.download_tracker.append(sample)
+                self.write_to_single_end_file(sample)
+                # TODO: This (and other) recursive call to download_paired_end_data seems to be working fine with 'cfs' as an argument, but I feel like that should be causing problems... if there's a strange error, try changing 'cfs' to 'converted_fastq_subdir'
+                # self.download_paired_end_data(downloaded_sra_folder, cfs)
+                continue
 
-            # Check if 2 fastq files were made (if paired-end sequencing was
-            # used, the fastq-conversion should result in 2 fastq files.)
-            expected_fastq_files = self.n_files_in_fastq_dir + 2
-            total_fastq_files = [file for file in destination_fastq_dirpath.iterdir()]
-            if len(total_fastq_files) == expected_fastq_files:
-                self.n_files_in_fastq_dir = expected_fastq_files
-                self.success_download_counter += 1
+            elif self.isPairedSRA(sample):
+                # Add the SRA ID(s) to self.download_tracker.
+                self.download_tracker.append(sample)
+                # Download the sample.
+                self.download_sra(sample, downloaded_sra_folder)
+                # Convert the sample to FASTQ format. (Should be placed in a subfolder within _SRADIR/grouped_fastq/ )
+                destination_fastq_dirpath = pathlib.Path(_SRADIR).joinpath(
+                    'grouped_fastq',
+                    cfs)
+                self.convert_sra_to_fastq(
+                    select_files=sample,
+                    threads=self.threads,
+                    _final_grouped_fastq_subdir=str(destination_fastq_dirpath))
 
-                # Add fastq absolute file paths and read-direction info to
-                # self.fin_download_dict.
-                s = str(sample) + '_pass_[0-9].fastq'
-                match = cfs.rglob(s)
-                # matches = []
-                for x in match:
-                    # matches.append(x)
-                    if 'pass_1' in str(x):
-                        abs_path_1 = str(x)
-                    if 'pass_2' in str(x):
-                        abs_path_2 = str(x)
+                # Check if 2 fastq files were made (if the sra data were
+                # paired-end, the fastq-conversion should result in 2 fastq files
+                # b/c it uses --split-files as an argument).
+                expected_fastq_files = self.n_files_in_fastq_dir + 2
+                total_fastq_files = [file for file in destination_fastq_dirpath.iterdir()]
+                if len(total_fastq_files) == expected_fastq_files:
+                    self.n_files_in_fastq_dir = expected_fastq_files
+                    self.success_download_counter += 1
 
-                self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
+                    # # Add fastq absolute file paths and read-direction info to
+                    # # self.fin_download_dict.
+                    # s = str(sample) + '_pass_[0-9].fastq'
+                    # match = cfs.rglob(s)
+                    # # matches = []
+                    # for x in match:
+                    #     # matches.append(x)
+                    #     if 'pass_1' in str(x):
+                    #         abs_path_1 = str(x)
+                    #     if 'pass_2' in str(x):
+                    #         abs_path_2 = str(x)
+                    #
+                    # self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
 
-                # Check if the counter has reached the desired number of samples.
-                if self.success_download_counter >= self.threshold:
-                    return None
+                    # Check if the counter has reached the desired number of samples.
+                    if self.success_download_counter >= self.threshold:
+                        return None
+                    else:
+                        # return self.download_paired_end_data(downloaded_sra_folder, cfs)
+                        continue
+
+                # If 2 fastq files were not made...
                 else:
-                    return self.download_paired_end_data(downloaded_sra_folder, cfs)
-            # If 2 fastq files were not made...
+                    # ...get the absolute paths to the fastq files that were just created...
+                    s = str(sample) + '_pass.fastq'
+                    match = cfs.rglob(s)
+                    # ... then delete the files.
+                    for file in match:
+                        # TODO: add informative print statements or write to stdout about what's happening in this loop/else block.
+                        abs_path = file.resolve()
+                        abs_path.unlink()
+
+                    # Add the SRA ID to a file that tracks single-end datafiles
+                    # to help speed up future downloads.
+                    self.write_to_single_end_file(sample)
+                    # return self.download_paired_end_data(downloaded_sra_folder, cfs)
+                    continue
             else:
-                # ...get the absolute paths to the fastq files that were just created...
-                s = str(sample) + '_pass.fastq'
-                match = cfs.rglob(s)
-                # ... then delete the files.
-                for file in match:
-                    # TODO: add informative print statements or write to stdout about what's happening in this loop/else block.
-                    abs_path = file.resolve()
-                    abs_path.unlink()
-                return self.download_paired_end_data(downloaded_sra_folder, cfs)
+                raise TypeError('something went wrong... sra data were neither paired-end nor not-paired-end... Neither if-condition was satisfied.')
+
+        if self.n_files_in_fastq_dir < self.threshold:
+            self.download_paired_end_data(downloaded_sra_folder, converted_fastq_subdir)
+
+    def create_manifest_dict(self, input_dir):
+        """Create dict that can be used to create a qiime2 fastq manifest file.
+
+        :param input_dir: path to the directory containing trimmed fastq files.
+        :return: dict
+        """
+        manifest_dict = {}
+
+
+        # s = str(sample) + '_pass_[0-9].fastq'
+        s = str()
+        match = input_dir.rglob(s)
+        # matches = []
+        for x in match:
+            # matches.append(x)
+            if 'pass_1' in str(x):
+                abs_path_1 = str(x)
+            if 'pass_2' in str(x):
+                abs_path_2 = str(x)
+        return manifest_dict
+
+        self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
 
     def create_manifest_file(self, filename):
-        with open(os.path.join(_BIODIR, filename), 'w') as f:
-            header = 'sample-id,absolute-filepath,direction\n'
-            f.write(header)
+        man_path = os.path.join(_BIODIR, filename)
+        with open(man_path, 'w', newline='') as csvfile:
+            manifestwriter = csv.writer(csvfile, delimiter=',')
+            header = ('sample-id', 'absolute-filepath', 'direction\n')
+            manifestwriter.writerow(header)
+
             for key, value in self.fin_download_dict.items():
                 for tup in value:
-                    e = ','.join(tup)
-                    entry = ','.join(key, e)
-                    f.writelines(entry)
-        return None
+                    manifestwriter.writerow([key, tup[0], tup[1]])
+        return man_path
 
     def create_metadata_file(self, pdTableOfSamples, metadata_filepath):
         """Create a .tsv file of sample metadata for the downloaded .sra files.
@@ -117,16 +175,17 @@ class DownloadHelper:
         metadata = pdTableOfSamples.df.loc[pdTableOfSamples.df['Run'].isin(the_samples)]
         idx = 0
         new_col = [run for run in metadata['Run']]  # can be a list, a Series, an array or a scalar
+
         # Insert a column to the table because the metadata table needs an 'id' column,
         # and without this the ids end up in a weird column without a header, which
         # causes errors.
         metadata.insert(loc=idx, column='id', value=new_col)
         metadata.to_csv(metadata_filepath, sep='\t', index=False)
 
-    def download_sra(self, acc_nums, grouped_folder_name):
+    def download_sra(self, acc_nums, outdirectory_name):
         """Download SRA runs to the configured sra-toolkit workspace.
         :param acc_nums: iterator containing SRA accession numbers (e.g., ['SRR6664514'])
-        :param grouped_folder_name: str; name of the folder that the downloaded
+        :param outdirectory_name: str; name of the folder that the downloaded
             .sra files will be stored in within data.grouped_sra
         :return: None
         """
@@ -152,7 +211,7 @@ class DownloadHelper:
 
         if not isinstance(acc_nums, str):
             # Define the path to the destination folder.
-            grouped_dir_path = os.path.join(_SRADIR, 'grouped_sra', grouped_folder_name)
+            grouped_dir_path = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
             # Create the destination folder and copy the .sra files into it.
             self.check_dir_exists(grouped_dir_path)
             self.copy_sra_to_group_dir(folder, grouped_dir_path)
@@ -163,7 +222,7 @@ class DownloadHelper:
         else:
             # p is the path to the .sra file that was just downloaded.
             p = os.path.join(folder, (str(acc_nums) + '.sra'))
-            d = os.path.join(_SRADIR, 'grouped_sra', grouped_folder_name)
+            d = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
             self.check_dir_exists(d)
             shutil.move(p, d)
         return None
@@ -178,7 +237,8 @@ class DownloadHelper:
             self.copy_sra_to_group_dir(current_folder, grouped_dir_path)
         return None
 
-    def check_dir_exists(self, directory):
+    @staticmethod
+    def check_dir_exists(directory):
         """Check if directory exists. If not, create it."""
         if not os.path.isdir(str(directory)):
             print(str(directory) + "does not exist... Creating " + str(directory) + "\n")
@@ -266,3 +326,28 @@ class DownloadHelper:
                         sra_file_path = grouped_sra_dir.joinpath(sra_file)
                         self.parallel_fastq_dump(sra_file_path, threads, outdir)
         return None
+
+    def isPairedSRA(self, filename):
+        # From https://www.biostars.org/p/139422/
+        # filename = os.path.abspath(filename)
+        try:
+            contents = subprocess.check_output(["fastq-dump", "-X", "1", "-Z", "--split-spot", filename], universal_newlines=True)
+        except subprocess.CalledProcessError as e:
+            raise Exception("Error running fastq-dump on", filename)
+
+        if contents.count("\n") == 4:
+            return False
+        elif contents.count("\n") == 8:
+            return True
+        else:
+            raise Exception("Unexpected output from fast-dump on ", filename)
+
+    def write_to_single_end_file(self, appended_text):
+        """Write SRA ID's/accession numbers to a file for tracking single-end data.
+
+        :param appended_text: Text to append to file
+        :return: None
+        """
+        filepath = os.path.join(_SRADIR, 'files', 'single_end_sra_files.txt')
+        with open(filepath, "a") as f:
+            f.write(appended_text + '\n')

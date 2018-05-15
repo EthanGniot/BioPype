@@ -9,10 +9,10 @@ _SRADIR = path_helper._SRADIR
 
 
 # TODO: TURN THIS INTO A CLASS! Clearly would benefit from having class objects pass attributes to methods for each qc operation rather than having a milllion functions with similarly-named variables (short on time otherwise it would be class already)
-def get_fastqc_reports(fastq_file_dir='', outdir='', select='', threads=4):
+def get_fastqc_reports(input_dir='', outdir='', select='', threads=4):
     """Use FastQC to perform quality control checks on fastq files.
 
-    :param fastq_file_dir: str; path to directory containing target fastq files.
+    :param input_dir: str; path to directory containing target fastq files.
         Default=''. Default path is _SRADIR > grouped_fastq
     :param outdir: str; path to the directory where the quality control report
         will be stored.
@@ -27,8 +27,8 @@ def get_fastqc_reports(fastq_file_dir='', outdir='', select='', threads=4):
         generate the quality control report.
     :return: None
     """
-    if fastq_file_dir:
-        fastq_dir = pathlib.Path(fastq_file_dir)
+    if input_dir:
+        fastq_dir = pathlib.Path(input_dir)
     else:
         fastq_dir = pathlib.Path(_SRADIR).joinpath('grouped_fastq')
 
@@ -36,12 +36,12 @@ def get_fastqc_reports(fastq_file_dir='', outdir='', select='', threads=4):
         qc_reports_dir = outdir
     else:
         qc_reports_dir = pathlib.Path(_SRADIR).joinpath('qcreports')
-    downloadsra.check_dir_exists(str(qc_reports_dir))
+    downloadsra.DownloadHelper.check_dir_exists(str(qc_reports_dir))
 
     if select:
         paths = []
         for selected in select:
-            # Search the subdirectories in fastq_file_dir for files
+            # Search the subdirectories in fastq_dir for files
             # with names that match the user-given names in select_files.
             # The fastq_file_dir.rglob() method searches for file names that
             # contain the pattern specified by 'select_files' in both the root
@@ -90,7 +90,7 @@ def _output_fastqc_files(fastq_folder_paths_list, qc_reports_dir, threads):
         # Create the name of the subdir within the qc_reports_dir where
         # the reports will be stored.
         qc_reports_subdir = qc_reports_dir.joinpath(folder_path.name)
-        downloadsra.check_dir_exists(str(qc_reports_subdir))
+        downloadsra.DownloadHelper.check_dir_exists(str(qc_reports_subdir))
 
         # Get a list of all the files in the folder
         file_list = [str(file) for file in folder_path.iterdir()]
@@ -121,7 +121,7 @@ def _qc_report_selected_files(selected_files, qc_reports_dir, threads):
 
     # Define the destination directory for the files
     qc_reports_subdir = naming_recursion('selectqc_', 0)
-    downloadsra.check_dir_exists(str(qc_reports_subdir))
+    downloadsra.DownloadHelper.check_dir_exists(str(qc_reports_subdir))
 
     # Execute run_fastqc on the unpacked iterable of file paths, using
     # qc_reports_subdir as the outdir argument.
@@ -138,22 +138,28 @@ def _qc_report_selected_dirs(fastq_dir, selected_dirs, qc_reports_dir, threads):
     _output_fastqc_files(fastq_folder_paths, qc_reports_dir, threads)
 
 
-def summarize_reports(summary_filename):
-    """Summarizes the fastqc results contained in the target folders.
+def summarize_reports(summary_filename, input_dir=''):
+    """Summarizes the fastqc reports contained in the target folders.
 
     :param summary_filename: str; the name of the multiqc file that will be
         created.
-    :return:
+    :param input_dir: str; the name of the directory that contains the
+        target FastQC reports.
+    :return: None
     """
-    # Get the name of the summary file
-    # Get the files to summarize
-    # execute multiqc on the files and export it to the outdir
-    p = os.path.join(_SRADIR, 'qcreports')
-    downloadsra.check_dir_exists(p)
-    fastqc_dir = pathlib.Path(p)
+    # Define the target directory that will be searched for fastqc reports.
+    if input_dir:
+        p = os.path.join(_SRADIR, input_dir)
+        downloadsra.DownloadHelper.check_dir_exists(p)
+        fastqc_dir = pathlib.Path(p)
+    else:
+        p = os.path.join(_SRADIR, 'qcreports')
+        downloadsra.DownloadHelper.check_dir_exists(p)
+        fastqc_dir = pathlib.Path(p)
 
+    # Define and/or create the destination directory.
     multiqc_dir = os.path.join(_SRADIR, 'multiqc_summaries')
-    downloadsra.check_dir_exists(multiqc_dir)
+    downloadsra.DownloadHelper.check_dir_exists(str(multiqc_dir))
 
     fastqc_folder_paths = [folder_path for folder_path in fastqc_dir.iterdir()]
     for folder in fastqc_folder_paths:
@@ -169,14 +175,22 @@ def _run_multiqc(fastqc_files, outdir, multiqc_filename):
     subprocess.run(['multiqc', fastqc_files, '--outdir', outdir, '-f', '--filename', multiqc_filename])
 
 
-def run_trim_galore(target_dir, out_dir):
-    # TODO: adapt this so that it searches for single-end vs paired-end files and handles them accordingly
+def run_trim_galore(target_dir, out_dir=''):
+    # TODO: adapt this so that the FastQC reports get sent to somewhere different from the trimmed fastq files?
+
+    # TODO: determine if the downloadsra.check_dir_exists() checks are necessary at this step. might not need to call until the later 'for-loop'
+    if out_dir:
+        outdir = pathlib.Path(out_dir)
+        downloadsra.DownloadHelper.check_dir_exists(str(outdir))
+    else:
+        outdir = pathlib.Path(_SRADIR).joinpath('grouped_fastq.trimmed')
+        downloadsra.DownloadHelper.check_dir_exists(str(outdir))
+
     home = pathlib.Path(target_dir)
-    outdir = pathlib.Path(out_dir)
     for fpath in home.iterdir():
         sfile = str(fpath)
         fin_outdir = outdir.joinpath(home.name)
-        downloadsra.check_dir_exists(str(fin_outdir))
+        downloadsra.DownloadHelper.check_dir_exists(str(fin_outdir))
         subprocess.run(
             ['trim_galore', '--output_dir', str(fin_outdir), '--fastqc', '--fastqc_args', '"--threads 4"', sfile])
     return None

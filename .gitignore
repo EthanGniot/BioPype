@@ -158,7 +158,6 @@ fabric.properties
 #Other
 .DS_Store
 .idea/
-auto-ethan.py
 auto-ethan2.py
 reset_biopype_pack.py
 test.py
