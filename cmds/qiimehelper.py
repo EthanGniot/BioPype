@@ -189,7 +189,7 @@ class QiimeHelper:
 
         :return:
         """
-        subprocess.run(['qiime', 'dada2', 'denoise-paired', args])
+        subprocess.run([*args])
         return None
 
     def run_taxonomic_classification(self, classifier_path, rep_seqs_filepath, output_filepath):

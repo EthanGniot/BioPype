@@ -83,19 +83,19 @@ class DownloadHelper:
                     self.n_files_in_fastq_dir = expected_fastq_files
                     self.success_download_counter += 1
 
-                    # # Add fastq absolute file paths and read-direction info to
-                    # # self.fin_download_dict.
-                    # s = str(sample) + '_pass_[0-9].fastq'
-                    # match = cfs.rglob(s)
-                    # # matches = []
-                    # for x in match:
-                    #     # matches.append(x)
-                    #     if 'pass_1' in str(x):
-                    #         abs_path_1 = str(x)
-                    #     if 'pass_2' in str(x):
-                    #         abs_path_2 = str(x)
-                    #
-                    # self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
+                    # Add fastq absolute file paths and read-direction info to
+                    # self.fin_download_dict.
+                    s = str(sample) + '_pass_[0-9].fastq'
+                    match = cfs.rglob(s)
+                    # matches = []
+                    for x in match:
+                        # matches.append(x)
+                        if 'pass_1' in str(x):
+                            abs_path_1 = str(x)
+                        if 'pass_2' in str(x):
+                            abs_path_2 = str(x)
+
+                    self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
 
                     # Check if the counter has reached the desired number of samples.
                     if self.success_download_counter >= self.threshold:
@@ -153,7 +153,7 @@ class DownloadHelper:
         man_path = os.path.join(_BIODIR, filename)
         with open(man_path, 'w', newline='') as csvfile:
             manifestwriter = csv.writer(csvfile, delimiter=',')
-            header = ('sample-id', 'absolute-filepath', 'direction\n')
+            header = ('sample-id', 'absolute-filepath', 'direction')
             manifestwriter.writerow(header)
 
             for key, value in self.fin_download_dict.items():
@@ -172,9 +172,12 @@ class DownloadHelper:
         :return: None
         """
         the_samples = [key for key in self.fin_download_dict.keys()]
+        print(the_samples)
         metadata = pdTableOfSamples.df.loc[pdTableOfSamples.df['Run'].isin(the_samples)]
+        print(metadata)
         idx = 0
         new_col = [run for run in metadata['Run']]  # can be a list, a Series, an array or a scalar
+        print(new_col)
 
         # Insert a column to the table because the metadata table needs an 'id' column,
         # and without this the ids end up in a weird column without a header, which
