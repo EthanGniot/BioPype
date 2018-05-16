@@ -37,7 +37,7 @@ class DownloadHelper:
         self.check_dir_exists(cfs)
         # Randomly select SRA ID(s) from the pool.
         # sample = runtable.RunTable.random_sample_subset(self.acc_nums, 1)[0]
-        random_samples = runtable.RunTable.random_sample_subset(self.acc_nums, 2)
+        random_samples = runtable.RunTable.random_sample_subset(self.acc_nums, 5)
         print(random_samples)
         for sample in random_samples:
             print(sample)
@@ -95,7 +95,13 @@ class DownloadHelper:
                         if 'pass_2' in str(x):
                             abs_path_2 = str(x)
 
-                    self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
+                    # p = pathlib.Path(abs_path_1)
+                    # desc_sample_name = str(p.parent.name) + '_' + sample
+
+                    # self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'), desc_sample_name)
+                    self.fin_download_dict[sample] = (
+                    (abs_path_1, 'forward'), (abs_path_2, 'reverse'))
+                    print('DOWNLOAD_DICT_ENTRY: ' + str(self.fin_download_dict[sample]))
 
                     # Check if the counter has reached the desired number of samples.
                     if self.success_download_counter >= self.threshold:
@@ -126,30 +132,11 @@ class DownloadHelper:
         if self.n_files_in_fastq_dir < self.threshold:
             self.download_paired_end_data(downloaded_sra_folder, converted_fastq_subdir)
 
-    def create_manifest_dict(self, input_dir):
-        """Create dict that can be used to create a qiime2 fastq manifest file.
 
-        :param input_dir: path to the directory containing trimmed fastq files.
-        :return: dict
-        """
-        manifest_dict = {}
-
-
-        # s = str(sample) + '_pass_[0-9].fastq'
-        s = str()
-        match = input_dir.rglob(s)
-        # matches = []
-        for x in match:
-            # matches.append(x)
-            if 'pass_1' in str(x):
-                abs_path_1 = str(x)
-            if 'pass_2' in str(x):
-                abs_path_2 = str(x)
-        return manifest_dict
 
         self.fin_download_dict[sample] = ((abs_path_1, 'forward'), (abs_path_2, 'reverse'))
 
-    def create_manifest_file(self, filename):
+    def method_create_manifest_file(self, filename):
         man_path = os.path.join(_BIODIR, filename)
         with open(man_path, 'w', newline='') as csvfile:
             manifestwriter = csv.writer(csvfile, delimiter=',')
@@ -159,6 +146,46 @@ class DownloadHelper:
             for key, value in self.fin_download_dict.items():
                 for tup in value:
                     manifestwriter.writerow([key, tup[0], tup[1]])
+        return man_path
+
+    @staticmethod
+    def create_manifest_file(filename, *args):
+        """Create fastq manifest file by using several dictionaries.
+
+        # TODO: make this function description more detailed.
+        :param filename:
+        :param args: dictionaries that contain sample IDs, absolute filepaths,
+        and read direction for sequence-data-files.
+        :return: path to the created manifest file.
+        """
+        man_path = os.path.join(_BIODIR, filename)
+        with open(man_path, 'w', newline='') as csvfile:
+            manifestwriter = csv.writer(csvfile, delimiter=',')
+            header = ('sample-id', 'absolute-filepath', 'direction')
+            manifestwriter.writerow(header)
+
+            for dictionary in args:
+                print('ITEMS: ' + str(dictionary.items()))
+                for key, value in dictionary.items():
+                    print('KEY:' + str(key))
+                    print('VALUE: ' + str(value))
+                    print('LEN: ' + str(len(value)))
+                    tup1 = value[0]
+                    tup2 = value[1]
+
+                    abs_path_1 = tup1[0]
+                    print('ABS_PATH1 = ' + str(abs_path_1))
+                    p = pathlib.Path(abs_path_1)
+                    desc_sample_name = str(p.parent.name) + '_' + key
+
+                    # desc_sample_name = value[2]
+                    manifestwriter.writerow([desc_sample_name, tup1[0], tup1[1]])
+                    manifestwriter.writerow([desc_sample_name, tup2[0], tup2[1]])
+
+                    # for tup1, tup2, string in value:
+                    #     print(desc_sample_name, tup[0], tup[1])
+                    #     manifestwriter.writerow([desc_sample_name, tup1[0], tup1[1]])
+                    #     manifestwriter.writerow([desc_sample_name, tup2[0], tup2[1]])
         return man_path
 
     def create_metadata_file(self, pdTableOfSamples, metadata_filepath):
