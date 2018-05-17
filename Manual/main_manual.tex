@@ -1,6 +1,10 @@
 % Requesting draft will show any overfull boxes when the document is compiled. Should be black lines on the document where the boxes are overfull.
 \documentclass{refrep}
-%\maxipagerulefalse
+
+% For increasing the width of the left margin.
+\setlength{\marginparwidth}{6.5cm}
+% For adding minimum space between notes in the left margin.
+\setlength{\marginparpush}{0.25cm}
 
 \usepackage[textsize=tiny]{todonotes}
 
@@ -33,12 +37,20 @@
 \usepackage[tikz]{bclogo}
 \definecolor{vlightgray}{gray}{0.90}
 
+% For bibliography
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+% For letting underlined text wrap to the next line when it reaches the edge of the page.
+\usepackage{soul}
+
 \title{BioPype: A crash course in bioinformatics and custom pipelines}
 
 \author{Ethan Gniot}
 \date{May 2018}
 
 \begin{document}
+
 
 \include{sec1-6}
 \include{chapter7}

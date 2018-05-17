@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main_manual.aux
+The style file: apalike.bst
+A level-1 auxiliary file: sec1-6.aux
+A level-1 auxiliary file: chapter7.aux
+A level-1 auxiliary file: chapter8.aux
+A level-1 auxiliary file: chapter9.aux
+A level-1 auxiliary file: chapters10-16.aux
+A level-1 auxiliary file: appendix.aux
+Database file #1: /Volumes/Gniot_Backup_Drive/repos/BioPype/Manual/library.bib
+You've used 17 entries,
+            1935 wiz_defined-function locations,
+            618 strings with 8375 characters,
+and the built_in function-call counts, 8602 in all, are:
+= -- 790
+> -- 560
+< -- 5
++ -- 206
+- -- 204
+* -- 862
+:= -- 1540
+add.period$ -- 51
+call.type$ -- 17
+change.case$ -- 187
+chr.to.int$ -- 15
+cite$ -- 17
+duplicate$ -- 238
+empty$ -- 483
+format.name$ -- 229
+if$ -- 1593
+int.to.chr$ -- 3
+int.to.str$ -- 0
+missing$ -- 17
+newline$ -- 88
+num.names$ -- 51
+pop$ -- 148
+preamble$ -- 1
+purify$ -- 187
+quote$ -- 0
+skip$ -- 174
+stack$ -- 0
+substring$ -- 531
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 102
+warning$ -- 0
+while$ -- 63
+width$ -- 0
+write$ -- 223

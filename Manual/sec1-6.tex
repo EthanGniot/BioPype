@@ -28,26 +28,29 @@ Most reference materials are consolidated in the appendices at the end of the bo
 
 \seealso{This kind of annotation will reference appendix entries that you can consult for more-detailed information about the main text.} Ut ultrices eros velit, at faucibus ante rutrum eget. Pellentesque a molestie diam. Curabitur mattis dui a risus lacinia fringilla. Phasellus porttitor elit nec neque euismod, id ultrices elit lobortis. Aliquam molestie sem. Curabitur sit amet urna faucibus, vulputate arcu sit amet, fermentum ipsum. Nulla facilisi. Nam ullamcorper eget leo id malesuada.
 
+
+\section{Source Code}
+The source code for this manual, the accompanying tutorial, and the BioPype package can all be found at \url{github.com/EthanGniot/BioPype}.
 \section{Pre-requisites}
 \subsection*{Things to know}
+\todo[inline]{Talk about the prior biology knowledge people should have}
 \subsection*{Computer requirements}
 \begin{itemize}
-    \item At least 4GB RAM bare minimum, 16GB RAM if possible (basically, the more RAM, the better)
-    \item Must be able to run macOS 10.12 Sierra, preferably macOS 10.13 High Sierra
-    \item At least 500GB storage (ideally several TB)
+    \item At least 4GB RAM bare minimum, 16GB RAM if possible (the more RAM, the better)
+    \item The BioPype package was designed to be as operating-system-agnostic as possible. That being said, all tests and analyses from this tutorial were performed on a MacBook Pro (Retina, 13-inch, Late 2013) running macOS 10.13.4 High Sierra. Compatibility with other operating systems have not yet been tested.
+    \item Storage requirements will vary depending on the amount of data you intend to analyze. The analysis performed in this tutorial required at least 500GB and were satisfied by using a 2TB external hard drive.
 \end{itemize}
 
-\chapter{Source Code}
-(Source code can be found at github.com/EthanGniot/LU-microbiome)
 
+%
 \chapter{Sample Information}
 \todo{Still need to add information about the inflammatory bowel disease dataset}
 
-While we are building the LU-microbiome pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match the results of the original analysis, then we will know that our tool is working correctly.
+While we are building the BioPype pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match the results of the original analysis, then we will know that our tool is working correctly.
 
 There are several test datasets available to us for testing the feature that analyzes the relative abundance of bacteria in the microbiota.
 
-The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) \todo{Make URLs footnotes instead of appendix entries} and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \seealso{Caporaso et al, 2011 \cite{Caporaso2011}} \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper). These data were sequenced using the barcoded amplicon sequencing protocol described in \seealso{ THIS CITATION NEEDS TO BE FIXED \cite{Caporaso2011a}} \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample}. A more recent version of this protocol that can be used with the Illumina HiSeq 2000 and MiSeq can be found here. \todo{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}
+The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) \todo{Make URLs footnotes instead of appendix entries} and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper) \cite{Caporaso2011}. These data were sequenced using the barcoded amplicon sequencing protocol described in \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample} \cite{Caporaso2011a}. A more recent version of this protocol that can be used with the Illumina HiSeq 2000 and MiSeq can be found here.
 
 (Here is information about the untested inflammatory bowel disease dataset that we will analyze using the completed pipeline)
 
@@ -56,10 +59,54 @@ The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\
 ("Here" is a hypothetical situation/research question that a student may have. This is the research question that will be answered by the pipeline we are creating.)
 
 \chapter{Microbiome Analysis}
-(This chapter will give some general background information about the topics listed below. More-detailed information will be provided in later chapters when we are actually creating the pipeline)
+The analysis used in this tutorial will focus on analysis of the human gut microbiome, but BioPype can be used to analyze the microbiomes of other communities as well.
 \section{The Gut Microbiome}
+%
+The human gut is home to trillions of microbes. The collection of physical micro-organisms that live in the gut is referred to as the \textbf{gut microbiota}. The \textbf{gut microbiome} refers to all of the genes contained within these micro-organisms, as well as their functions and interactions.
+%
+\seealso{For more explanation about the \textbf{gut microbiota} and \textbf{gut microbiome}, see \ref{appendix:microbiome-vs-microbiota}.}
+%
+Human microbiota can play host to many different kinds of microbes, including bacteria, archaea, and fungi. For the sake of this tutorial, we are going to focus on the role of bacteria in human microbiomes.
+
+Sometimes the biodiversity of the gut is thrown out of balance. When bacteria that normally have a 
+When bacteria that normally make up a large percentage of the 
+
+high relative abundance being underrepresented, while bacteria that normally have a low relative abundance are overrepresented. This phenomenon is referred to as \textbf{dysbiosis}. Gut dysbiosis is important to study because it has been found to be associated with a wide range of disorders that manifest in various areas of the body, including diabetes, rheumatoid arthritis, Alzheimer's, inflammatory bowel disease, colon cancer \citep{Buford2017, Kennedy2014, Castellarin2012},  chronic fatigue syndrome \citep{Lakhan2010}, obesity \citep{Turnbaugh2006,Turnbaugh2009}, bacterial vaginosis \citep{Africa2014}, ulcerative colitis {\citep{Mandal2015, Matsuoka2015}, anxiety, and depression \citep{Evrensel2015, Lach2018}
+%
 \section{Relative Abundance Analysis}
+%
+\marginlabel{\small \textbf{Relative abundance} is a measure of how common or rare a taxon is, relative to other taxa in its community, and is usually expressed as a percentage. For more information on \textbf{relative abundance} analyses, see Appendix \ref{appendix:abundance-analyses}.} 
+%
+BioPype lets users examine the \textbf{relative abundance} of bacterial taxa in each experimental sample. Relative abundance analyses help visualize the structure of the micro-organism community. Users can use BioPype to analyze bacterial \textbf{amplicon} sequencing data to determine which micro-organisms are present and in what proportion.
+%
+\seealso{\small For information on \textbf{amplicon} sequencing vs. shotgun sequencing, see Appendix \ref{appendix:amplicon}}.
+%
+The idea is to take the sequences and assign them to a taxon. To do that, we group (or cluster) sequences based on their similarity to define \textbf{Operational Taxonomic Units (OTUs)}. 
+%
+\marginlabel{\small \textbf{Operational Taxonomic Unit (OTU)}: A group of sequences that share significant similarity based on some marker gene. Groups can be treated as a single taxon (e.g., genus, species, etc. depending on the clustering threshold) for analysis purposes. For more info, see Appendix \ref{appendix:otu}}
+%
+Using the number of sequences assigned to each OTU/taxon, BioPype can determine the relative abundance of each micro-organism in a sample and plot the results on an interactive bar chart.
+
+For example, studies have found that the genera \textit{Bacteroides} and \textit{Lactobacillus} are both prevalent in the healthy human gut microbiome, but \textit{Bacteroides} has a higher relative abundance than \textit{Lactobacillus} \cite{Lloyd-Price2016}. In other words, Bacteroides makes up a greater percentage of all the bacteria in the gut than Lactobacillus does.
+
+Relative abundance is an important measure of biodiversity in the gut. 
+BioPype can be used to compare the relative abundance of bacteria at different taxonomic levels, which helps users identify instances of gut dysbiosis in sample microbiomes.
+
 \section{Metagenomics}
+\attention{\textit{THIS FUNCTIONALITY HAS NOT BEEN COMPLETED YET, BUT WILL BE ADDED IN FUTURE UPDATES}}
+
+BioPype can also be used to predict which genes are present in microbiome samples. From these predicted genes, users can do two things. 
+
+First, they can generalize the functions encoded across all bacteria that are present in an experimental condition's microbiome (i.e., at the metagenomic scale) and visualize the relative distribution of these functions with a bar chart. Having this functional snapshot of a metagenome is useful because a functional overview of the experimental condition can be compared to a functional overview of the control condition to see if there are differences in the two groups' functional capabilities. When comparing the microbiomes of disordered vs. non-disordered samples, having a visual depiction of the differences in functional capabilities can make it easier to find the cause of the disorder by narrowing down the potential sources of the condition. 
+
+For example, certain G protein-coupled receptors (GPCRs) in the gut are associated with some of the diseases associated with gut dysbiosis, such as inflammatory bowel disease (IBD) \citep{Cohen2017}. Research has also shown that bacteria interact with their environment via the release of small molecules \citep{Li2012}. From these premises, one could hypothesize that IBD may be caused by the over-production of certain effector molecules from the gut microbiome. This hypothesis may be tested by using BioPype to compare the functional capabilities of the IBD microbiome with that of a healthy control microbiome. If the results show, for example, that the IBD gut metagenome has a greater proportion of genes associated with lipid production than the control metagenome, it indicates potential support for the user's hypothesis. They can now refine their investigation by narrowing the scope of their search to only analyze genes associated with lipid synthesis.
+
+Second, users can use BioPype to predict the functions of \textit{individual} genes. This is useful because it allows users to identify a specific gene of interest for their research question, which they can then design a validation experiment for. 
+
+Continuing with our above example hypothesis about the gut microbiome?s role in IBD, the user can now turn their focus to the functions of specific lipid-synthesis genes that are being overrepresented in IBD patients' microbiomes. Upon examining the functions of individual genes, they find that N-acyl amide synthase genes are enriched in the IBD microbiome. Wet-lab validation experiments will confirm that the lipids encoded by these genes are able to interact with GPCRs that regulate GI tract physiology \citep{Cohen2017}. This suggests that these lipids, and their associated genes in the microbiome, have the potential to cause IBD during times of dysbiosis by activating GPCRs in the gut \citep{Cohen2017}, thus supporting the user's original hypothesis. Additionally, one can use these findings to focus future research questions about the role of the human microbiome in health disorders by searching for correlations between N-acyl amide synthase genes and other conditions. For instance, since the products of these genes interact with GPCRs to potentially regulate IBD, and IBD is associated with anxiety and depression, investigation may reveal that the interaction between these genes and GPCRs potentially regulate anxiety and depression as well.
+
+
+
 \section{Python}
 
 \chapter{How to Find Tools}

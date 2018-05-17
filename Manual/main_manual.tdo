@@ -1,27 +1,27 @@
-\contentsline {todo}{Still need to add information about the inflammatory bowel disease dataset}{8}{section*.5}
-\contentsline {todo}{Make URLs footnotes instead of appendix entries}{8}{section*.6}
-\contentsline {todo}{Fix bibliography entries in this paragraph and in general. They're not correctly referencing even though bib file has entries.}{8}{section*.7}
-\contentsline {todo}{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}{13}{section*.8}
-\contentsline {todo}{write about installing qiime2 \url {https://docs.qiime2.org/2018.4/install/native/}}{13}{section*.9}
-\contentsline {todo}{write about installing parallel-fastq-dump}{13}{section*.10}
-\contentsline {todo}{write about installing multifastqc}{13}{section*.11}
-\contentsline {todo}{add 3rd column to table with link to documentation/download source}{13}{section*.12}
-\contentsline {todo}{Write a blurb explaining the benefits of using a virtual environment.}{15}{section*.13}
-\contentsline {todo}{Link to resource for further reading on virtual environments}{15}{section*.14}
-\contentsline {todo}{Write blurb about what packages are.}{15}{section*.15}
-\contentsline {todo}{Link to resource for further reading about packages.}{15}{section*.16}
-\contentsline {todo}{Solve the issue with failing to center figures when they're on their own page}{16}{section*.17}
-\contentsline {todo}{Talk about setting up the sra-tools workspace (\url {https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}{16}{section*.18}
-\contentsline {todo}{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}{16}{section*.19}
-\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{16}{section*.20}
-\contentsline {todo}{Reference the figure pypiper-already-installed}{18}{section*.21}
-\contentsline {todo}{Figure: pypiper-already-installed}{18}{section*.21}
-\contentsline {todo}{reference figure pypiper-wrong-location}{18}{section*.22}
-\contentsline {todo}{Figure: pypiper-wrong-location}{18}{section*.22}
-\contentsline {todo}{Talk about choosing between PyCharm and other options}{19}{section*.23}
-\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{19}{section*.24}
-\contentsline {todo}{*****Show the user what the result of the commands are. Right now we show the commands, but not the results. e.g., when we run a command to get a list of accession numbers, follow it up by typing the command that just prints the list of numbers in the terminal. Then the user can see what their results should look like if they did everything correctly. }{21}{section*.25}
-\contentsline {todo}{Figure: highlight where to click to download the runinfo table}{22}{Item.33}
-\contentsline {todo}{Either shorten this margin-label, or put it in a footnote.}{22}{section*.27}
-\contentsline {todo}{Give a specific name to the RunInfo Table file. People might get confused if they needs to fill in the name of the file themselves.}{22}{section*.28}
-\contentsline {todo}{Find resource for explaining the .sra file format that we download from the SRA Database}{33}{section*.29}
+\contentsline {todo}{Talk about the prior biology knowledge people should have}{6}{section*.4}
+\contentsline {todo}{Still need to add information about the inflammatory bowel disease dataset}{7}{section*.6}
+\contentsline {todo}{Make URLs footnotes instead of appendix entries}{7}{section*.7}
+\contentsline {todo}{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}{14}{section*.8}
+\contentsline {todo}{write about installing qiime2 \url {https://docs.qiime2.org/2018.4/install/native/}}{14}{section*.9}
+\contentsline {todo}{write about installing parallel-fastq-dump}{14}{section*.10}
+\contentsline {todo}{write about installing multifastqc}{14}{section*.11}
+\contentsline {todo}{add 3rd column to table with link to documentation/download source}{14}{section*.12}
+\contentsline {todo}{Write a blurb explaining the benefits of using a virtual environment.}{16}{section*.13}
+\contentsline {todo}{Link to resource for further reading on virtual environments}{16}{section*.14}
+\contentsline {todo}{Write blurb about what packages are.}{16}{section*.15}
+\contentsline {todo}{Link to resource for further reading about packages.}{16}{section*.16}
+\contentsline {todo}{Solve the issue with failing to center figures when they're on their own page}{17}{section*.17}
+\contentsline {todo}{Talk about setting up the sra-tools workspace (\url {https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}{17}{section*.18}
+\contentsline {todo}{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}{17}{section*.19}
+\contentsline {todo}{show image of what the prompt looks like when it's done initializing.}{17}{section*.20}
+\contentsline {todo}{Reference the figure pypiper-already-installed}{19}{section*.21}
+\contentsline {todo}{Figure: pypiper-already-installed}{19}{section*.21}
+\contentsline {todo}{reference figure pypiper-wrong-location}{19}{section*.22}
+\contentsline {todo}{Figure: pypiper-wrong-location}{19}{section*.22}
+\contentsline {todo}{Talk about choosing between PyCharm and other options}{20}{section*.23}
+\contentsline {todo}{(Talk about putting all the tools in the same path/directory)}{20}{section*.24}
+\contentsline {todo}{*****Show the user what the result of the commands are. Right now we show the commands, but not the results. e.g., when we run a command to get a list of accession numbers, follow it up by typing the command that just prints the list of numbers in the terminal. Then the user can see what their results should look like if they did everything correctly. }{22}{section*.25}
+\contentsline {todo}{Figure: highlight where to click to download the runinfo table}{23}{Item.33}
+\contentsline {todo}{Either shorten this margin-label, or put it in a footnote.}{23}{section*.27}
+\contentsline {todo}{Give a specific name to the RunInfo Table file. People might get confused if they needs to fill in the name of the file themselves.}{23}{section*.28}
+\contentsline {todo}{Find resource for explaining the .sra file format that we download from the SRA Database}{34}{section*.29}
