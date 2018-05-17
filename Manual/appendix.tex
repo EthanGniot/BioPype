@@ -2,7 +2,7 @@
 \begin{fullpage}
 
     \appendix
-    \chapter{Web Links}
+    \chapter{Web Resources and Explanations}
     
     \section{QIIME Illumina Overview Tutorial}
     \label{appendix:IlluminaOverTut}
@@ -11,6 +11,38 @@
     \section{QIIME 2 Moving Pictures Tutorial}
     \label{appendix:MovingPicTut}
     \url{https://docs.qiime2.org/2018.2/tutorials/moving-pictures/}
+
+    \section{Microbiota vs Microbiome}
+    \label{appendix:microbiome-vs-microbiota}
+    \textit{"What is the gut microbiota? What is the human microbiome?"} from medicalnewstoday.com.
+    \url{https://www.medicalnewstoday.com/articles/307998.php}
+
+
+    \section{Relative- vs Differential-Abundance Analyses}
+    \label{appendix:abundance-analyses}
+    \textit{(For more in-depth discussion of differential abundance analyses, see \citep{Mandal2015a}. )}
+    
+    \textbf{Differential abundance analysis:} seeing which samples are most similar/dissimilar based on the \ul{raw sequence counts} for each sample (E.g., 5 sequences associated with the \textit{Lactobacillus} OTU were found in Sample A, and 10 sequences were found in Sample B). Differential abundance analysis answers the following questions:
+    %
+    \begin{itemize}
+        \item Is Sample A more similar to Sample B, or to Sample C in terms of its microbiome composition? (has an associated p-value)
+        \item Does sequence variant/OTU/taxon/bacterium "X" appear more/less often in Subject A than in Subject B? (raw count) 
+    \end{itemize}
+    %
+    \textbf{Relative abundance analysis:} seeing which samples are most similar/dissimilar based on the \ul{proportion of sequence counts} for each sample (E.g., out of all the sequences obtained from Sample A, \%50 were associated with the \textit{Lactobacillus} OTU. Out of all the sequences obtained from Sample B, \%100 were associated with the \textit{Lactobacillus} OTU. Relative abundance analysis answers the following question:
+    \begin{itemize}
+    \item Does Sample A have higher/lower percentage of Bacteria X in its microbiome than Sample B?
+    \end{itemize}
+    
+
+
+    \section{Amplicon vs WGS data}
+    \label{appendix:amplicon}
+    \url{http://galaxyproject.github.io/training-material/topics/metagenomics/tutorials/general-tutorial/tutorial.html#amplicon-data}
+
+    \section{Operational Taxonomic Units (OTUs)}
+    \label{appendix:otu}
+    \url{https://www.drive5.com/usearch/manual/otu_definition.html}
 
 
     \section{Explanation of @staticmethod decorator vs @classmethod decorator in Python}
@@ -56,17 +88,18 @@
     \label{app:sra-format}
     \todo[inline]{Find resource for explaining the .sra file format that we download from the SRA Database}
 
-    
-\chapter{Referenced Studies}
 %https://www.ncbi.nlm.nih.gov/pubmed/21624126
 
+\renewcommand{\bibname}{References}
+% Enable \raggedright if the urls in the bibliography overflow the right margin. 
+%\raggedright
+\bibliography{/Volumes/Gniot_Backup_Drive/repos/BioPype/Manual/library} 
 
 \end{fullpage}
+
 %
 
-\bibliographystyle{plain}
 %
-\bibliography{/Users/ethangniot/Documents/Bibtex/LU-microbiome_manual}
 
 %%%%%%%%%%%
 % When you define a \label outside a figure, a table, or other floating objects, the label points to the current section. In some cases, this behavior is not what you'd like and you'd prefer the generated link to point to the line where the \label is defined. This can be achieved with the command \phantomsection as in this example:

@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import pathlib
 import csv
+import glob
 
 from BioPype.workspaces.dirpaths import DirPathsHelper
 
@@ -31,6 +32,176 @@ class DownloadHelper:
         # file path to one of the paired-end fastq files, and 2) whether the
         # fastq file contains forward or reverse reads.
         self.fin_download_dict = {}  # THESE ARE UNFILTERED
+
+    @staticmethod
+    def check_dir_exists(directory):
+        """Check if directory exists. If not, create it."""
+        if not os.path.isdir(str(directory)):
+            print(str(directory) + "does not exist... Creating " + str(directory) + "\n")
+            os.makedirs(str(directory))
+
+    def isPairedSRA(self, filename):
+        # From https://www.biostars.org/p/139422/
+        # filename = os.path.abspath(filename)
+        try:
+            contents = subprocess.check_output(["fastq-dump", "-X", "1", "-Z", "--split-spot", filename], universal_newlines=True)
+        except subprocess.CalledProcessError as e:
+            raise Exception("Error running fastq-dump on", filename)
+
+        if contents.count("\n") == 4:
+            return False
+        elif contents.count("\n") == 8:
+            return True
+        else:
+            raise Exception("Unexpected output from fast-dump on ", filename)
+
+    def download_sra(self, acc_nums, outdirectory_name):
+        """Download SRA runs to the configured sra-toolkit workspace.
+        :param acc_nums: iterator containing SRA accession numbers (e.g., ['SRR6664514'])
+        :param outdirectory_name: str; name of the folder that the downloaded
+            .sra files will be stored in within data.grouped_sra
+        :return: None
+        """
+        # Delete all files in the data.sra directory before downloading new ones.
+        folder = os.path.join(_SRADIR, 'sra')
+        self.check_dir_exists(folder)
+        for the_file in os.listdir(folder):
+            file_path = os.path.join(folder, the_file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                # Un-comment the line beneath this one to delete directories too.
+                # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+            except Exception as e:
+                print(e)
+
+        # Download sra files using the given accession numbers.
+        if not isinstance(acc_nums, str):
+            for num in acc_nums:
+                subprocess.run(['prefetch', num])
+        else:
+            subprocess.run(['prefetch', acc_nums])
+
+        if not isinstance(acc_nums, str):
+            # Define the path to the destination folder.
+            grouped_dir_path = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
+            # Create the destination folder and copy the .sra files into it.
+            self.check_dir_exists(grouped_dir_path)
+            self.copy_sra_to_group_dir(folder, grouped_dir_path)
+
+            # (un-comment this if the recursive copy_sra_to_group_dir function fails)
+            # shutil.copytree(folder, grouped_dir_path)
+
+        else:
+            # p is the path to the .sra file that was just downloaded.
+            p = os.path.join(folder, (str(acc_nums) + '.sra'))
+            d = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
+            self.check_dir_exists(d)
+            shutil.move(p, d)
+        return None
+
+    def copy_sra_to_group_dir(self, current_folder, destination_folder):
+        try:
+            shutil.copytree(current_folder, destination_folder)
+        except FileExistsError:
+            print('WARNING: DESTINATION DIRECTORY ALREADY EXISTS. SENDING FILES TO <destination_dir(copy)>\n')
+            grouped_dir_path = str(destination_folder + '(copy)')
+            # TODO: Determine if I need to move the recursion result to the return statement
+            self.copy_sra_to_group_dir(current_folder, grouped_dir_path)
+        return None
+
+    def parallel_fastq_dump(self, sra_file_path, threads, fastq_dir):
+        """Execute a standardized parallel-fastq-dump."""
+        # TODO: Change this to just accept an arbitrary number of args then change the rest of the code to account for the lack of standard args
+        subprocess.run(['parallel-fastq-dump', '--sra-id', str(sra_file_path),
+                        '--threads', str(threads), '--outdir', str(fastq_dir),
+                        '--split-3', '--readids', '--skip-technical', '--clip',
+                        '--read-filter', 'pass', '--dumpbase'])
+
+    def convert_sra_to_fastq(self, select_files='', threads=1, _final_grouped_fastq_subdir=''):
+        """Convert target .sra files to .fastq and store in fastq_dir.
+        :param select_files: Must be an iterable containing names of files or subdirectories
+            in data.grouped_sra as strings. Usually, these names are SRA accession
+            numbers + '.sra' (e.g., SRR664513.sra) or names of folders
+            (e.g,. control_sequences).
+            Default=''. Default value targets all sub-directories from
+            data.grouped_sra.
+        :param threads: str or int; the number of threads to create when performing
+        parallel-fastq-dump.
+        :return: None
+        """
+        # sra_dir = path to the directory where target .sra files exist.
+        grouped_sra_dir = pathlib.Path(_SRADIR).joinpath('grouped_sra')
+        # check_dir_exists(str(temp_fastq_dir))
+
+        # If the user only wants to convert a few specific .sra files/groups of
+        # files...
+        if select_files:
+            paths = []
+            if not isinstance(select_files, str):
+                for selected in select_files:
+                    # Search the subdirectories in grouped_sra_dir for files with names
+                    # that match the user-given names in select_files.
+                    # os.path.join('**', str(selected)) will create a string that looks
+                    # like --> '**/name_of_file_in_select_files'
+                    # The grouped_sra_dir.glob() method searches for file names that
+                    # contain the pattern 'selected' in 'select_files'.
+                    # The '**' tells grouped_sra_dir.glob() to look within
+                    # subdirectories of grouped_sra_dir as well, rather than just
+                    # grouped_sra_dir.
+                    match = grouped_sra_dir.glob(os.path.join('**', str(selected)))
+                    for item in match:
+                        item_path = item.resolve()
+                        paths.append(str(item_path))
+            else:
+                s = select_files + '.*'
+                match = grouped_sra_dir.glob(os.path.join('**', s))
+                for item in match:
+                    item_path = item.resolve()
+                    paths.append(str(item_path))
+            for path in paths:
+                # If the path is a subdirectory in the data.grouped_sra
+                # directory (i.e., they specified a whole group of .sra files) ...
+                if os.path.isdir(str(path)):
+                    subdir_path = pathlib.Path(path)
+                    outdir = os.path.join(_SRADIR, 'grouped_fastq', subdir_path.name)
+                    # ... for each file in the subdirectory...
+                    for f in subdir_path.iterdir():
+                        # ... get the path to the file...
+                        sra_file_path = subdir_path.joinpath(f.name)
+                        # ... then download the file from the SRA database.
+                        self.parallel_fastq_dump(sra_file_path, threads, outdir)
+
+                # If the path is a specific .sra file...
+                if os.path.isfile(str(path)):
+                    if _final_grouped_fastq_subdir:
+                        # This is a path
+                        fastq_outdir = _final_grouped_fastq_subdir
+                    else:
+                        fastq_outdir = os.path.join(_SRADIR, 'grouped_fastq')
+                    sra_file_path = grouped_sra_dir.joinpath(path)
+                    self.parallel_fastq_dump(sra_file_path, threads, fastq_outdir)
+
+        else:  # For batch-conversion of all groups in the target grouped_sra dir.
+            for folder in grouped_sra_dir.iterdir():
+                outdir = os.path.join(_SRADIR, 'grouped_fastq', folder.name)
+                self.check_dir_exists(outdir)
+                for sra_file in folder.iterdir():
+                    # This is to ignore any hidden os files (e.g., .DS_Store)
+                    if sra_file.suffix == '.sra':
+                        sra_file_path = grouped_sra_dir.joinpath(sra_file)
+                        self.parallel_fastq_dump(sra_file_path, threads, outdir)
+        return None
+
+    def write_to_single_end_file(self, appended_text):
+        """Write SRA ID's/accession numbers to a file for tracking single-end data.
+
+        :param appended_text: Text to append to file
+        :return: None
+        """
+        filepath = os.path.join(_SRADIR, 'files', 'single_end_sra_files.txt')
+        with open(filepath, "a") as f:
+            f.write(appended_text + '\n')
 
     def download_paired_end_data(self, downloaded_sra_folder, converted_fastq_subdir):
         cfs = pathlib.Path(_SRADIR).joinpath('grouped_fastq', converted_fastq_subdir)
@@ -165,16 +336,10 @@ class DownloadHelper:
             manifestwriter.writerow(header)
 
             for dictionary in args:
-                print('ITEMS: ' + str(dictionary.items()))
                 for key, value in dictionary.items():
-                    print('KEY:' + str(key))
-                    print('VALUE: ' + str(value))
-                    print('LEN: ' + str(len(value)))
                     tup1 = value[0]
                     tup2 = value[1]
-
                     abs_path_1 = tup1[0]
-                    print('ABS_PATH1 = ' + str(abs_path_1))
                     p = pathlib.Path(abs_path_1)
                     desc_sample_name = str(p.parent.name) + '_' + key
 
@@ -198,187 +363,72 @@ class DownloadHelper:
         saved.
         :return: None
         """
+        # Get a list of all the sample IDs that were downloaded.
         the_samples = [key for key in self.fin_download_dict.keys()]
-        print(the_samples)
-        metadata = pdTableOfSamples.df.loc[pdTableOfSamples.df['Run'].isin(the_samples)]
-        print(metadata)
-        idx = 0
-        new_col = [run for run in metadata['Run']]  # can be a list, a Series, an array or a scalar
-        print(new_col)
 
-        # Insert a column to the table because the metadata table needs an 'id' column,
-        # and without this the ids end up in a weird column without a header, which
-        # causes errors.
-        metadata.insert(loc=idx, column='id', value=new_col)
+        # Create a dictionary of descriptive sample names.
+        # Key = SRA ID. Value = SRA ID concatenated with an identifier that
+        # tells what experimental group it belongs to.
+        names_dict = {}
+        for key_, value in self.fin_download_dict.items():
+            tup = value[0]
+            abs_path = tup[0]
+            p = pathlib.Path(abs_path)
+            desc_sample_name = str(p.parent.name) + '_' + key_
+            names_dict[key_] = desc_sample_name
+
+
+        # Select all of the rows in the original RunTable that correspond to
+        # the samples that were downloaded.
+        metadata = pdTableOfSamples.df.loc[pdTableOfSamples.df['Run'].isin(the_samples)]
+
+        # We're going to insert a column to the table because the metadata
+        # table needs an 'id' column, and without this the ids end up in a
+        # weird column without a header, which causes errors downstream.
+
+        # Create a list of sample IDs/SRA IDs.
+        ids = [run for run in metadata['Run']]
+
+        # For each sample/SRA ID in new_col, append its corresponding
+        # descriptive name from the names_dict to a new list called fin_col.
+        fin_col = [names_dict[ID] for ID in ids]
+
+        # Define the place in the table where it will be inserted.
+        col_index = 0
+
+        # Insert the column of descriptive names and label the col as 'id'.
+        metadata.insert(loc=col_index, column='id', value=fin_col)
+
+        # Export the pandas table as a .tsv file.
         metadata.to_csv(metadata_filepath, sep='\t', index=False)
         return metadata_filepath
 
-    def download_sra(self, acc_nums, outdirectory_name):
-        """Download SRA runs to the configured sra-toolkit workspace.
-        :param acc_nums: iterator containing SRA accession numbers (e.g., ['SRR6664514'])
-        :param outdirectory_name: str; name of the folder that the downloaded
-            .sra files will be stored in within data.grouped_sra
-        :return: None
-        """
-        # Delete all files in the data.sra directory before downloading new ones.
-        folder = os.path.join(_SRADIR, 'sra')
-        self.check_dir_exists(folder)
-        for the_file in os.listdir(folder):
-            file_path = os.path.join(folder, the_file)
-            try:
-                if os.path.isfile(file_path):
-                    os.unlink(file_path)
-                # Un-comment the line beneath this one to delete directories too.
-                # elif os.path.isdir(file_path): shutil.rmtree(file_path)
-            except Exception as e:
-                print(e)
-
-        # Download sra files using the given accession numbers.
-        if not isinstance(acc_nums, str):
-            for num in acc_nums:
-                subprocess.run(['prefetch', num])
-        else:
-            subprocess.run(['prefetch', acc_nums])
-
-        if not isinstance(acc_nums, str):
-            # Define the path to the destination folder.
-            grouped_dir_path = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
-            # Create the destination folder and copy the .sra files into it.
-            self.check_dir_exists(grouped_dir_path)
-            self.copy_sra_to_group_dir(folder, grouped_dir_path)
-
-            # (un-comment this if the recursive copy_sra_to_group_dir function fails)
-            # shutil.copytree(folder, grouped_dir_path)
-
-        else:
-            # p is the path to the .sra file that was just downloaded.
-            p = os.path.join(folder, (str(acc_nums) + '.sra'))
-            d = os.path.join(_SRADIR, 'grouped_sra', outdirectory_name)
-            self.check_dir_exists(d)
-            shutil.move(p, d)
-        return None
-
-    def copy_sra_to_group_dir(self, current_folder, destination_folder):
-        try:
-            shutil.copytree(current_folder, destination_folder)
-        except FileExistsError:
-            print('WARNING: DESTINATION DIRECTORY ALREADY EXISTS. SENDING FILES TO <destination_dir(copy)>\n')
-            grouped_dir_path = str(destination_folder + '(copy)')
-            # TODO: Determine if I need to move the recursion result to the return statement
-            self.copy_sra_to_group_dir(current_folder, grouped_dir_path)
-        return None
-
     @staticmethod
-    def check_dir_exists(directory):
-        """Check if directory exists. If not, create it."""
-        if not os.path.isdir(str(directory)):
-            print(str(directory) + "does not exist... Creating " + str(directory) + "\n")
-            os.makedirs(str(directory))
+    def combine_metadata_files(input_files=[], outfile_name='sample-metadata.tsv'):
+        """Generate single metadata .tsv file from multiple metadata .tsv files.
 
-    def parallel_fastq_dump(self, sra_file_path, threads, fastq_dir):
-        """Execute a standardized parallel-fastq-dump."""
-        # TODO: Change this to just accept an arbitrary number of args then change the rest of the code to account for the lack of standard args
-        subprocess.run(['parallel-fastq-dump', '--sra-id', str(sra_file_path),
-                        '--threads', str(threads), '--outdir', str(fastq_dir),
-                        '--split-3', '--readids', '--skip-technical', '--clip',
-                        '--read-filter', 'pass', '--dumpbase'])
-
-    def convert_sra_to_fastq(self, select_files='', threads=1, _final_grouped_fastq_subdir=''):
-        """Convert target .sra files to .fastq and store in fastq_dir.
-        :param select_files: Must be an iterable containing names of files or subdirectories
-            in data.grouped_sra as strings. Usually, these names are SRA accession
-            numbers + '.sra' (e.g., SRR664513.sra) or names of folders
-            (e.g,. control_sequences).
-            Default=''. Default value targets all sub-directories from
-            data.grouped_sra.
-        :param threads: str or int; the number of threads to create when performing
-        parallel-fastq-dump.
-        :return: None
+        :param input_files: list or tupe of files to combine. If empty,
+        glob.glob("*.tsv") the current directory. (Default = [])
+        :param outfile_name: Name of the output .tsv file.
+        (Default = 'sample-metadata.tsv')
+        :return: path to the output file.
         """
-        # sra_dir = path to the directory where target .sra files exist.
-        grouped_sra_dir = pathlib.Path(_SRADIR).joinpath('grouped_sra')
-        # check_dir_exists(str(temp_fastq_dir))
+        out_name = outfile_name
+        with open(out_name, 'w', newline='') as meta:
+            tsvwriter = csv.writer(meta, delimiter='\t')
 
-        # If the user only wants to convert a few specific .sra files/groups of
-        # files...
-        if select_files:
-            paths = []
-            if not isinstance(select_files, str):
-                for selected in select_files:
-                    # Search the subdirectories in grouped_sra_dir for files with names
-                    # that match the user-given names in select_files.
-                    # os.path.join('**', str(selected)) will create a string that looks
-                    # like --> '**/name_of_file_in_select_files'
-                    # The grouped_sra_dir.glob() method searches for file names that
-                    # contain the pattern 'selected' in 'select_files'.
-                    # The '**' tells grouped_sra_dir.glob() to look within
-                    # subdirectories of grouped_sra_dir as well, rather than just
-                    # grouped_sra_dir.
-                    match = grouped_sra_dir.glob(os.path.join('**', str(selected)))
-                    for item in match:
-                        item_path = item.resolve()
-                        paths.append(str(item_path))
+            if len(input_files) != 0:
+                iter_files = input_files
             else:
-                s = select_files + '.*'
-                match = grouped_sra_dir.glob(os.path.join('**', s))
-                for item in match:
-                    item_path = item.resolve()
-                    paths.append(str(item_path))
-            for path in paths:
-                # If the path is a subdirectory in the data.grouped_sra
-                # directory (i.e., they specified a whole group of .sra files) ...
-                if os.path.isdir(str(path)):
-                    subdir_path = pathlib.Path(path)
-                    outdir = os.path.join(_SRADIR, 'grouped_fastq', subdir_path.name)
-                    # ... for each file in the subdirectory...
-                    for f in subdir_path.iterdir():
-                        # ... get the path to the file...
-                        sra_file_path = subdir_path.joinpath(f.name)
-                        # ... then download the file from the SRA database.
-                        self.parallel_fastq_dump(sra_file_path, threads, outdir)
+                iter_files = glob.glob("*.tsv")
 
-                # If the path is a specific .sra file...
-                if os.path.isfile(str(path)):
-                    if _final_grouped_fastq_subdir:
-                        # This is a path
-                        fastq_outdir = _final_grouped_fastq_subdir
-                    else:
-                        fastq_outdir = os.path.join(_SRADIR, 'grouped_fastq')
-                    sra_file_path = grouped_sra_dir.joinpath(path)
-                    self.parallel_fastq_dump(sra_file_path, threads, fastq_outdir)
+            for counter, file in enumerate(iter_files):
+                with open(file, 'r', newline='') as f:
+                    tsvreader = csv.reader(f, delimiter='\t')
 
-        else:  # For batch-conversion of all groups in the target grouped_sra dir.
-            for folder in grouped_sra_dir.iterdir():
-                outdir = os.path.join(_SRADIR, 'grouped_fastq', folder.name)
-                self.check_dir_exists(outdir)
-                for sra_file in folder.iterdir():
-                    # This is to ignore any hidden os files (e.g., .DS_Store)
-                    if sra_file.suffix == '.sra':
-                        sra_file_path = grouped_sra_dir.joinpath(sra_file)
-                        self.parallel_fastq_dump(sra_file_path, threads, outdir)
-        return None
+                    if counter >= 1:
+                        next(tsvreader, None)
 
-    def isPairedSRA(self, filename):
-        # From https://www.biostars.org/p/139422/
-        # filename = os.path.abspath(filename)
-        try:
-            contents = subprocess.check_output(["fastq-dump", "-X", "1", "-Z", "--split-spot", filename], universal_newlines=True)
-        except subprocess.CalledProcessError as e:
-            raise Exception("Error running fastq-dump on", filename)
-
-        if contents.count("\n") == 4:
-            return False
-        elif contents.count("\n") == 8:
-            return True
-        else:
-            raise Exception("Unexpected output from fast-dump on ", filename)
-
-    def write_to_single_end_file(self, appended_text):
-        """Write SRA ID's/accession numbers to a file for tracking single-end data.
-
-        :param appended_text: Text to append to file
-        :return: None
-        """
-        filepath = os.path.join(_SRADIR, 'files', 'single_end_sra_files.txt')
-        with open(filepath, "a") as f:
-            f.write(appended_text + '\n')
+                    for row in tsvreader:
+                        tsvwriter.writerow(row)
+        return outfile_name
