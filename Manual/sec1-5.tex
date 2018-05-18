@@ -32,8 +32,6 @@ The main text of this book is written in the right-hand margin. The left-hand ma
 \section{Source Code}
 The source code for this manual, the accompanying tutorial, and the BioPype package can all be found at \url{github.com/EthanGniot/BioPype}.
 \section{Pre-requisites}
-\subsection*{Things to know}
-\todo[inline]{Talk about the prior biology knowledge people should have}
 \subsection*{Computer requirements}
 \begin{itemize}
     \item At least 4GB RAM minimum.* 16GB RAM if possible (the more RAM, the better)
@@ -46,20 +44,17 @@ The source code for this manual, the accompanying tutorial, and the BioPype pack
 
 
 %
-\chapter{Sample Information}
-\todo{Still need to add information about the inflammatory bowel disease dataset}
+%\chapter{Sample Information}
 
-While we are building the BioPype pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match the results of the original analysis, then we will know that our tool is working correctly.
+%While we are building the BioPype pipeline, we will need a dataset that we can use to test our pipeline throughout the process and make sure it is working as intended. In order to do this, we must use a dataset that's already been analyzed so that we know what the results should look like. When we test our pipeline, if our results match the results of the original analysis, then we will know that our tool is working correctly.
 
-There are several test datasets available to us for testing the feature that analyzes the relative abundance of bacteria in the microbiota.
+%There are several test datasets available to us for testing the feature that analyzes the relative abundance of bacteria in the microbiota.
 
-The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) \todo{Make URLs footnotes instead of appendix entries} and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper) \cite{Caporaso2011}. These data were sequenced using the barcoded amplicon sequencing protocol described in \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample} \cite{Caporaso2011a}. A more recent version of this protocol that can be used with the Illumina HiSeq 2000 and MiSeq can be found here.
+%The first is the dataset used in both the QIIME ``Illumina Overview Tutorial" (\ref{appendix:IlluminaOverTut}) and the QIIME 2 ``Moving Pictures" tutorial (\ref{appendix:MovingPicTut}) derived from the \textit{Moving Pictures of the Human Microbiome} study, where two human subjects collected daily samples from four body sites: the tongue, the palm of the left hand, the palm of the right hand, and the gut (via fecal samples obtained by swapping used toilet paper) \cite{Caporaso2011}. These data were sequenced using the barcoded amplicon sequencing protocol described in \textit{Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample} \cite{Caporaso2011a}. A more recent version of this protocol that can be used with the Illumina HiSeq 2000 and MiSeq can be found here.
 
-(Here is information about the untested inflammatory bowel disease dataset that we will analyze using the completed pipeline)
-
-\chapter{Setting the scene}
-    \label{chap:scene}
-("Here" is a hypothetical situation/research question that a student may have. This is the research question that will be answered by the pipeline we are creating.)
+%\chapter{Setting the scene}
+%    \label{chap:scene}
+%("Here" is a hypothetical situation/research question that a student may have. This is the research question that will be answered by the pipeline we are creating.)
 
 \chapter{Microbiome Analysis}
 The analysis used in this tutorial will focus on analysis of the human gut microbiome, but BioPype can be used to analyze the microbiomes of other communities as well.
@@ -108,7 +103,7 @@ For example, certain G protein-coupled receptors (GPCRs) in the gut are associat
 
 Second, users can use BioPype to predict the functions of \textit{individual} genes. This is useful because it allows users to identify a specific gene of interest for their research question, which they can then design a validation experiment for. 
 
-Continuing with our above example hypothesis about the gut microbiome?s role in IBD, the user can now turn their focus to the functions of specific lipid-synthesis genes that are being overrepresented in IBD patients' microbiomes. Upon examining the functions of individual genes, they find that N-acyl amide synthase genes are enriched in the IBD microbiome. Wet-lab validation experiments will confirm that the lipids encoded by these genes are able to interact with GPCRs that regulate GI tract physiology \citep{Cohen2017}. This suggests that these lipids, and their associated genes in the microbiome, have the potential to cause IBD during times of dysbiosis by activating GPCRs in the gut \citep{Cohen2017}, thus supporting the user's original hypothesis. Additionally, one can use these findings to focus future research questions about the role of the human microbiome in health disorders by searching for correlations between N-acyl amide synthase genes and other conditions. For instance, since the products of these genes interact with GPCRs to potentially regulate IBD, and IBD is associated with anxiety and depression, investigation may reveal that the interaction between these genes and GPCRs potentially regulate anxiety and depression as well.
+Continuing with our above example hypothesis about the gut microbiome's role in IBD, the user can now turn their focus to the functions of specific lipid-synthesis genes that are being overrepresented in IBD patients' microbiomes. Upon examining the functions of individual genes, they find that N-acyl amide synthase genes are enriched in the IBD microbiome. Wet-lab validation experiments will confirm that the lipids encoded by these genes are able to interact with GPCRs that regulate GI tract physiology \citep{Cohen2017}. This suggests that these lipids, and their associated genes in the microbiome, have the potential to cause IBD during times of dysbiosis by activating GPCRs in the gut \citep{Cohen2017}, thus supporting the user's original hypothesis. Additionally, one can use these findings to focus future research questions about the role of the human microbiome in health disorders by searching for correlations between N-acyl amide synthase genes and other conditions. For instance, since the products of these genes interact with GPCRs to potentially regulate IBD, and IBD is associated with anxiety and depression, investigation may reveal that the interaction between these genes and GPCRs potentially regulate anxiety and depression as well.
 
 %
 \section{Python}
@@ -129,9 +124,19 @@ The DataCamp course should take \~4 hours to complete (less, if you forego NumPy
 
 If you decide that you'd like to start creating your own tools with Python, there's a bit more you'll need to know. Resources for learning how to create your own functions, classes, packages, and more can be found in Appendix \ref{chap:python-resources}.
 
-\chapter{How to Find Tools}
-    \label{chap:find-tools}
-\section{Finding Data}
-(Here is where we talk about various databases that users can use to find general information, data files, study results, public datasets, etc.)
-\section{Finding Software}
-(Here is where we talk about ways/places that people can look for software programs that can help answer their research question.)
+
+\section{BioPype Tutorial Dataset}
+
+The dataset we will analyze in this tutorial comes from the \textit{Longitudinal Multi'omics of the Human Microbiome in Inflammatory Bowel Disease} study (unpublished) (see \url{https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP115494}).
+
+From the abstract: "The main Inflammatory Bowel Disease (IBD) Multi''omics Database (IBDMDB) study includes multi'omics measurements from over 100 subjects, sampled biweekly over up to a year in both adult and pediatric patients with IBD (Crohn's disease and ulcerative colitis), along with non-IBD controls. Data types include fecal metagenomes, metatranscriptomes, metabolomes, and proteomes, as well as host genetics, intestinal biopsy transcriptomes, epigenetics, and 16S amplicon profiles. Subjects' medical histories and demographics are collected at baseline and medication, diet, and disease activity profiled longitudinally." 
+
+In our analysis, we will be downloading sequencing data from their NCBI Sequence Read Archive page that corresponds to patients with ulcerative colitis and Crohn's disease (both conditions fall under the umbrella condition of "inflammatory bowel disease". We will examine whether there are compositional differences between the gut microbiota of younger patients with ulcerative colitis or Crohn's disease compared with their older cohort. While we expect both groups to exhibit gut dysbiosis and clear deviation from the composition of a healthy human gut microbiome, what we're hoping to study is whether or not increased age exacerbates the severity of the dysbiosis. Increased age is associated with gut dysbiosis, even in otherwise healthy individuals, so we predict that older IBD patients will exhibit greater degrees of dysbiosis than their younger counterparts. 
+
+
+%\chapter{How to Find Tools}
+%    \label{chap:find-tools}
+%\section{Finding Data}
+%(Here is where we talk about various databases that users can use to find general information, data files, study results, public datasets, etc.)
+%\section{Finding Software}
+%(Here is where we talk about ways/places that people can look for software programs that can help answer their research question.)

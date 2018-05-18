@@ -48,7 +48,17 @@
     \url{https://www.drive5.com/usearch/manual/otu_definition.html}
 
 
-    \section{Explanation of @staticmethod decorator vs @classmethod decorator in Python}
+    \section{Navigating Files and Folders Using the Command Line}
+    \label{appendix:command-line-navigate}
+    \url{https://www.macworld.com/article/2042378/master-the-command-line-navigating-files-and-folders.html}
+    
+    
+    \section{Virtual Environments}
+    \label{appendix:virtual-environments}
+    \url{https://realpython.com/python-virtual-environments-a-primer/}
+
+
+    \section{Explanation of @staticmethod Decorator vs @classmethod Decorator in Python}
     \label{app:static-method}
     \textit{The Basics}: Static methods make code easier to read and let you use a class' methods without needing to have an object of that class first. This is useful when it makes logical sense to place a function within a class (because the function is related to the other tasks that the class handles), but the function doesn't \textit{need} to operate on an object/the data of that class. Normal methods are called by typing: \verb|my_object.method|. Static methods are called by typing: \verb|MyClass().method| or \verb|MyClass.method|.
     
@@ -77,19 +87,98 @@
     \end{enumerate}
     
     
-    \section{How many threads to use?}
+    \section{How Many Threads Should You Use?}
     \label{app:threads}
     \url{https://www.jstorimer.com/blogs/workingwithcode/7970125-how-many-threads-is-too-many}
     
     
-    \section{How many threads can my computer run?}
+    \section{How Many Threads can my Computer Run?}
     \label{app:threads-resources}
     \url{https://superuser.com/questions/1101311/how-many-cores-does-my-mac-have}
 
 
-    \section{SRA/.sra file format}
-    \label{app:sra-format}
-    \todo[inline]{Find resource for explaining the .sra file format that we download from the SRA Database}
+    %\section{SRA/.sra File Format}
+    %\label{app:sra-format}
+    %\todo[inline]{Find resource for explaining the .sra file format that we download from the SRA Database}
+
+
+    \section{How to edit bash\_profile}
+    \url{https://stackoverflow.com/questions/30461201/how-do-i-edit-path-bash-profile-on-osx/30462883}
+    
+    \section{What "export PATH" commands mean}
+    \url{https://askubuntu.com/questions/720678/what-does-export-path-somethingpath-mean}
+    
+    \section{Parallel-fastq-dump}
+    \url{https://github.com/rvalieris/parallel-fastq-dump}
+    
+    \section{Thorough explanation of NCBI's (poorly-documented) fastq-dump command}
+    \url{https://edwards.sdsu.edu/research/fastq-dump/}
+
+    
+    \section{What is a "feature" in qiime2?}
+    \url{https://forum.qiime2.org/t/what-is-a-feature-exactly/2201}
+    
+    \section{Metadata in qiime2}
+    \url{https://docs.qiime2.org/2018.4/tutorials/metadata/}
+
+\section{Multiqc modules}
+\url{http://multiqc.info/docs/#multiqc-modules}
+
+\section{Paired end sequencing vs single end sequencing}
+\small \url{https://www.illumina.com/science/technology/next-generation-sequencing/paired-end-vs-single-read-sequencing.html}
+
+\section{.glob formatting} 
+(uses python 2 for the examples but other than the print statement, everything should be the same for python3)
+\url{https://pymotw.com/2/glob/}
+
+\section{Qiime2 workflow from Center for Host-Microbial Interactions}
+\url{https://chmi-sops.github.io/mydoc_qiime2.html}
+
+\section{Importing data in qiime2}
+\url{https://docs.qiime2.org/2018.4/tutorials/importing/}
+
+\section{Why you shouldn't blindly trust public data for accuracy.} 
+Always look into the metadata to understand your results \newline
+\url{https://sequencing.qcfail.com/articles/data-can-be-corrupted-upon-extraction-from-sra-files/}
+
+
+\section{Jargon: Base calling}
+\textbf{Base Calling:} "The deduction of nucleotide sequences from the images acquired during sequencing is commonly referred to as base calling." Definition comes from \url{https://galaxyproject.org/tutorials/ngs/} when it cites \url{http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf}
+
+\section{Illumina Next Generation Sequencing}
+\url{http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf}
+\begin{itemize}
+\item Figures explaining Illumina NGS
+\item Overview of the SRA database
+\item Introduction to RNA-seq
+    \begin{itemize}
+    \item Library prep methods
+    \item Sequencing (illumina)
+    \item Experimental design
+        \begin{itemize}
+	\item Avoiding bias
+	\item Capturing variability
+	\end{itemize}
+    \item Raw Data (Sequencing Reads)
+	\begin{itemize}
+	\item Quality control
+	\end{itemize}
+
+\end{itemize}
+
+    \item Read Alignment 
+\begin{itemize}
+\item Reference Genomes and annotations
+\item Storing aligned reads: SAM/BAM file format
+\item Quality control of aligned reads
+\end{itemize}
+
+    \item Read Quantification
+    \item Normalizing and Transforming Read Counts
+    \item Differential Gene Expression Analysis
+		
+
+\end{itemize}
 
 
 %
@@ -112,7 +201,50 @@ A resources for learning how to create your own Python functions. The DataCamp c
 \label{appendix:python-dictionaries}
 \url{https://docs.python.org/3/tutorial/datastructures.html#dictionaries}
 
-\todo[inline]{Add more resources for learning python: how to make own packages, classes}
+
+\section{Pandas.DataFrame.mask()}
+\url{https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.mask.html#pandas.DataFrame.mask}
+
+\section{How to search all (pandas) data frame rows for values outside a defined range of numbers (StackOverflow)
+}
+\footnotesize \url{https://stackoverflow.com/questions/41618224/how-to-search-all-data-frame-rows-for-values-outside-a-defined-range-of-numbers}
+
+
+\section{Assert Variable Type in Python}
+\url{https://stackoverflow.com/questions/2589522/proper-way-to-assert-type-of-variable-in-python}
+
+
+\section{Parallel-fastq-dump}
+\url{https://github.com/rvalieris/parallel-fastq-dump}
+    
+\section{Get full path to a Python file}
+To get the full path to the directory a Python file is contained in, write this in that file:
+\url{https://stackoverflow.com/questions/5137497/find-current-directory-and-files-directory}
+
+\section{Importing a Class in the \_\_init\_\_.py file}
+\url{http://mikegrouchy.com/blog/2012/05/be-pythonic-__init__py.html}
+
+\section{Git stashing and applying}
+\url{https://git-scm.com/book/en/v1/Git-Tools-Stashing} \newline
+\url{https://stackoverflow.com/questions/19003009/git-how-to-recover-stashed-uncommitted-changes}
+
+\section{Importing packages and the need to repeatedly reference subpackages}
+\url{https://stackoverflow.com/questions/12229580/python-importing-a-sub-package-or-sub-module}
+
+\section{If \_\_name\_\_ == "\_\_main\_\_":}
+\url{https://stackoverflow.com/questions/419163/what-does-if-name-main-do}
+
+\section{Underscores in python}
+\url{https://shahriar.svbtle.com/underscores-in-python}
+
+
+\section{Python Modules vs Packages}
+\url{https://docs.python.org/3/reference/import.html}
+
+
+%\todo[inline]{Add more resources for learning python: how to make own packages, classes}
+
+
 
 %
 

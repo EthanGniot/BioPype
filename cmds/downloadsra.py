@@ -218,8 +218,6 @@ class DownloadHelper:
 
             # Check if the sample has already been downloaded
             if (sample in self.download_tracker) or (sample in lines):
-                # TODO: determine whether or not I should be using "return" here.
-                # return self.download_paired_end_data(downloaded_sra_folder, cfs)
                 continue
 
             # Check if the SRA file contains paired-end data.
@@ -227,8 +225,6 @@ class DownloadHelper:
                 print('{} does not contain paired-end data. Restarting search.'.format(str(sample)))
                 self.download_tracker.append(sample)
                 self.write_to_single_end_file(sample)
-                # TODO: This (and other) recursive call to download_paired_end_data seems to be working fine with 'cfs' as an argument, but I feel like that should be causing problems... if there's a strange error, try changing 'cfs' to 'converted_fastq_subdir'
-                # self.download_paired_end_data(downloaded_sra_folder, cfs)
                 continue
 
             elif self.isPairedSRA(sample):
