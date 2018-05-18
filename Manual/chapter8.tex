@@ -1,163 +1,200 @@
-\chapter{Software and Set-up}
-\label{chap:software}
-\section{Software}
-(Table of software name, name in PATH, version number, function of the software for each one we're gonna use)
-\todo{Add further software that you end up using (e.g., USEARCH). ALSO, make sure to update the section that mentions installing packages if you do so.}
-\todo[inline]{write about installing qiime2 \url{https://docs.qiime2.org/2018.4/install/native/}}
-\todo[inline]{write about installing parallel-fastq-dump}
-\todo[inline]{write about installing multifastqc}
-\todo[inline]{add 3rd column to table with link to documentation/download source}
+\chapter{The Dataset}
+    %
+    \begin{maxipage}
+    \begin{bclogo}[couleur = vlightgray, logo = \bcinfo] {Recap}
+    In the previous chapter, we set up our machine so that it has all of the software BioPype needs in order to function. \newline \newline In this chapter, we will use BioPype to \textbf{download} experimental data, and then prepare them for analysis via a process called \textbf{"quality control"}. We will also discuss how the BioPype functions used in this workflow were created.
+    \end{bclogo}
+    \end{maxipage}
+    %
+
+As described in Chapter \ref{chap:scene}, we want to investigate if there are any differences in the gut microbiomes of younger patients with IBD compared to older patients with IBD. Using the methods described in Chapter \ref{chap:find-tools}, we found a study in the SRA database with sequencing data that are useful to us. The webpage for the SRA Study is reproduced in Figure \ref{fig:ncbi-sra-study-page} and can be accessed at
+    \url{https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP115494} .
+    
 %
-\begin{table}[htp]
-    \begin{center}
-    \begin{tabular}{ l | l }
-        \textit{Software name} & \textit{Version number} \\ 
-        \hline
-        Anaconda & 5.1 \\  
-        Biopython & 1.70 \\
-        BLAT & 35 \\
-        matplotlib & 2.2.2 \\
-        pandas & 0.22.0 \\
-        sra-tools & 2.8.2 \\
-        trim-galore & 0.4.5 \\
-    \end{tabular}
-    \caption{\textbf{Software used to create the tutorial pipeline.}}
-    \label{tab:software}
-    \end{center}
-    \label{software}
-\end{table}
+\begin{figure}[hbtp]
+    \begin{maxipage}
+    \hrule
+    \centering
+    \includegraphics[height=8.75cm, width=16cm]{ncbi-sra-study-page}
+    \caption{The "SRA Study" webpage.}
+    \label{fig:ncbi-sra-study-page}
+    \hrule
+    \end{maxipage}
+\end{figure}
 %
-\section{Set-up and Install Dependencies}
-Before we write any code, there are several steps that must be completed to prep your machine for the tasks we will be performing in this tutorial. Without these prerequisites, the code you write during this tutorial will not work correctly:
-\begin{enumerate}
-\item Install and open Anaconda
-\item Create a new virtual environment
-\item Install packages
-\end{enumerate}
 
-\subsection{Install Anaconda}
-The Anaconda program will play a key role in this tutorial. Anaconda is essentially Python and a lot of scientific computing tools bundled together, along with many popular add-ons to Python called packages. \seealso{RESOURCE FOR LEARNING ABOUT PYTHON PACKAGES} Downloading all of these tools individually can be difficult, as the quirks of one package may conflict with another when they're installed manually; using Anaconda to install packages greatly simplifies the process because Anaconda can smoothly handle all of the minute details that cause manual installations to fail.
+The dataset is reproduced in Figure \ref{fig:ncbi-sra-runs-page} and can be found by clicking on "Runs" under "Related SRA data" on the right side of the SRA Study webpage, or by going to \url{https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP115494#} .
 
-\textbf{\underline{Install and Open:}}
-
-\begin{enumerate}
-    \item Go to the download page for the Anaconda distribution at \\ \url{https://www.anaconda.com/download}. 
-    \item Select your preferred operating system from the Windows, macOS, or Linux tabs, then select the Download option for the \textbf{Python 3.6 version} (Figure \ref{anaconda_download}) and follow the installation instructions.
+%
+\begin{figure}[hbtp]
+    \begin{maxipage}
+    %\begin{center}
+    \centering
+    \includegraphics[height=8.5cm, width=16cm]{ncbi-sra-runs-page}
+    \caption{The sequencing data collected by the \textit{Longitudinal Multi'omics of the Human Microbiome in Inflammatory Bowel Disease} study. (Note: the table's columns extend beyond the right side of the page because there are 36 metadata categories.)}
+    \label{fig:ncbi-sra-runs-page}
+    %\end{center}
+    \end{maxipage}
+\end{figure}
+%
+    
+To learn more about how to use these pages to find information about the study and its methods, please refer to Chapter \ref{chap:find-tools}. 
+    
     %
-    \begin{figure}[h]
-        \begin{center}
-        \includegraphics[width=9.5cm]{anaconda_download}
-        \caption{The Anaconda download options provided on the Anaconda distribution website at \protect \url{https://www.anaconda.com/download}}.
-        \label{anaconda_download}
-        \end{center}
-    \end{figure}
-    %
-
-
-    \item After installation is complete, open the application named "Anaconda-Navigator" (the icon looks like \includegraphics[width=0.5cm]{anaconda-navigator-thumbnail}). After a brief start-up period, you should see the following window (Figure \ref{anaconda-nav-win}):
-    %
-    \begin{figure}[htbp]
-        \begin{center}
-        \includegraphics[width=12cm]{anaconda-nav-win}
-        \caption{The window displayed to the user upon opening Anaconda-Navigator.}
-        \label{anaconda-nav-win}
-        \end{center}
-    \end{figure}
-    %
-\end{enumerate}
-
-\subsection{Create a New Virtual Environment}
-    \todo[inline]{Write a blurb explaining the benefits of using a virtual environment.}
-    \todo[inline]{Link to resource for further reading on virtual environments}
-    \marginlabel{Make sure the computer has an internet connection while completing this section, otherwise Anaconda will not let you create a virtual environment.}
-    \begin{enumerate}
-        \item On the left side of the Anaconda-Navigator window, click on the tab labeled \textbf{Environments}. (Figure \ref{anaconda-env-win}) 
-        %
-        \begin{figure}
-            \includegraphics[width=12cm]{anaconda-env-win}
-            \caption{The Environments window of the Anaconda-Navigator.}
-            \label{anaconda-env-win}
-        \end{figure}
-        %
-        \item Click the \textbf{Create} button on the bottom of the center panel. A new window titled "Create new environment" will appear. (Figure \ref{anaconda-create-new-env-win})
-        %
-        \begin{figure}[h]
-            \begin{center}
-            \includegraphics[width=12cm]{anaconda-create_new_env_win}
-            \caption{The "Create new environment" window.}
-            \label{anaconda-create-new-env-win}
-            \end{center}
-        \end{figure}
-        %
-        \item Enter a \textbf{Name} for the environment. You may choose any name you want, but for the sake of this tutorial we will name the new environment "BioPype".
-        \item Select the box labeled \textbf{Python} next to the \textbf{Packages} heading.
-        \item Choose a version of Python from the adjacent drop-down menu (Python 3.6 is the most current version at the time of this writing, but the packages we use require Python 3.5 so we chose \textbf{3.5}. If you are following the tutorial analysis in this manual, choose version 3.5).
-        \item Click the \textbf{Create} button within the "Create new environment window".
-    \end{enumerate}
-
-\subsection{Install packages}
-    \todo[inline]{Write blurb about what packages are.}
-    \todo[inline]{Link to resource for further reading about packages.}
-    \begin{enumerate}
-        \item Change Anaconda's current environment from the \textbf{root} environment by selecting the \textbf{BioPype} tab in the middle panel of the Environments window.
-        \item Click on the drop-down menu in the right-hand panel that says "Installed" and change it to "All".
-        \item In the "Search Packages" box, enter "biopython". The search should return a package named "biopython". Select the checkbox to the left of the name. (Figure \ref{anaconda-search-pack})
-        \begin{itemize}
-            \item A pair of green and red boxes (reading "Apply" and "Clear", respectively) will appear in the bottom-right of the window once the package is selected. Do not click these just yet. 
-    %
-    \begin{figure}[hbtp]
-        \begin{center}
-        \includegraphics[width=12cm]{anaconda-search-pack}
-        \caption{Searching for a package. When a package is selected, the checkbox next to the package's name will be green.}
-        \label{anaconda-search-pack}
-        \end{center}
-    \end{figure}
-    %
-    \todo{Solve the issue with failing to center figures when they're on their own page}
-        \end{itemize}
-        \item Use the search bar to find and select the other packages listed in \autoref{tab:software}. Once all packages have been selected, click the green "Apply" button in the bottom right corner of the window, then select "Apply" again within the "Install Packages" window that appears. (Figure \ref{anaconda-install-pack}) Anaconda will now install the selected packages.
-    %
-    \begin{figure}[hbtp]
-        \begin{center}
-        \includegraphics[width=12cm]{anaconda-install-pack}
-        \caption{The window displaying the packages and dependencies that will be installed.}
-        \label{anaconda-install-pack}
-        \end{center}
-    \end{figure}
-    %
-        \item \todo[inline]{Talk about setting up the sra-tools workspace (\url{https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std})}
-        \item \todo[inline]{PYPIPER IS ONLY COMPATIBLE WITH MAC AND LINUX. Start by coding with just subprocess module commands. If the scripts work on Windows computers, then forget about using pypiper. But if the subprocess scripts don't work on windows, then we'll be developing exclusively for Mac anyways, so you could use pypiper without any worries. In that case, talk about installing pypiper here. OTHERWISE, delete this section.}
+    \section{Download Dataset}
+    \todo[inline]{*****Show the user what the result of the commands are. Right now we show the commands, but not the results. e.g., when we run a command to get a list of accession numbers, follow it up by typing the command that just prints the list of numbers in the terminal. Then the user can see what their results should look like if they did everything correctly. }
+    
+    \subsection*{1) Choose sample criteria}
         \begin{enumerate}
-            \item Open a terminal window in the BioPype environment by clicking the "play" button on the BioPype environment tab and then selecting "Open Terminal".
-            \item Wait for the terminal window to finish opening. You'll know it's finished when you see \todo[inline]{show image of what the prompt looks like when it's done initializing.}
-            \item Install \textbf{pypiper} by typing the following at the command prompt, followed by pressing return/enter:
-            %
-            \begin{lstlisting} [language=Python]
-                pip install --user pypiper
+            \item First, we must decide what criteria we will use to choose our experimental samples. 
+            \marginlabel{Note: The dataset has a metadata category called "BioSample." This is not to be confused with the generic term "samples", which in this case are equivalent to one run (i.e., one row) of the data table.}
+            \newline
+            Remember: our research question investigates the effects of age on the gut microbiomes of inflammatory bowel disease patients. Looking at the study abstract from Figure \ref{fig:ncbi-sra-study-page}, we can see that the researchers investigated two types of IBD: Crohn's disease and ulcerative colitis. So one of the metadata categories from the dataset (i.e., the columns from the dataset in Figure \ref{fig:ncbi-sra-runs-page}) that we will use to select our samples is the "host\_disease" category. We will also select our samples based on the "host\_age" metadata.
+            
+            \item Now we want to select our samples based on these categories. 
+            
+            Download the RunInfo Table file found on the study's sample page and put it in the project folder you set up in Chapter \ref{software}. The RunInfo table is the browser's sample table in a .txt file format.
+            \missingfigure{highlight where to click to download the runinfo table}
+            
+            \item Open the command line interface for your machine's operating system. On a mac, this is the Terminal application. 
+            
+            \item Navigate to your project's folder and then confirm that you are in the right location by using the the following commands at the command prompt:
+            
+                \begin{lstlisting} [language=Python]
+$ cd <path\_to\_your\_project>
+$ pwd
+                \end{lstlisting}
+                        
+            \item Activate the Python interpreter by typing the following into the command prompt:
+                \begin{lstlisting} [language=Python]
+$ python3
+                \end{lstlisting}
+            
+            \item Import BioPype to the current Python environment:
+                \begin{lstlisting} [language=Python]
+>>> import BioPype
+                \end{lstlisting}
+                
+                    \begin{itemize}
+                    \item \attention{If not done already, stop and follow the instructions in Chapter \ref{chap:software} to configure the BioPype working directory and the SRA Toolkit Workspace Location.}
+                    \end{itemize}
+                
+            \item Import \verb|BioPype.cmds.runtable| to gain access to the \verb|RunTable| class:
+            \todo[inline]{Either shorten this margin-label, or put it in a footnote.}
+            \marginlabel{Using "as" in an import statement lets you reference the full name of the imported package by some shorter name. It is generally considered better practice to \textbf{not} import packages "as" some other name, because it makes the code less explicit (which goes against the purpose of Python), but we do it in this manual for the sake of space.}
+                \begin{lstlisting} [basicstyle=\small, language=Python]
+>>> import BioPype.cmds.runtable as runtable
+                \end{lstlisting}
+                
+            \item Create a \verb|RunTable| object called "my\_table" out of the RunInfo Table .txt file:
+            \todo[inline]{Give a specific name to the RunInfo Table file. People might get confused if they needs to fill in the name of the file themselves.}
+            \begin{lstlisting} [basicstyle=\footnotesize, language=Python]
+>>> my_table = runtable.RunTable('runinfotable_filename.txt')
             \end{lstlisting}
-            %
-            \item Check that the package was installed correctly by executing the following in the command prompt:
-            %
-            \begin{lstlisting} [language=Python]
-                conda list
+            
+            
+                \begin{itemize}
+                \item With the \verb|my_table| object created, you can remind yourself what the metadata categories are by using the following command:
+                \end{itemize}
+                \begin{lstlisting} [basicstyle=\footnotesize, language=Python]
+>>> my_table.column_names
+['Assay_Type', 'AvgSpotLen', 'BioSample', 'BioSampleModel', 
+ 'Experiment', 'Instrument', 'LibrarySelection', 'LibrarySource', 
+ 'Library_Name', 'LoadDate', 'MBases', 'MBytes', 'Organism', 
+ 'ReleaseDate', 'Run', 'SRA_Sample', 'Sample_Name', 
+ 'collection_date', 'env_biome', 'env_feature', 'env_material', 
+ 'host_age', 'host_disease', 'host_sex', 'host_subject_id', 
+ 'lat_lon', 'BioProject', 'Consent', 'DATASTORE_filetype', 
+ 'DATASTORE_provider', 'InsertSize', 'LibraryLayout', 'Platform', 
+ 'SRA_Study', 'geo_loc_name', 'host']
+                \end{lstlisting}
+                
+                
+            \item We want to first group the samples based on the patients' disease...
+            \begin{lstlisting} [basicstyle=\scriptsize, language=Python]
+>>>uc_samples=my_table.filter_data("host_disease", '==', 'ulcerative colitis')
+>>>cd_samples=my_table.filter_data("host_disease", '==', "Crohn''s disease")
             \end{lstlisting}
-            %
-            This will generate a list of all the packages installed in the current environment. If you see the \textbf{pypiper} package listed, the installation was successful and you may skip the rest of this section. If not, proceed with the following steps.
-            \item Execute the install command from step (c) again. This time, the Terminal should return a message similar to the one displayed in \todo[inline]{Reference the figure pypiper-already-installed}. The line that reads "Requirement already satisfied: pypiper in ...." tells us the location where the package was (incorrectly) installed. 
-            \missingfigure{pypiper-already-installed}
-            \item Open a Terminal window, and navigate to the location indicated by the message from the previous step. For my example, I need to start at my home directory and walk through the following folders: .local | lib | python3.6 | site-packages. 
-            \begin{itemize}
-                \item The folders along the path to the pypiper installation may be hidden. On a Mac, these hidden folders are preceded by a "." If the path to the pypiper installation includes hidden locations, reveal them by pressing "Cmd + Shift + ." in the Finder window.
-            \item Once you find the site-packages folder containing two pypiper folders \todo[inline]{reference figure pypiper-wrong-location}, copy those folders and their contents and paste them into the ~/anaconda/envs/BioPype/lib/python3.6/site-packages directory. The package should now be installed correctly. \missingfigure{pypiper-wrong-location} 
-            \marginlabel{}
-            \end{itemize}
-        \end{enumerate}    
-    \end{enumerate}
+                \begin{itemize}
+                \item \attention{Note} that the "Crohn's disease" string within the parentheses in the second line of code has two single-quotes/apostrophes between the "n" and the "s" of "Crohn's". This is because the value we input must exactly match the value that the original study's researchers input for the \verb|host_disease| category, and (for whatever reason) they entered the value for Crohn's disease as:   \verb|"Crohn''s disease"|
+                
+                This is an example of why it's important to check the metadata carefully before you begin the analysis. If the argument does not exactly match the value of the metadata category, it won't select the sample. 
+                \end{itemize}
+            
+                
+            \item ... then we want to group them based on age:
+            \begin{lstlisting} [basicstyle=\small, language=Python]
+>>>uc_young = uc_samples.filter_data("host_age", '<=', 21)
+>>>uc_old = uc_samples.filter_data("host_age", '>=', 60)
+>>>cd_young = cd_samples.filter_data("host_age", '<=', 21)
+>>>cd_old = cd_samples.filter_data("host_age", '>=', 60)
+            \end{lstlisting}
+                \begin{itemize}
+                \item \attention{Note} that the third argument passed to the \verb|filter_data()| method is \textbf{not} a string like the previous two arguments. It is simply an integer (no quotation marks around it).
+                \end{itemize}
+                
+                
+            \item Now that we have groups of samples selected, we want to get a list of SRA accession numbers for each group. The accession numbers are what we will use to specify the files we want to download from the SRA database. 
+            \begin{lstlisting} [basicstyle=\small, language=Python]
+>>>uc_young_nums = uc_young.get_accession_numbers()
+>>>uc_old_nums = uc_old.get_accession_numbers()
+>>>cd_young_nums = cd_young.get_accession_numbers()
+>>>cd_old_nums = cd_old.get_accession_numbers()
+            \end{lstlisting}
+            
+            
+            \item \seealso{To learn more about .sra file format, see Appendix \ref{app:sra-format}.}
+            We can now use the lists of accession numbers to download .sra files from the SRA database. However, these are large files that can \textit{easily} take up hundreds of gigabytes of memory. They also take time to download (times will vary based on network speed). To account for hardware limitations that would severely bottleneck the analysis at file-handling steps like these, we will randomly select a subset of only 3 accession numbers from each list we created in the previous step. The analysis will go much faster if we analyze fewer samples, so these subsets are what we will analyze going forward.
+            \seealso{The "random\_sample\_ subset()" method is preceded by "RunTable." in this case because it is a "@staticmethod". To learn more, see Appendix \ref{app:static-method}.}
+            \begin{lstlisting} [basicstyle=\footnotesize, language=Python]
+# Shorten the name for the runtable module to save space in the manual:
+>>>import BioPype.cmds.runtable as rt
 
-\subsection{Integrated Development Environment (IDE)}
-\todo[inline]{Talk about choosing between PyCharm and other options}
-%
-\subsection{PATH}
-\todo[inline]{(Talk about putting all the tools in the same path/directory)}
-\section{Analysis Pipeline}
-(Use figures to illustrate the stages of the pipeline)
+>>>rs_uc_young = rt.RunTable.random_sample_subset(uc_young_nums, n=3)
+>>>rs_uc_old = rt.RunTable.random_sample_subset(uc_old_nums, n=3)
+>>>rs_cd_young = rt.RunTable.random_sample_subset(cd_young_nums, n=3)
+>>>rs_cd_old = rt.RunTable.random_sample_subset(cd_old_nums, n=3)
+            \end{lstlisting}
+            
+            
+            \item Now we need to download the .sra files linked to these accession numbers and get them into .fastq format. First, we'll need to import the necessary functions:
+            \begin{lstlisting} [basicstyle=\small, language=Python]
+>>>from BioPype.cmds.downloadsra import download_sra,
+>>>from BioPype.cmds.downloadsra import convert_sra_to_fastq
+            \end{lstlisting}
+            
+            
+            \item Use the \verb|download_sra()| function to download the .sra files into named folders:
+            \begin{lstlisting} [language=Python]
+>>>download_sra(rs_uc_young, 'uc_young')
+>>>download_sra(rs_uc_old, 'uc_old')
+>>>download_sra(rs_cd_young, 'cd_young')
+>>>download_sra(rs_cd_old, 'cd_old')
+            \end{lstlisting}
+                \begin{itemize}
+                \item \attention{The .sra files will not be downloaded to the correct location if the SRA Toolkit Workspace Location has not been properly configured (see Chapter \ref{chap:software} for details).}
+                \end{itemize}
+            
+            
+            \item \seealso{To learn more about .fastq format, see Appendix \ref{app:fastq-format}.} 
+            Use the \verb|convert_sra_to_fastq()| function to convert the .sra files to .fastq format.
+            
+            \seealso{To learn more about what threads are, and how many you should use, see Appendix \ref{app:threads}.}
+            \begin{lstlisting} [language=Python]
+>>>convert_sra_to_fastq(threads=4)
+            \end{lstlisting}
+                \begin{itemize}
+                \item \attention{BioPype will not know where to look for the downloaded .sra files if the SRA Toolkit Workspace Location has not been properly configured (see Chapter \ref{chap:software} for details).}
+                \item The more threads your computer can divide this process between, the better (it's more complicated than that, but for now let's go with it). The question is: how many threads is your computer capable of using? For that, you'll have to do some Googling. You can find the resources I used to figure out how many threads my MacBook Pro can run (4) in Appendix \ref{app:threads-resources}. To simplify: my computer has 1 CPU, the CPU has 2 cores, and each core can run 2 threads. 1 x 2 x 2 = 4 threads.
+                \end{itemize}            
+                                    
+        \end{enumerate}
+        
+        %
+        \subsection{Creating the code}
+        
+        %
+    
+    
+    \section{Perform Quality Control on Dataset}
+
