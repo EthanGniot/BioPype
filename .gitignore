@@ -161,3 +161,4 @@ fabric.properties
 auto-ethan2.py
 reset_biopype_pack.py
 test.py
+Manual/*.aux
