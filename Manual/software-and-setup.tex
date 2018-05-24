@@ -5,6 +5,7 @@
 \section{BioPype Dependencies Information}
 The following tables contain version information and other resources for the packages that BioPype needs in order to function. 
 
+\todo[inline]{The command line install for trim\_galore is failing for some reason. Get to the bottom of this and update the manual.}
 %
 \begin{table}[hbtp]
     \begin{maxipage}
@@ -14,12 +15,13 @@ The following tables contain version information and other resources for the pac
         \textit{Package name} & \textit{Version number} & \textit{Command-line install} \\ 
         \hline
         Anaconda & 5.1 &  \\  
+        fastqc & 0.11.5 & \verb|conda install -c bioconda fastqc| \\
         multiqc & 1.5 & \verb|conda install -c bioconda multiqc| \\
         pandas & 0.22.0 & \verb|conda install pandas| \\
         parallel-fastq-dump & 0.6.3 & \verb|conda install -c bioconda parallel-fastq-dump| \\
         qiime2 & 2018.4 & (see \url{https://docs.qiime2.org/2018.4/install/native/} if the install instructions below fail) \\
         sra-tools & 2.8.2 & \verb|conda install -c bioconda sra-tools| \\
-        trim-galore & 0.4.5 & \verb|conda install -c bioconda trim-galore| & \\
+        trim\_galore & 0.4.5 & \verb|conda install -c bioconda trim_galore| & \\
     \end{tabular}
     \label{tab:software}
     \label{software}
@@ -34,12 +36,13 @@ The following tables contain version information and other resources for the pac
 \textit{Software name} & \textit{Documentation link} \\
 \hline
 Anaconda & \url{https://docs.anaconda.com/anaconda/} \newline \url{https://conda.io/docs/user-guide/getting-started.html} \\
+fastqc & \url{https://www.bioinformatics.babraham.ac.uk/projects/fastqc/} \\
 multiqc & \url{http://multiqc.info/} \\
 pandas & \url{https://pandas.pydata.org/pandas-docs/stable/install.html} \\
 parallel-fastq-dump & \url{https://github.com/rvalieris/parallel-fastq-dump} \\
 qiime2 & \url{https://docs.qiime2.org/2018.4/} \\
 sra-tools & \url{https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc} \\
-trim-galore &  \url{https://github.com/FelixKrueger/TrimGalore} \\
+trim\_galore &  \url{https://github.com/FelixKrueger/TrimGalore} \\
 \end{tabular}
 \label{tab:software-doc-links}
 \hrule
