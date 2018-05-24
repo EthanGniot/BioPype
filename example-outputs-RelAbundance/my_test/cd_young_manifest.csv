@@ -1,0 +1,7 @@
+sample-id,absolute-filepath,direction
+SRR6704395,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704395_pass_1.fastq,forward
+SRR6704395,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704395_pass_2.fastq,reverse
+SRR6704273,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704273_pass_1.fastq,forward
+SRR6704273,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704273_pass_2.fastq,reverse
+SRR6704347,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704347_pass_1.fastq,forward
+SRR6704347,/Volumes/Gniot_Backup_Drive/repos/my_test/data/grouped_fastq/cd_young/SRR6704347_pass_2.fastq,reverse
