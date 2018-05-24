@@ -7,7 +7,8 @@ change throughout the development process._
 This tutorial aims to improve a newcomer's general understanding of bioinformatics by...
   1) Defining technical terms commonly used in bioinformatics, 
   2) Providing a collection of useful resources for learning about bioinformatics, and 
-  3) Demonstrating how Python can be used to answer specific research questions by combining existing bioinformatics tools.
+  3) Demonstrating how Python can be used to answer specific research questions
+   by combining existing bioinformatics tools.
 
 +++++
 
@@ -20,6 +21,10 @@ used for configuring the BioPype work environment.
 downloaded from the Sequence Read Archive database. 
 * `cmds.downloadsra.py`: Defines functions for handling the download and conversion 
 of .sra files to .fastq files.
+* `cmds.qiimehelper.py`: Defines the `QiimeHelper` class, which handles the
+the .qza and .qzv qiime artifacts used in the relative abundance analysis.
+* `cmds.qualitycontrol.py`: Defines functions for performing quality control
+on the raw sequencing data. 
 * `workspaces.dirpaths.py`: Defines the `DirPathsHelper` class, which handles
 initialization code for BioPype as well as methods for defining the working
 directories for BioPype and the SRA Toolkit.
@@ -29,11 +34,23 @@ The current state of the accompanying manual/tutorial can be found in the
 
 **Current sections under development:**
 * Chapter 1: Foreword
-* Chapter 3: Sample Information
-* Chapter 7: The Plan
-* Chapter 8: Software and Set-up
-* Chapter 9: The Dataset
-* Appendix A: Web Links
+* Chapter 2: Microbiome Analysis
+* Chapter 3: Software and Set-up
+* Chapter 4: The Dataset
+* Appendix A: Web Resources and Explanations
+* Appendix B: Python Resources
 
-**Tutorial Pipeline Structure:**
+**Future sections**
+* How to Find Tools
+* Relative Abundance Analysis with QIIME2
+* Predict ORFs
+* Create Non-redundant Gene Sets
+* Align Genes
+* Get GenBank Accession Numbers
+* Find COG Functional Class
+* Gene Ontology (GO) Classification
+
+
+**(Initial) Tutorial Pipeline Structure:**
 ![biopype_flowchart](https://user-images.githubusercontent.com/30661548/39219342-6ab16580-47ef-11e8-8c0d-5770d20b9b97.png)
+

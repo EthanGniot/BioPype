@@ -1,1 +1,2 @@
+# Track QIIME2 artifact files (.qza files)
 *.qza filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,45 @@
+\maketitle 
+\listoftodos
+\tableofcontents % This creates the table of contents; autofills Chapters, sub-chapters (aka "sections"), and page numbers.
+
+% Add an asterisk before the {} to make an un-numbered chapter that won't be included in the ToC.
+\chapter{Foreword}
+
+\section{Goal}
+This tutorial aims to improve your general understanding of bioinformatics through several methods:
+\begin{itemize}
+    \item Define technical terms commonly used in bioinformatics methods and found in the literature.
+    \item Provide a collection of various useful resources, including...
+    \begin{enumerate}
+        \item Resources for finding tools, data, and background information that can help answer your research questions.
+        \item Resources that explain details about bioinformatics concepts and techniques in beginner-friendly language.
+    \end{enumerate}
+    \item Demonstrate how Python can be used to answer your research questions by combining existing bioinformatics tools and automating repetitive or time-consuming tasks.
+\end{itemize}
+
+\section{How to use this book}
+The main text of this book is written in the right-hand margin. The left-hand margin contains special markers and important notes to the reader. Most reference materials are consolidated in the appendices at the end of the book. The book can be used as a self-paced tutorial with the help of the markers described below.
+
+------------------------------- 
+
+\textit{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu felis sodales, interdum purus nec, interdum ex. Integer at nunc \marginlabel{This is a margin label. I will write things here to further explain the main text, define jargon, etc.} ultricies, tempus nibh eget, egestas risus. Suspendisse aliquam, lorem at dictum accumsan, dolor elit euismod velit, a gravida risus libero non felis. Donec a tortor tempor, scelerisque sapien posuere, volutpat erat. Morbi in imperdiet velit. Vivamus sagittis, massa sit amet venenatis euismod, elit eros aliquam diam, molestie faucibus lectus nisi euismod erat. Nulla id dictum mi.}
+
+\attention \textbf{The arrow that points to this line is an "Attention" marker. It will indicate key pieces of information that you should pay special attention to.} \textit{Curabitur egestas aliquam nisl, pharetra finibus mauris placerat nec. Nam in diam risus. Nulla mollis purus quis feugiat tristique. Vestibulum et sollicitudin ante, at sagittis ipsum. Nunc hendrerit ante sed massa semper eleifend.}
+
+\seealso{This kind of annotation will reference appendix entries that you can consult for more-detailed information about the main text.} Ut ultrices eros velit, at faucibus ante rutrum eget. Pellentesque a molestie diam. Curabitur mattis dui a risus lacinia fringilla. Phasellus porttitor elit nec neque euismod, id ultrices elit lobortis. Aliquam molestie sem. Curabitur sit amet urna faucibus, vulputate arcu sit amet, fermentum ipsum. Nulla facilisi. Nam ullamcorper eget leo id malesuada.
+
+
+\section{Source Code}
+The source code for this manual, the accompanying tutorial, and the BioPype package can all be found at \url{github.com/EthanGniot/BioPype}.
+
+
+\section{Pre-requisites}
+\subsection*{Computer requirements}
+\begin{itemize}
+    \item At least 4GB RAM minimum.* 16GB RAM if possible (the more RAM, the better)
+    \begin{itemize}
+    \item *At 4GB RAM, one step of the BioPype analysis takes \~2.5 hours to finish when analyzing 20 samples. With less RAM, expect the process to take longer. Conversely, more RAM will increase the speed of the analysis. 
+    \end{itemize}
+    \item BioPype was developed and tested using a MacBook Pro (Retina, 13-inch, Late 2013) running macOS 10.13.4 High Sierra. BioPype should be compatible with similar macOS versions, as well as Linux, though it has not yet been tested on Linux.
+    \item Storage requirements will vary depending on the amount of data you intend to analyze. The analysis performed in this tutorial required at least 500GB and were satisfied by using a 2TB external hard drive.
+\end{itemize}
